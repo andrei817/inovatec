@@ -73,7 +73,8 @@ $conn->close();
   <!-- Conteúdo da página -->
 </div>
 
-<section class="agenda">
+<div class="agenda-evento">
+    <div class="conteudo">
      
     <section class="login-section">
 
