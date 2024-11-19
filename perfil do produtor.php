@@ -148,13 +148,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div class="agenda-evento">
-    <div class="conteudo">
+    <div class="conteudo"> 
+        
     <section class="login-section"> 
 
-    <div class="login-box">
-
-
-    <h1>Editar Perfil</h1>
     <?php if (isset($_SESSION['msg'])): ?>
         <p style="color: green;"><?php echo $_SESSION['msg']; unset($_SESSION['msg']); ?></p>
     <?php endif; ?>
@@ -163,49 +160,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php endif; ?>
 
 
+ 
+
+  <div class="login-box">
+
+  <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
+    </div>
+
     <form method="POST" action="">
         <h2>Atualizar Perfil</h2>
-        
+        <a href="ambiente.php" class="fecha-btn">&times;</a>
         <div class="input-group">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($produtor['nome']); ?>" required><br>
+        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($produtor['nome']); ?>" required>
         </div>
 
        <div class="input-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required><br>
+        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required>
        </div>
 
-        <button type="submit" name="update_profile" class="login-btn-alt">Salvar Alterações</button>
-    </form>
-</div>
-
-
-<div class="login-box2">
-    <form method="POST" action="">
-        <h2>Alterar Senha</h2>
-
-        <div class="input-group">
+       <form method="POST" action="">
+       <div class="input-group">
         <label for="senha_atual">Senha Atual:</label>
-        <input type="password" id="senha_atual" name="senha_atual" required><br>
+        <input type="password" id="senha_atual" name="senha_atual" required>
         </div>
 
         <div class="input-group">
         <label for="nova_senha">Nova Senha:</label>
-        <input type="password" id="nova_senha" name="nova_senha" required><br>
+        <input type="password" id="nova_senha" name="nova_senha" required>
         </div>
 
         <div class="input-group">
         <label for="confirmar_senha">Confirmar Nova Senha:</label>
-        <input type="password" id="confirmar_senha" name="confirmar_senha" required><br>
+        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
         </div>
 
-        <button type="submit" name="change_password" class="login-btn2">Alterar Senha</button> 
-      
+        <button type="submit" name="update_profile" class="login-btn-alt">Salvar Alterações</button>
+        <a href="ambiente.php" class="a"> <button type="button" class="Cancel-btn"> Cancelar</a></button>
     </form>
-  <a href="ambiente.php"> Voltar ao Ambiente</a>
-    
-
 </div>
 
 </section>
