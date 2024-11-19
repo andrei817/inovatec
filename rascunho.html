@@ -1,0 +1,997 @@
+let slideIndex = 0;
+showSlides(slideIndex);
+
+// Função para mostrar os slides
+function showSlides(n) {
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+
+  if (n >= slides.length) slideIndex = 0;
+  if (n < 0) slideIndex = slides.length - 1;
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex].style.display = "block";
+  dots[slideIndex].className += " active";
+}
+
+// Navegação manual
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+// Mudar para slide atual
+function currentSlide(n) {
+  showSlides(slideIndex = n - 1);
+}
+
+// Mudar slides automaticamente
+setInterval(() => {
+  showSlides(slideIndex += 1);
+}, 3000);
+
+
+.carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .slide {
+    min-width: 100%;
+    transition: opacity 0.5s;
+  }
+  
+  .slide img {
+    width: 10%;
+    border-radius: 10px;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .dots-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+
+
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="slide"><img src="Halloween eventos.jpg" alt="Imagem 1"></div>
+      <div class="slide"><img src="festa junina.jpg" alt="Imagem 2"></div>
+      <div class="slide"><img src="dia das crianças.jpg" alt="Imagem 3"></div>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+      <div class="dots-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+
+
+
+  
+.custom-select {
+    position: relative;
+    width: 200px;
+  }
+  
+  .custom-select select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove a seta padrão do select */
+    background-color: white;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Seta personalizada */
+  .custom-select:after {
+    content: '\25BC'; /* Código Unicode da seta para baixo */
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
+  }
+  
+  .custom-select select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .custom-select select:hover {
+    border-color: #007bff;
+  }
+
+
+  ajuda
+  <div class="container">
+       
+    <h2> Ajuda</h2>
+    <p> Está com alguma dúvida? veja as opções abaixo. </p>
+</div>
+
+
+<div class="container">
+
+
+ <h1> O que é S.G.E?</h1>
+</div>
+
+
+<div class="container">
+<h1> Como usar o S.G.E? </h1>
+</div>
+</div>
+
+
+document.getElementById('event-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('event-name').value;
+    const date = document.getElementById('event-date').value;
+    const location = document.getElementById('event-location').value;
+    const eventList = document.getElementById('event-list');
+    const newEvent = document.createElement('div');
+    newEvent.classList.add('event');
+    newEvent.innerHTML = `<h2>${name}</h2><p>Data: ${date}</p><p>Local: ${location}</p>`;
+    eventList.appendChild(newEvent);
+    document.getElementById('event-form').reset();
+});
+
+function Login() {
+   
+    const validUsername = "usuario";
+    const validPassword = "senha123";
+
+    
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const messageElement = document.getElementById("message");
+
+   
+    if (username === validUsername && password === validPassword) {
+        messageElement.style.color = "green";
+        messageElement.textContent = "Conta logada com sucesso.";
+    } else {
+        messageElement.style.color = "red";
+        messageElement.textContent = "Ocorreu um erro. Tente novamente.";
+    }
+}
+
+<div class="logo"> 
+  <img src="S.G.E.png" width=10% height="20%">
+  </div>
+
+
+
+  <button onclick="showMsgBox()">Saiba mais →</button>
+                
+
+              <div class="msg-box" id="msgBox" style="display: none;">
+              <span class="close-btn" onclick="closeMsgBox()">&times;</span>
+               Esta são as informações detalhadas do dia das crianças
+              </div>
+
+            <script>
+                 function showMsgBox() {
+                    document.getElementById('msgBox').style.display = 'block';
+                     }
+
+                   function closeMsgBox() {
+                     document.getElementById('msgBox').style.display = 'none';
+                       }
+                       function redirect() {
+                       window.location.href = "https://www.exemplo.com";  /* URL para onde você quer redirecionar */
+                            }
+                         
+</script>
+
+
+<button onclick="mostrarDetalhes('Evento 3')">Saiba mais → </button>
+
+
+width: 99px; /* Define o tamanho da logo */
+height: 0; /* Mantém a proporção da imagem */
+margin: 0;
+padding: 0;
+justify-self: start; /* Alinha à esquerda */
+vertical-align: middle;
+display: block; 
+
+margin-right: 10px;
+
+<div class="logo-content"> 
+  <img src="SGE logo.png"width=80% height="100%" class="logo-left">
+  </div>
+
+
+  .logo-content {
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    
+}
+
+<span class="close-btn" id="close-btn">&times;</span> <!-- Ícone X de fechar -->
+
+.header h1 {
+  display: flex;
+  margin: 5px;
+  padding: 0 auto;
+  font-size: 20px;
+  text-align: left;
+  position: sticky;
+}
+
+.header p{
+  display: flex;
+  font-size: 20px;
+  margin-top: 6px;
+  
+}
+
+<div class="logo-text-container"> 
+  <img src="SGE logo.png"width=80% height="100%">
+   <h1 class="aligned-text"> S.G.E. </h1>
+   <p class="aligned-text"> Sistema de Gestão de Eventos</p>
+</div>
+
+.aligned-text h1 {
+  display: flex;
+  margin: 5px;
+  padding: 0 auto;
+  font-size: 20px;
+  text-align: left;
+  position: sticky;
+}
+
+.aligned-text p{
+  display: flex;
+  font-size: 20px;
+  margin-top: 6px;
+  align-items: center;
+  margin-right: 10px;
+}
+
+<li>  <a href="Login.html">Acessar</a></li>
+
+<div class="profile-container">
+  <!-- Foto de Perfil -->
+  <div class="profile-picture">
+      <img src="https://via.placeholder.com/150" alt="Foto de Perfil">
+
+      <div class="remember-me">
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Manter-me conectado</label>
+    </div>
+
+
+    <div class="logo-foto"> 
+      <img src="SGE logo.png"width=80% height="100%">
+  <div class="header-content"> 
+ <h1> S.G.E.</h1> 
+ <p> Sistema de Gestão de Eventos</p>
+
+ </div>   
+     </div>
+
+     white-space: nowrap;
+
+     function showMsgBox() {
+      document.getElementById('halloween').style.display = 'block';
+       }
+  
+     function closeMsgBox() {
+       document.getElementById('halloween').style.display = 'none';
+         }
+  
+         function showMsgBox() {
+          document.getElementById('festa junina').style.display = 'block';
+           }
+      
+         function closeMsgBox() {
+           document.getElementById('festa junina').style.display = 'none';
+             }
+  
+             function showMsgBox() {
+              document.getElementById('dia das crianças').style.display = 'block';
+               }
+          
+             function closeMsgBox() {
+               document.getElementById('dia das crianças').style.display = 'none';
+                 }
+
+                 
+             const carousel = document.getElementById('carousel');
+             const prevBtn = document.getElementById('prevBtn');
+             const nextBtn = document.getElementById('nextBtn');
+             
+             // Define a largura do item (com margem) para a rolagem
+             const scrollAmount = 320;
+             
+             // Botão de rolar para a esquerda
+             prevBtn.addEventListener('click', () => {
+                 carousel.scrollBy({
+                     left: -scrollAmount,
+                     behavior: 'smooth'
+                 });
+             });
+             
+             // Botão de rolar para a direita
+             nextBtn.addEventListener('click', () => {
+                 carousel.scrollBy({
+                     left: scrollAmount,
+                     behavior: 'smooth'
+                 });
+             });
+
+
+
+             <?php 
+    include ("index.php");
+    switch ($_REQUEST["acao"]) {
+          case "cadastrar Produtor" :
+            $nome = $_Post["nome"];
+            $Email = $_Post["Email"];
+            $Senha = md5($_Post["Senha"]);
+            $CPf = $_post["CPF"];
+            $Telefone = $_Post ["Telefone"];
+
+          $sql = "INSERT INTO PRODUTOR (Nome, Email, Senha, CPF, Telefone) VALUES( '{$Nome}', '{$Email}', '{$Senha}' '{$CPF}' '{$Telefone}')";
+
+          $result = $conn-> query($sql);
+          break;
+
+          case 'editar';
+        break;
+        
+        case 'excluir';
+
+    break;
+
+    }
+?>
+
+
+<div id="sidebar">
+  <div class="sidebar-header">
+      <h3>Menu</h3>
+  </div>
+  <ul class="list-unstyled components">
+      <li><a href="php/index.php">Cadastro do produtor</a></li>
+      <li><a href="php/tema.php">Tema</a></li>
+      <li><a href="php/buffet.php">Buffet</a></li>
+      <li><a href="php/Staff.php">Staff</a></li>
+      <li><a href="php/CRUD tipo.php">Dashboard</a></li>
+ </ul>
+ </div>
+
+ #sidebar {
+  width: 300px;
+  height: 1000px;
+  background: #5214CB;
+  color: #fff;
+  transition: all 0.3s;
+  padding: 0;
+  margin-right: 80px;
+  
+}
+
+#sidebar .sidebar-header {
+  padding: 10px;
+  background: #7034df;
+  
+}
+
+h3 {
+  text-align: center;
+ 
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  list-style: none;
+}
+
+#sidebar ul li {
+  padding: 10px;
+  text-align: left;
+}
+
+#sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  background: #4b17b4;
+}
+
+#content {
+  flex: 1;
+  padding: 20px;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebar = document.getElementById('sidebar');
+  const toggleButton = document.createElement('button');
+  toggleButton.innerText = 'Toggle Menu';
+  toggleButton.style.position = 'absolute';
+  toggleButton.style.top = '10px';
+  toggleButton.style.left = '10px';
+  document.body.appendChild(toggleButton);
+
+  toggleButton.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+  });
+});
+
+
+/* Estilos para tela maiores (desktop) */
+@media screen and (min-width: 1024px) {
+  .container {
+      grid-template-columns:
+      repeat(4, 1fr);
+  }
+}
+
+/* Estilos para telas médias (tablets) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+      grid-template-columns:
+      repeat(2, 1fr);
+      display: block;
+      background-image: none;
+  }
+}
+/* Estilos para telas pequenas (celulares)*/
+@media screen and (max-width: 320px) {
+  .container {
+      grid-template-columns:
+      1fr;
+  }
+}
+
+</div>
+</div>
+ </div>
+
+ background-color:rgb(74, 36, 180);
+
+ <div class="carousel">
+  <div class="carousel-container">
+    <div class="carousel-slide">
+                         
+      <img src="Halloween eventos.jpg" alt="Evento 1">
+      <div class="carousel-caption">
+      <h1>31/10/24 <br> Halloween</h1>
+        
+      </div>
+    </div>
+    <div class="carousel-slide">
+      <img src="festa junina.jpg" alt="Evento 2">
+      <div class="carousel-caption">
+        <h1>30/07/24  <br> Festa Junina</h1>
+        
+      </div>
+    </div>
+    <div class="carousel-slide">
+      <img src="dia das crianças.jpg" alt="Evento 3">
+      <div class="carousel-caption">
+        <h1>12/10/24 <br>Dia Das Crianças</h1>
+      </div>
+    </div>
+  </div>
+
+ <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+
+
+
+
+
+
+  <style>
+    .carrossel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+        padding: 140px;
+        margin-left: 160px;
+    }
+
+    .imagem{
+        width: 40%;
+        transition: transform 0.5s ease;
+        border: 5px solid white; /* Define uma borda sólida de cor branca */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Três imagens por linha */
+        gap: 20px; /* Espaçamento entre as imagens */
+    }
+
+    .carrossel-container {
+        display: flex;
+        transition: transform 0.5s ease;
+        
+       
+        
+    }
+
+
+
+    .botao {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: rgb(5, 5, 5);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin: 10px;
+          transition: background-color 0.3s ease;
+          margin-left: 70px;
+      }
+
+      .botao:hover {
+          background-color: #000000;
+      }
+
+      .botoes-container {
+          display: flex;
+          justify-content: space-between;
+          width: 80%;
+          max-width: 600px;
+      }
+
+</style>
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+<button type="button" id="togglePassword">Mostrar</button>
+
+<div class="remember-me">
+  <input type="checkbox" id="remember" name="remember">
+  <label for="remember">Manter-me conectado</label>
+</div>
+
+<div class="forgot-password"> 
+<a href="#"> Esqueceu sua senha? </a>
+</div>
+
+
+<div class="first-sidebar">
+  <div class="sidebar" id="sidebar">
+      <span class="close-btn" onclick="fecharSidebar()">&times;</span> 
+      <h3>Menu</h3>
+      <ul>
+          <li><a href="Login.php">Produtor</a></li>
+          <li><a href="logar produtor.php">Produtor</a></li>
+          <li><a href="tema cadastro.php">Tema</a></li>
+          <li><a href="buffet cadastro.php">Buffet</a></li>
+          <li><a href="Staff cadastro .php">Staff</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="php/evento.php">Eventos</a></li>
+          <li><a href="objetivo.php">Objetivo</a></li>
+          <li><a href="php/faixa etária.php">Faixa etária</a></li>
+          <li><a href="php/reporte de problemas.php">Reportar problemas</a></li>
+          <li><a href="tema lista.php">Lista de temas</a></li>
+          <li><a href="listar produtores.php">Lista de Produtores</a></li>
+      </ul>
+  </div>
+
+  <div class="content">
+      <button id="toggleButton">☰</button>
+      
+  </div>
+</div>
+
+
+.first-sidebar {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  left: -250px; /* Inicialmente oculta fora da tela */
+  width: 250px;
+  height: 100%;
+  background-color: #5214CB;
+  color: white;
+  transition: left 0.3s ease; /* Animação suave */
+}
+
+.sidebar h3 {
+  text-align: center;
+  padding: 17px 0;
+  border-bottom: 1px solid white; /* Linha horizontal */
+  margin-bottom: 10px; /* Espaçamento entre o título e o menu */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  
+}
+
+.sidebar ul li a:hover {
+  background-color: rgb(36, 14, 107);
+  border-radius:10px;
+  transition: all 0.3s;
+  
+
+}
+
+.content {
+  margin-left: 0;
+  padding: 20px;
+  transition: margin-left 0.3s ease; /* Animação suave */
+}
+
+#toggleButton {
+  font-size: 24px;
+  background-color: #5214CB;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-top: -10px;
+}
+
+
+/* Quando a sidebar estiver aberta */
+.sidebar.open {
+  left: 0;
+}
+
+.content.shifted {
+  margin-left: 240px; /* Desloca o conteúdo principal */
+}
+
+@media (max-width: 768px) {
+  .content.shifted {
+      margin-left: 0; /* Não empurra o conteúdo em telas pequenas */
+  }
+
+  .sidebar {
+      width: 200px; /* Sidebar menor em dispositivos móveis */
+  }
+
+  .content {
+      padding: 10px;
+  }
+}
+
+/* Botão "X" de fechar */
+.close-btn {
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+
+const toggleButton = document.getElementById('toggleButton');
+const sidebar = document.getElementById('sidebar');
+const content = document.querySelector('.content');
+
+
+
+toggleButton.addEventListener('click', function() {
+    sidebar.classList.toggle('open');
+    content.classList.toggle('shifted');
+});
+
+// Função para fechar a sidebar
+
+
+
+<button onclick="showMsgBox1()">Saiba mais →</button>
+                
+<div class="msg-box" id="halloween" style="display: none;">
+    <span class="close-btn" onclick="closeMsgBox1()">&times;</span>
+    Essas são as informações detalhadas do halloween.
+    </div>
+
+
+    <div class="msg-box" id="dia das crianças" style="display: none;">
+      <span class="close-btn" onclick="closeMsgBox3()">&times;</span>
+       Essas são as informações detalhadas do dia das crianças
+      </div>
+
+      <div class="msg-box" id="festa junina" style="display: none;">
+        <span class="close-btn" onclick="closeMsgBox2()">&times;</span>
+          Essas são as informações detalhadas da festa junina 
+
+            </div>
+
+            <button onclick="showMsgBox3()">Saiba mais →</button>
+                
+            <div class="msg-box" id="dia das crianças" style="display: none;">
+                <span class="close-btn" onclick="closeMsgBox3()">&times;</span>
+                 Essas são as informações detalhadas do dia das crianças
+                </div>
+
+
+
+                <header>
+        
+                  <!-- Botão para abrir a sidebar -->
+             <button class="open-btn" onclick="abrirSidebar()">☰</button>
+             
+             <!-- Sidebar -->
+             <div id="mySidebar" class="sidebar">
+                 <span class="close-btn" onclick="fecharSidebar()">&times;</span> <!-- Botão "X" -->
+                 <h2 style="padding-left: 20px;">Menu</h2>
+                 <a href="evento.php">Eventos</a>
+                  <a href="tema lista.php">Tema</a>
+                  <a href="lista de buffet.php">Buffet</a>
+                  <a href="objetivo.php">Objetivos</a>
+                    <a href="Staff cadastro .php">Staff</a>
+                 <a href="listar produtores.php">Produtor</a>
+                <a href="reporte de problemas.php">Reportar Problemas</a>
+               
+             </div>
+          
+          
+          
+                  <div class="logo-foto"> 
+                      <img src="SGE logo.png"width=80% height="100%">
+                  <div class="header-content"> 
+                  <h1> S.G.E.</h1> 
+                  <p> Sistema de Gestão de Eventos</p>
+          
+                  </div>   
+                  </div>
+          
+          
+          
+                  <div class="logo">
+          
+                  <img src="eventos.png"width=103% height="100%">
+          
+                  </div>
+                  <nav>
+                      <ul> 
+                          
+                          <li> <a href="Menu2.html"> Home</a></li>
+                          <li> <a href= "Sobre.php">Sobre</a></li>
+                          <li> <a href= "ajuda.php">Ajuda</a></li>
+                      <li>  <a href="Menu2.html"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+          </svg></a></li>
+          
+                      </ul>
+                  </nav>
+          
+                      
+          
+                  </header>
+
+
+
+        <!-- Modal de Confirmação-->
+    
+        <div id="confirmModal" class="modal">
+          <div class="modalContent"> 
+
+       <h3>Deseja visualizar as informações do evento?</h3>
+           <button class="btn btn-sim" onclick="showDetails()">Sim</button>
+               <button class="btn btn-nao" onclick="closeConfirmBox()">Não</button>
+                   </div>
+                   </div>
+       
+        <?php
+        // Verificar se um ID foi enviado via GET
+       $id_evento = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+       $sql = "SELECT * FROM eventos WHERE id = $id_evento";
+       $result = mysqli_query($conn, $sql);
+
+       $evento = mysqli_fetch_assoc($result); // Obter um único registro
+       ?>
+
+       <div id="infoModal" class="modal" style="display: none;">
+           <div class="modalContent">
+               <span class="close-btn" onclick="closeDetails()">×</span>
+               <h2>Detalhes do Evento</h2>
+               <?php if ($evento): ?>
+                   <p><strong>Nome:</strong> <?php echo htmlspecialchars($evento['nome']); ?></p>
+                   <p><strong>Data:</strong> <?php echo htmlspecialchars(date('d/m/Y', strtotime($evento['data']))); ?></p>
+                   <p><strong>Horário:</strong> <?php echo htmlspecialchars($evento['hora']); ?></p>
+                   <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local']); ?></p>
+                   <p><strong>Lotação:</strong> <?php echo htmlspecialchars($evento['lotacao']); ?></p>
+                   <p><strong>Duração:</strong> <?php echo htmlspecialchars($evento['duracao']); ?></p>
+                   <p><strong>Descrição:</strong> <?php echo htmlspecialchars($evento['descricao']); ?></p>
+               <?php else: ?>
+                   <p>Evento não encontrado.</p>
+               <?php endif; ?>
+           </div>
+       </div>
+
+       <script>
+      // function showDetails(eventId) {
+       //Fazer uma requisição para carregar os detalhes do evento
+      // window.location.href = `?id=${eventId}`;
+        //  }
+
+//function closeDetails() {
+//document.getElementById("infoModal").style.display = "none";
+//}
+</script>
+
+
+
+
+
+   <!-- Modal de Confirmação
+              -->
+              
+              <div id="confirmModal 2" class="modal">
+                <div class="modalContent">
+                    <h3>Deseja visualizar as informações do evento?</h3>
+                    <button class="btn btn-sim" onclick="showDetails2()">Sim</button>
+                    <button class="btn btn-nao" onclick="closeConfirmBox2()">Não</button>
+                </div>
+            </div> 
+            <!-- Modal para exibir informações do evento -->
+            <div id="infoModal 2" class="modal">
+                <div class="modalContent">
+                    <span class="close-btn" onclick="closeDetails2()">×</span>
+                    <h2>Detalhes do Evento</h2>
+                    <p><strong>Nome:</strong> Festa Junina</p>
+                    <p><strong>Data:</strong> 30 de Julho de 2024</p>
+                    <p><strong>Horário:</strong> 14:00 - 17:00</p>
+                    <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
+                    <p><strong>Descrição:</strong> Arraiá da FAETEC</p>
+                </div>
+            </div>
+
+
+
+
+
+                <!-- Modal de Confirmação -->
+                <div id="confirmModal 3" class="modal">
+                  <div class="modalContent">
+                      <h3>Deseja visualizar as informações do evento?</h3>
+                      <button class="btn btn-sim" onclick="showDetails3()">Sim</button>
+                      <button class="btn btn-nao" onclick="closeConfirmBox3()">Não</button>
+                  </div>
+              </div>
+              
+              <!-- Modal para exibir informações do evento -->
+              <div id="infoModal 3" class="modal">
+                  <div class="modalContent">
+                      <span class="close-btn" onclick="closeDetails3()">×</span>
+                      <h2>Detalhes do Evento</h2>
+                      <p><strong>Nome:</strong> Dia das Crianças</p>
+                      <p><strong>Data:</strong> 12 de Outubro de 2024</p>
+                      <p><strong>Horário:</strong> 12:00 - 18:00</p>
+                      <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
+                      <p><strong>Descrição:</strong> Venha se divertir com a criançada</p>
+                  </div>
+              </div>
+  
+  
+
+              <?php if ($evento): ?>
+              <p><strong>Nome:</strong> <?php echo htmlspecialchars($evento['nome']); ?></p>
+              <p><strong>Data:</strong> <?php echo htmlspecialchars(date('d/m/Y', strtotime($evento['data']))); ?></p>
+              <p><strong>Horário:</strong> <?php echo htmlspecialchars($evento['hora']); ?></p>
+              <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local']); ?></p>
+              <p><strong>Lotação:</strong> <?php echo htmlspecialchars($evento['lotacao']); ?></p>
+              <p><strong>Duração:</strong> <?php echo htmlspecialchars($evento['duracao']); ?></p>
+              <p><strong>Descrição:</strong> <?php echo htmlspecialchars($evento['descricao']); ?></p>
+          <?php else: ?>
+              <p>Evento não encontrado.</p>
+          <?php endif; ?>
+      </div>
+  </div>
+
+  <script>
+  //function showDetails(eventId) {
+  //Fazer uma requisição para carregar os detalhes do evento
+// window.location.href = `?id=${eventId}`;
+    // }
+
+          //function closeDetails() {
+             // document.getElementById("infoModal").style.display = "none";
+         // }
+          </script>

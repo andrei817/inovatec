@@ -1,0 +1,775 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+   
+
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 1em;
+    }
+  }
+  
+  /* Para dispositivos com largura até 768px (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* Para dispositivos maiores que 1024px (desktops) */
+  @media only screen and (min-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+/* Estilo do cabeçalho */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 259px
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: ocm;
+    white-space: nowrap;
+   
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position:sticky;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 13px 0;
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+    margin-right: 100px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* Seção da agenda */
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 50px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 89px;
+    text-align: center;
+}
+
+
+
+.container h2 {    
+    font-size: 28px;
+    margin: 20px 0;
+    top: -40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    position: relative;
+    background-color: #5214Cb; 
+    display: inline; 
+    border-radius: 15px; 
+}
+
+/* Estilo dos eventos */
+.eventos {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.evento {
+  
+    padding: 15px;
+    border-radius: 15px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.evento:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.evento img {
+    width: 100%;
+    border-radius: 0px;
+    transition: transform 0.3s;
+    border: 5px solid white; /* Define uma borda sólida de cor branca */
+}
+
+.evento img:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.evento button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    color: white;
+    background-color: #6028CD;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.evento button:hover {
+    background-color: #5214Cb;  
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+
+
+ /* Estilo básico para os modais */
+ .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+.modalContent {
+    background-color: #5214cb;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid white; 
+}
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: -10px;
+}
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+.btn-sim {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-sim:hover {
+    background-color: rgb(25, 155, 29);
+}
+
+.btn-nao {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-nao:hover {
+    background-color: #b32218;
+}
+
+.carousel {
+    position: relative;
+    max-width: 73%;
+    margin: auto;
+    overflow: hidden;
+    
+  }
+  
+  .carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+   
+  }
+
+  .evento-caption {
+    display: flex;
+    position: relative; /* Faz o caption fluir normalmente na página */
+    color: white; /* Define a cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 5px; /* Espaço entre o caption e a imagem */
+    border-radius: 5px; /* (opcional) Arredonda as bordas */
+  }
+  
+  .carousel-slide {
+    min-width: 33%;
+    box-sizing: border-box;
+    position: relative;
+   
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border: 5px solid white; /* Define uma borda sólida de cor branca */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .carousel-slide img:hover {
+    transform: scale(1.10);
+}
+
+  
+  .prev, .next {
+    position: absolute;
+    top: 57%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+   
+  }
+  
+  .prev {
+    left: 97px;
+  }
+  
+  .next {
+    right: 93px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+
+
+/* Botão de link inicial */
+#openModalBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+/* Estilo para o fundo do modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+/* Estilo do conteúdo do modal */
+.modal2 {
+    background-color: #fff;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.modal button {
+    margin: 10px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+#simBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+#naoBtn {
+    background-color: #f44336;
+    color: white;
+}
+/* Estilos para o modal de login */
+#loginModal {
+    display: none;
+}
+
+#loginModal input {
+    width: 40%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* estilo do pop-up do produtor*/
+ /* Estilos para o fundo escurecido */
+ #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+
+/* Estilos para o pop-up */
+#popup {
+    background: #5214cb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 380px;
+    width: 80%;
+}
+
+/* Botões */
+#popup button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#popup .btn-sim {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#popup .btn-nao {
+    background-color: #f44336;
+    color: white;
+}
+
+.p {
+   
+    text-align: center;
+}
+
+.login-section-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+
+}
+
+.modal-login {
+display: none; /* Oculto por padrão */
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 20px;
+width: 1000px;
+border-radius: 8px;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+z-index: 2;
+}
+
+
+
+
+.login-box-modal{
+    align-items: center;
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    margin: 50px ;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    height: 400px;
+    text-align: center;
+    background-color: rgb(23, 0, 155);
+}
+
+.btn-close-login {
+    position: relative; /* Posiciona o botão de fechar */
+    top: -107px; /* Distância do topo */
+    right: -360px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+.btn-close-login :hover{
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+}
+
+.remember-me {
+    display: block; 
+    align-items: right; 
+    
+}
+
+.remember-me input {
+    margin-right: 10px; 
+}
+
+label {
+    color: #5786DF;
+    margin-right:10px;
+}
+
+label, input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #5786DF;
+    text-decoration: none;
+}
+
+.circular-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o círculo e o texto */
+}
+
+.circular-checkbox {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.circular-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px; /* Tamanho do preenchimento interno */
+    height: 12px;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease-in-out;
+}
+
+#circular-checkbox:checked + .circular-checkbox::after {
+    background-color: #007bff;
+}
+
+
+.input-group {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+
+.input-group label {
+    display: block;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 2px;
+
+}
+
+.input-group input {
+    width: 40%;
+    padding: 5px;
+    border: 1px solid rgb(143, 10, 10) #f80000;
+    border-radius: 20px; 
+    font-size: 16px;
+}
+
+
+.login-btn {
+    position: relative; 
+    right: -200px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn:hover {
+    background-color: #4bd641;
+}
+
+.Cancel-btn {
+    position: relative; 
+    right: -200px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn:hover {
+    background-color: #f53e3e;
+}
+
+ /* Overlay do modal */
+    .overlay2 {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
+
+/* Geral para todos os pop-ups */
+.modal, #senhaIncorretaModal, #modalSucesso #produtorNaoEncontradoModal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 2, 2, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+    background-color: #5214cb; /* Fundo branco */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    width: 90%; /* Largura padrão */
+    max-width: 500px; /* Largura máxima */
+    text-align: center; /* Centraliza o texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao redor */
+    position: relative; /* Necessário para posicionar o botão de fechar */
+    top: 287px;
+    left: 404px;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-content img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+/* Estilo do botão de fechar (×) */
+.close-btn-popup {
+    position: absolute;
+    top: 10px;
+    left: 520px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
