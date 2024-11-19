@@ -50,7 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    <section class="agenda">
+    <div class="agenda-evento">
+    <div class="conteudo">
+        
     <section class="login-section-tema">
 
         <div class="login-box-tema">
