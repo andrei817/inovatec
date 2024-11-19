@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrossel de Eventos</title>
+  
+  <link rel="stylesheet" href="carrossel2.1.css">
+ 
+</head>
+<body>
+  <header>
+     
+    <div class="logo-foto"> 
+       <img src="SGE logo.png"width=80% height="100%">
+       
+   <div class="header-content"> 
+  <h1> S.G.E.</h1> 
+  <p> Sistema de Gestão de Eventos</p>
+
+  </div>   
+      </div>
+
+  
+
+<div class="logo">
+
+   <img src="eventos.png"width=103% height="100%">
+  
+  </div>
+  
+
+      <nav> 
+          
+          <ul> 
+             
+              <li> <a href="index.html"> Home</a></li>
+              <li> <a href= "Sobre.html">Sobre</a></li>
+              <li> <a href= "ajuda.html">Ajuda</a></li>
+             <li>  <a href="Menu2.html">Acessar</a></li>
+          </ul>
+
+      </nav>
+   
+  </header>
+
+    <section class="agenda">
+
+        <h2>PRÓXIMOS EVENTOS</h2>
+         
+<div class="eventos"> 
+
+  <div class="carousel">
+    <div class="carousel-container">
+
+      
+
+      <div class="carousel-slide">
+
+       <div class="evento">
+        <h1>30/10/2024 <br>HALLOWEEN </h1>
+        <img src="Halloween eventos.jpg" alt="Evento 1">
+       
+        <button onclick="showDetails(4)" class="button">Saiba Mais →</button>
+      </div>
+        </div>
+
+     
+      <div class="carousel-slide"> 
+        <div class="evento"> 
+          <h1>30/07/2024 <br>FESTA JUNINA</h1>
+        <img src="festa junina.jpg" alt="Evento 2">
+        <button onclick="showDetails2()" class="button">Saiba Mais →</button>
+      </div>
+
+        </div>
+
+      <div class="carousel-slide">
+        <div class="evento"> 
+          <h1> 12/10/2024 <br>DIA DAS CRIANÇAS</h1>
+        <img src="dia das crianças.jpg" alt="Evento 3">
+        <button onclick="showDetails3()" class="button">Saiba Mais →</button>
+      </div>
+</div>
+
+      
+
+      <div class="carousel-slide">
+        <div class="evento"> 
+          <h1> 08/03/2024 <br>DIA DAS MULHERES</h1>
+        <img src="dia das mulheres.jpeg" alt="Evento 3"> 
+      </div>
+</div>
+
+      <div class="carousel-slide">
+        <div class="evento"> 
+          <h1> 20/03/2024 <br>DIA DAS MULHERES</h1>
+        <img src="consciencia-negra.png" alt="Evento 3">
+        
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>  
+</div>  
+
+
+            <div id="confirmModal 2" class="modal">
+                <div class="modalContent">
+                    <h3>Deseja visualizar as informações do evento?</h3>
+                    <button class="btn btn-sim" onclick="showDetails2()">Sim</button>
+                    <button class="btn btn-nao" onclick="closeConfirmBox2()">Não</button>
+                </div>
+
+            </div> 
+            <!-- Modal para exibir informações da festa junina -->
+            <div id="infoModal 2" class="modal">
+                <div class="modalContent">
+                    <span class="close-btn" onclick="closeDetails2()">×</span>
+                    <h3>Detalhes do Evento</h3>
+                    <p><strong>Nome:</strong> Festa Junina</p>
+                    <p><strong>Data:</strong> 30 de Julho de 2024</p>
+                    <p><strong>Horário:</strong> 14:00 - 17:00</p>
+                    <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
+                    <p><strong>Descrição:</strong> Arraiá da FAETEC</p>
+                </div>
+            </div>
+
+
+
+  <!-- Modal de Confirmação  do dia das crianças-->
+        <div id="confirmModal 3" class="modal">
+          <div class="modalContent">
+              <h3>Deseja visualizar as informações do evento?</h3>
+              <button class="btn btn-sim" onclick="showDetails3()">Sim</button>
+              <button class="btn btn-nao" onclick="closeConfirmBox3()">Não</button>
+          </div>
+      </div>
+      
+      <!-- Modal para exibir informações do evento -->
+      <div id="infoModal 3" class="modal">
+          <div class="modalContent">
+              <span class="close-btn" onclick="closeDetails3()">×</span>
+              <h3>Detalhes do Evento</h3>
+              <p><strong>Nome:</strong> Dia das Crianças</p>
+              <p><strong>Data:</strong> 12 de Outubro de 2024</p>
+              <p><strong>Horário:</strong> 12:00 - 18:00</p>
+              <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
+              <p><strong>Descrição:</strong> Venha se divertir com a criançada</p>
+          </div>
+      </div>
+
+
+      
+ <!-- Botões de navegação -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  <script src="carrossel2.1.js"></script>
+</body>
+</html>

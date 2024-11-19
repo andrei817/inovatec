@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGE - Agenda de Eventos</title>
+    <link rel="stylesheet" href="rascunho.css">
+    <script src="evento.js"> </script>
+
+    <style> 
+    
+    body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 1em;
+    }
+  }
+  
+  /* Para dispositivos com largura até 768px (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* Para dispositivos maiores que 1024px (desktops) */
+  @media only screen and (min-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+
+/* Estilo do cabeçalho */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 259px
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: ocm;
+    white-space: nowrap;
+   
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 90px;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 13px 0;
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+    margin-right: 100px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
+/* Estilo do botão de abrir a sidebar */
+.open-btn {
+    padding: 12px 24px;
+    background-color: #5214cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+   
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(61, 3, 136, 0.733);
+    border-radius: 20px;
+}
+
+/* Botão de fechar (X) */
+.btn-close{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+ul.separator {
+	list-style: none;
+	padding: 0;
+	width: 100%;
+}
+
+ul.separator ul {
+	padding: .5em 0;
+	border-bottom: 1px solid #CCC;
+}
+  
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+     
+  <!-- Botão para abrir a sidebar -->
+  <button class="open-btn" onclick="abrirSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+      <span class="btn-close" onclick="fecharSidebar()">&times;</span> <!-- Botão "X" -->
+      <h2 style="padding-left: 20px;">Menu</h2>
+      &nbsp;
+      <ul class="separator"> 
+      <a href="lista de eventos.php">Eventos</a>
+      &nbsp;
+       <ul> <a href="lista de staff.php">Staff</a></ul>
+       &nbsp;
+       <ul> <a href="Cargo.php">Cargo</a></ul>
+       &nbsp;
+       <ul> <a href="tema lista.php">Tema</a></ul>
+       &nbsp;
+       <ul> <a href="lista de buffet.php">Buffet</a></ul>
+       &nbsp;
+       <ul><a href="lista de objetivos.php">Objetivos</a> </ul>
+       &nbsp;
+     <a href="reporte de problemas.php">Reportar Problemas</a>
+      </ul>
+  </div>
+
+
+
+      <div class="logo-foto"> 
+         <img src="SGE logo.png"width=80% height="100%">
+         
+     <div class="header-content"> 
+    <h1> S.G.E.</h1> 
+    <p> Sistema de Gestão de Eventos</p>
+
+    </div>   
+        </div>
+
+    
+
+ <div class="logo">
+
+     <img src="eventos.png"width=103% height="100%">
+    
+    </div>
+    
+ 
+    <nav> 
+              
+        <ul> 
+           
+            <li> <a href="ambiente.php"> Home</a></li> 
+            <li> <a href= "ajuda.php">Ajuda</a></li>
+            <li> <a href= "sobre.php">Sobre</a></li>
+            <li>  <a onclick="toggle()"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+              <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+             
+            </svg> </a> 
+
+       </ul>
+      
+      </div>
+
+      
+          </nav>
+          
+    </header>
+
+   
+          
+    </section>
+
+   <script> 
+   // Função para abrir a sidebar
+   function abrirSidebar() {
+       // Se for um dispositivo móvel, ocupa 100% da tela; caso contrário, 250px
+       if (window.innerWidth <= 768) {
+           document.getElementById("mySidebar").style.width = "100%";
+       } else {
+           document.getElementById("mySidebar").style.width = "310px";
+       }
+   }
+
+   // Função para fechar a sidebar
+   function fecharSidebar() {
+       document.getElementById("mySidebar").style.width = "0";
+   }
+
+   // Função para fechar a sidebar ao clicar em um item do menu
+   function configurarLinksSidebar() {
+       // Seleciona todos os links dentro da sidebar
+       const links = document.querySelectorAll('#mySidebar a');
+       links.forEach(link => {
+           link.addEventListener('click', fecharSidebar); // Adiciona o evento de clique
+       });
+   }
+
+   // Configurar os eventos após a página ser carregada
+   document.addEventListener('DOMContentLoaded', configurarLinksSidebar);
+</script>
+
+   
+
+<script>
+
+    let profileDropdownList = document.querySelector(".profile-dropdown-list");
+    let btn = document.querySelector(".profile-dropdown-btn");
+    let classList = profileDropdownList.classList;
+    const toggle = () => classList.toggle("active");
+    window.addEventListener("click", function (e) {
+      if (!btn.contains(e.target)) classList.remove("active");
+    });
+    </script>

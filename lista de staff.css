@@ -1,0 +1,244 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   overflow: hidden;
+    
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Estilo do cabeçalho */
+
+header {
+    position: fixed;   /* Fixa o cabeçalho no topo */
+    top: 0;    /* Posiciona no topo */           
+    left: 0;    /* Alinha à esquerda */
+    display: flex;
+    width: 100%;
+    height: 68px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 240px
+    
+    
+    
+    
+  }
+
+
+  header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin: 5px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 90px;
+}
+
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+}
+
+
+table {
+    color: white;
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin: 50px auto; /* Centraliza a tabela horizontalmente */
+    
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Cor azul */
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Cor azul escuro */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.button:active {
+    transform: scale(1); /* Restaura o tamanho ao clicar */
+}
+
+.id-column {
+    display: none;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    background-color: #5214cb;
+}
+
+td {
+    background-color: #8020cb;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+actions {
+    display: flex;
+    gap: 40px;
+}
+
+.btn-delete {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    
+}
+
+.btn-edit {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}

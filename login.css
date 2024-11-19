@@ -1,0 +1,95 @@
+body {
+    font-family: 'Times New Roman', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5214CB;
+    color: white;
+    background-image: radial-gradient(circle, #5a189a, #240046);
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+nav ul li :not(:last-child)::after {
+    content: "|"; 
+    position: absolute;
+    right: -10px;
+    top: 0;
+    height: 100%;
+    width: 1px; 
+    background-color: white;
+     display: inline;
+}
+
+
+
+nav ul li a::after {
+    content: "";                 
+    position: absolute;        
+    left: 0;                     
+    bottom: 0;                  
+    width: 100%;                 
+    height: 3px;               
+    background-color: white;  
+    transform: scaleX(0);      
+    transition: transform 0.3s ease;  
+    transform-origin: left;    
+    
+}
+
+
+<h1 class= "heading-6"> Sobre nós</h1>
+            <p align="center"> Nós somos do grupo inovatec , Composto pelos integrantes: Andrei, Cauã, Nicolle, e Erica Somos alunos da 3 Etapa 2024.2 da Instituição FAETEC CVT Nilópolis</p>
+            <p align="center"> e viemos aqui para demostrar esse site que agrega na gestão de eventos </h1>
+      </section>
+
+
+    <section class="Nossa História"></section>
+    <div class="columns-4 w-row"> 
+    
+        <div class="columns-4 w-col w-col-7"> 
+            <img src="eventos.png" width="20%" heigth="30%">
+            <h1> Sempre Inovando.</h1>
+        </div>
+
+         <div class="columns-5 w-col w-col-7">
+             <h2 class="Nossa História"> Nossa História </h2>
+             <p class="paragrafo 1">
+                 dfdfdf
+             </p>
+         </div>
+    
+    </div>
+
+            
+        </div>
+
+
+        .logo-content {
+            display: flex;
+            align-items: center;
+            opacity: 0.3;
+        }
+        
+        .logo-left {
+            width: 100px; /* Define o tamanho da logo */
+            height: auto; /* Mantém a proporção da imagem */
+            
+        }
+
+
+        
+        .close {
+            position: relative; /* Posiciona o botão de fechar */
+            top: 10px; /* Distância do topo */
+            right: 15px; /* Distância da direita */
+            font-size: 20px; /* Tamanho da fonte */
+            color: #aaa; /* Cor do botão */
+            cursor: pointer; /* Muda o cursor ao passar o mouse */
+        }

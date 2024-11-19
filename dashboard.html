@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGE - Agenda de Eventos</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js"> </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Concluido',     11],
+          ['Cancelado',      2],
+          ['Adiado',  2],
+          ['ghg', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'Status do Evento'
+        };
+
+       
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </script>
+  </head>
+
+</head>
+
+<body>
+
+<header>
+     
+      <div class="logo-foto"> 
+         <img src="SGE logo.png"width=80% height="100%">
+         
+     <div class="header-content"> 
+    <h1> S.G.E.</h1> 
+    <p> Sistema de Gestão de Eventos</p>
+
+    </div>   
+        </div>
+
+    
+
+ <div class="logo">
+
+     <img src="eventos.png"width=103% height="100%">
+    
+    </div>
+    
+ 
+        <nav> 
+            
+            <ul> 
+               
+                <li> <a href="index.html"> Home</a></li>
+                <li> <a href= "Sobre.html">Sobre</a></li>
+                <li> <a href= "ajuda.html">Ajuda</a></li>
+               <li>  <a href="Menu2.html">Acessar</a></li>
+            </ul>
+
+        </nav>
+     
+    </header>
+
+    <section class="agenda">
+
+        <h2 class="text">Dashboard</h2>
+
+        <div class="modal">
+
+            <div id="piechart" style="width: 400px; height: 300px; background-color: blue"></div>
+          
+
+         <h1> 
+
+        </div>

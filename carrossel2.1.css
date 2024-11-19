@@ -1,0 +1,374 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-image: url(Gestão.jpg);
+  background-repeat: no-repeat ;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+  body {
+      background-image: url(Gestão.jpg);
+  }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1em;
+  }
+}
+
+/* Para dispositivos com largura até 768px (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
+}
+
+/* Para dispositivos maiores que 1024px (desktops) */
+@media only screen and (min-width: 1024px) {
+  .container {
+    width: 100%;
+  }
+}
+
+
+/* Estilo do cabeçalho */
+
+header {
+  display: flex;
+  width: 100%;
+  height: 68px;
+  background-color: #5214CB #3c1292;
+  color: #F3F4F6;
+  text-align: left;
+  padding: 10 px 20px;
+  justify-content: space-between;
+  align-items: left;
+  position: sticky;
+  top: 5;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-image: radial-gradient(circle, #5214Cb, #3c1292);
+  
+    
+}
+
+.logo {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente dentro da div */
+  align-items: center; /* Centraliza verticalmente dentro da div */
+  width: 150px; /* Define o tamanho da logo */
+  height: auto; /* Mantém a proporção da imagem */
+  margin: 7px;
+  margin-left: 140px
+  
+  
+  
+}
+
+
+header h1 {
+  display: flex;
+  margin: 5px;
+  padding: 0 auto;
+  font-size: 20px;
+  text-align: left;
+  position: sticky;
+  margin-left: 1 cm;
+  
+}
+
+header p {
+  display: flex;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: ocm;
+  white-space: nowrap;
+ 
+}
+
+
+.logo-foto {
+  display: flex;
+  width: 100px; /* Define o tamanho da logo */
+  height: auto; 
+  align-items: right;
+  opacity: 0.9;
+  margin-left: 18px;
+  padding: 0 auto;
+  text-align: left;
+  margin-top: 10px;
+  position:sticky;
+}
+
+
+
+
+nav ul {
+  list-style: none;
+  padding: 12px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  margin-right: 31px;
+  
+}
+
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: yellow;
+  
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  left: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+/* Seção da agenda */
+
+.agenda {
+    text-align: center;
+    align-items: center;
+    padding: 250px 0;
+    background-color: #240046;
+    opacity: 0.9; 
+    background-color: rgba(0, 0, 0, 0.5);
+    
+}
+
+
+
+ h2 {    
+    font-size: 28px;
+    margin: 20px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    position: relative;
+    background-color: #5214Cb; 
+    display: inline; 
+    border-radius: 15px; 
+    top: -130px;
+}
+
+.eventos {
+  
+  gap: 60px;
+}
+
+
+.evento {
+  display: block;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
+  width: 95%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.evento:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  left: 30%;
+  color: white;
+  background-color: #6028CD;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  
+}
+
+.button:hover {
+  background-color: #5214Cb;  
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos do Carrossel */
+
+.carousel {
+    position: relative;
+    max-width: 89%;
+    margin: auto;
+    overflow: hidden;
+    
+  }
+  
+  .carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+   
+  }
+
+  .evento-caption {
+    display: flex;
+    position: relative; /* Faz o caption fluir normalmente na página */
+    color: white; /* Define a cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 5px; /* Espaço entre o caption e a imagem */
+    border-radius: 5px; /* (opcional) Arredonda as bordas */
+  }
+  
+  .carousel-slide {
+    min-width: 35%;
+    box-sizing: border-box;
+    position: relative;
+   
+  }
+  
+  .carousel-slide img {
+    width: 69%;
+    height: auto;
+    display: flex;
+    border: 5px solid white; /* Define uma borda sólida de cor branca */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .carousel-slide img:hover {
+    transform: scale(1.10);
+}
+
+  
+  .prev, .next {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+   
+  }
+  
+  .prev {
+    left: 36px;
+  }
+  
+  .next {
+    right: 36px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+
+
+  /* Estilo básico para os modais */
+ .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+.modalContent {
+  background-color: #5214cb;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid white; 
+}
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -10px;
+}
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.btn-sim {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-sim:hover {
+  background-color: rgb(25, 155, 29);
+}
+
+.btn-nao {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-nao:hover {
+  background-color: #b32218;
+}
