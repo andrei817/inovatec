@@ -55,7 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- Conteúdo da página -->
 </div>
     
-    <section class="agenda"> 
+    <div class="agenda-evento">
+    <div class="conteudo">
     <section class="login-section"> 
         
         <div class="login-box"> 
