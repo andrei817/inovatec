@@ -108,7 +108,8 @@ $conn->close();
 
 <!-- Conteúdo principal -->
 <div class="content">
-    <section class="agenda">
+    <div class="agenda-evento">
+    <div class="conteudo">
         <!-- Formulário de Cadastro de Evento -->
         <div class="form-container">
             <h2>Cadastrar Evento</h2>
