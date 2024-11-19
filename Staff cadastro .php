@@ -56,7 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 
-<section class="agenda">
+<div class="agenda-evento">
+    <div class="conteudo">
 
 <div class="container"> 
 
