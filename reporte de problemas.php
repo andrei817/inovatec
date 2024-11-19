@@ -41,6 +41,8 @@ $conn->close();
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: auto;
+            width: 100%;
+            margin-top: -70px;
         }
 
             .close_login-btn {
@@ -177,7 +179,8 @@ $conn->close();
    }
    </script>
 
-<section class="agenda">
+<div class="agenda-evento">
+    <div class="conteudo">
         
     <div class="form">
 
