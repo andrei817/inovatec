@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
      <div class="conteudo">
 
     <h3>PRODUTORES</h3> <br>
-    <a href="login.php">Adicionar Novo Produtor</a>
+    <a href="login.php" class="button" >Adicionar Novo Produtor</a>
      </div>
 
     <?php if (mysqli_num_rows($result) > 0): ?>
