@@ -92,7 +92,8 @@ h2 {
   <!-- Conteúdo da página -->
 </div>
 
-      <section class="Ajudar"> 
+     <div class="agenda-evento">
+    <div class="conteudo">
 
 
         <a href="ambiente.php" class="close-btn-ajuda">&times;</a>
