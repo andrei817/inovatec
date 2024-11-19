@@ -181,7 +181,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
          
     </header>
   
-      <section class="Ajudar"> 
+      <div class="agenda-evento">
+    <div class="conteudo"> 
        
         <a href="index.php" class="close-btn-ajuda">&times;</a>
         <div class="help-container">
