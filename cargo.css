@@ -174,7 +174,7 @@ nav ul li a:hover::after {
     display: flex; 
     justify-content: center;
     align-items: center;
-    top: 69px;
+    top: 29px;
     gap: 18px;
     display: flex; flex-direction: column;
 }
@@ -185,7 +185,7 @@ table {
     border-collapse: collapse;
     color: white;
     margin: 50px auto; 
-    
+    margin-top: -49px; 
 }
 
 .button {
