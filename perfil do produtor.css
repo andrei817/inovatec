@@ -188,7 +188,7 @@ nav ul li a:hover::after {
     padding: 89px;
     display: flex; 
     justify-content: center;
-    align-items: center;
+    align-items: right;
     gap: -35px;
     display: flex; flex-direction: column;
     
@@ -208,17 +208,18 @@ nav ul li a:hover::after {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 468px;
-    height: 400px;
+    width: 700px;
+    height: 500px;
     text-align: center;
     background-color: rgb(23, 0, 155);
+    
 }
 
 
    
 .fecha-btn {
     position: relative; /* Posiciona o botão de fechar */
-    top: -107px; /* Distância do topo */
+    top: -140px; /* Distância do topo */
     right: -360px; /* Distância da direita */
     font-size: 35px; /* Tamanho da fonte */
     color: rgb(243, 243, 243); /* Cor do botão */
@@ -236,27 +237,28 @@ nav ul li a:hover::after {
 
 
 .input-group {
-    margin-bottom: 5px;
-    text-align: left;
+    margin-bottom: 2px;
+    text-align: right;
     
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 13px;
     border-radius: 10px;
     color: rgb(255, 255, 255);
     position: sticky;
-    margin-top: 2px;
+    
    
 }
 
 .input-group input {
-    width: 50%;
-    padding: 5px;
+    width: 80%;
+    padding: 2px;
     border: 1px solid rgb(255, 255, 255) #f8f8f8;
     border-radius: 20px; 
     font-size: 16px;
+    
 }
 
 
@@ -264,7 +266,7 @@ nav ul li a:hover::after {
     position: relative; 
     right: -200px; 
     width: 20%;
-    padding: 9px; 
+    padding: 10px; 
     background-color: #0db400;
     color: #fff;
     border: none;
@@ -320,6 +322,10 @@ nav ul li a:hover::after {
     background-color: #f53e3e;
 }
 
+.a {
+    color: white;
+}
+
 
 .modal {
     display: none; /* Inicialmente oculto */
@@ -360,50 +366,6 @@ nav ul li a:hover::after {
   width: 40%;
   align-items: center;
   
-}
-
-
-.login-box2 {
-    align-items: center;
-    background-image: radial-gradient(circle, #5214Cb, #3c1292);
-    margin: 50px ;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 465px;
-    height: 400px;
-    text-align: center;
-    background-color: rgb(23, 0, 155);
-}
-
-.login-btn2 {
-    position: relative; 
-    right: -200px; 
-    width: 20%;
-    padding: 10px; 
-    background-color: #0db400;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    border-bottom: 4px solid black;
-    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
-                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
-    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
-
-
-}
-.login-btn2:active{
-
-    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
-                0px 4px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(3px);        /* Move o botão para baixo */
-}
-
-.login-btn2:hover {
-    background-color: #4bd641;
 }
 
 .voltar {
