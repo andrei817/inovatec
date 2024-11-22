@@ -3,9 +3,6 @@ session_start();
 
 include("php/Config.php");
 
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['senha'])) {
     if (!empty($_POST['email']) && !empty($_POST['senha'])) {
         // Capturar os dados do formulário
@@ -255,61 +252,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
     <div class="carousel-container">
 
       <div class="carousel-slide">
-            <div class="evento">          
-                <h1>30/10/2024 <br>HALLOWEEN </h1>
-                <img src="Halloween eventos.jpg" alt="haloween">
-                <button onclick="showDetails(5)">Saiba Mais →</button>
+                   
+               <?php
+    // Exibir o evento mais recente - Halloween
+    $sql_halloween = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'HALLOWEEN' ORDER BY data DESC LIMIT 1";
+    $result_halloween = $conn->query($sql_halloween);
 
-            </div>
+    if ($result_halloween->num_rows > 0) {
+        $row_halloween = $result_halloween->fetch_assoc();
+        echo '<div class="evento">';
+        echo '<h1>' . date("d/m/Y", strtotime($row_halloween['data'])) . '<br>' . htmlspecialchars($row_halloween['nome']) . '</h1>';
+        echo '<img src="uploads/eventos/Halloween eventos.jpg' . htmlspecialchars($row_halloween['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_halloween['nome']) . '">';
+        echo '<button onclick="showDetails(\'' . addslashes($row_halloween['nome']) . '\', \'' . addslashes($row_halloween['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_halloween['data'])) . '\', \'' . addslashes($row_halloween['descricao']) . '\', \'' . addslashes($row_halloween['local']) . '\', \'' . $row_halloween['hora'] . '\', \'' . $row_halloween['lotacao'] . '\', \'' . $row_halloween['duracao'] . '\')">Saiba Mais →</button>';
+        echo '</div>';
+    }
+?>
+
+
+
+
       </div>
 
-  
+            <div class="carousel-slide">
+            <?php
+    // Exibir o evento mais recente - Festa Junina
+    $sql_festa_junina = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'FESTA JUNINA' ORDER BY data DESC LIMIT 1";
+    $result_festa_junina = $conn->query($sql_festa_junina);
 
-<div class="carousel-slide">
-            <div class="evento">
-            
-                <h1>30/07/2024 <br>FESTA JUNINA</h1>
-                <img src="Festa junina.jpg" alt="Festa junina">
-                <button onclick="showDetails2()">Saiba Mais →</button>
-            
-        
+    if ($result_festa_junina->num_rows > 0) {
+        $row_festa_junina = $result_festa_junina->fetch_assoc();
+        echo '<div class="evento">';
+        echo '<h1>' . date("d/m/Y", strtotime($row_festa_junina['data'])) . '<br>' . htmlspecialchars($row_festa_junina['nome']) . '</h1>';
+        echo '<img src="uploads/eventos/Festa Junina.jpg' . htmlspecialchars($row_festa_junina['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_festa_junina['nome']) . '">';
+        echo '<button onclick="showDetailsFestaJunina(\'' . addslashes($row_festa_junina['nome']) . '\', \'' . addslashes($row_festa_junina['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_festa_junina['data'])) . '\', \'' . addslashes($row_festa_junina['descricao']) . '\', \'' . addslashes($row_festa_junina['local']) . '\', \'' . $row_festa_junina['hora'] . '\', \'' . $row_festa_junina['lotacao'] . '\', \'' . $row_festa_junina['duracao'] . '\')">Saiba Mais →</button>';
+        echo '</div>';
+    }
+?>
+  
             </div>
-</div>
          
 
             <div class="carousel-slide">
-            <div class="evento">
                 
-                 <h1> 12/10/2024 <br>DIA DAS CRIANÇAS</h1>
-                 <img src="dia das crianças.jpg" alt="Dia das crianças">
-                 <button onclick="showDetails3()">Saiba Mais →</button>
+            
+            <div class="evento">
+                  
+                  <h1> 12/10/2024 <br>Dia das crianças</h1>
+                  <img src="dia das crianças.jpg" alt="Dia das crianças">
+                  <button onclick="showDetails()">Saiba Mais →</button>
 
-            </div>
-            </div>
-       
+             </div>
 
-            <div class="carousel-slide">
-        <div class="evento"> 
-          <h1> 08/03/2025 <br>DIA DAS MULHERES</h1>
-        <img src="Mulheres.jpeg" alt="Evento 3"> 
-        <button onclick="showDetails3()">Saiba Mais →</button>
-      </div>
+
+         </div>
+
+     <div class="carousel-slide">
+        
+     <?php
+    // Exibir o evento mais recente - Dia das Mulheres
+    $sql_dia_das_mulheres = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'DIA DAS MULHERES' ORDER BY data DESC LIMIT 1";
+    $result_dia_das_mulheres = $conn->query($sql_dia_das_mulheres);
+
+    if ($result_dia_das_mulheres->num_rows > 0) {
+        $row_dia_das_mulheres = $result_dia_das_mulheres->fetch_assoc();
+        echo '<div class="evento">';
+        echo '<h1>' . date("d/m/Y", strtotime($row_dia_das_mulheres['data'])) . '<br>' . htmlspecialchars($row_dia_das_mulheres['nome']) . '</h1>';
+        echo '<img src="uploads/eventos/Mulheres.jpeg' . htmlspecialchars($row_dia_das_mulheres['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_dia_das_mulheres['nome']) . '">';
+        echo '<button onclick="showDetailsDiaDasMulheres(\'' . addslashes($row_dia_das_mulheres['nome']) . '\', \'' . addslashes($row_dia_das_mulheres['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_dia_das_mulheres['data'])) . '\', \'' . addslashes($row_dia_das_mulheres['descricao']) . '\', \'' . addslashes($row_dia_das_mulheres['local']) . '\', \'' . $row_dia_das_mulheres['hora'] . '\', \'' . $row_dia_das_mulheres['lotacao'] . '\', \'' . $row_dia_das_mulheres['duracao'] . '\')">Saiba Mais →</button>';
+        echo '</div>';
+    }
+?>
+
 </div>
 
+
       <div class="carousel-slide">
         <div class="evento"> 
-        <h1> 20/11/2024 <br>CONSCIÊNCIA NEGRA </h1>
-        <img src="Consciencia Negra.png" alt="Evento 3">
-        <button onclick="showDetails3()">Saiba Mais →</button>
-        
-        </div>
+            <div class="carrssel-caption"> 
+                   <h1>20/11/2024 Consciência negra</h1>
+            </div>
+        <img src="Consciencia Negra.png" alt="Dia das crianças">
+        <!-- Botão de exemplo (passando o ID do evento) -->
+     <button onclick="showDetails()">Saiba Mais →</button>
+
+      </div>
       </div>
 
       <div class="carousel-slide">
         <div class="evento"> 
-        <h1> 20/04/2025 <br> Páscoa </h1>
-        <img src="Páscoa.jpg" alt="Evento 3">
-        <button onclick="showDetails3()">Saiba Mais →</button>
+   
+        <h1> 20/04/2025 <br>Páscoa</h1>
+                  <img src="Páscoa.jpg" alt="Dia das crianças">
+                  <button onclick="showDetails3()">Saiba Mais →</button>
         
         </div>
       </div>
@@ -326,17 +360,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
     <script> 
 
 let currentSlide = 0;
+const totalSlides = 2;  // Definindo o total de slides como 6
 const slides = document.querySelectorAll('.carousel-slide');
-let autoSlideInterval = null;  // Variável para armazenar o intervalo automático
+let autoSlideInterval = null;
 
 function showSlide(index) {
-  const totalSlides = slides.length;
-
-  // Ajustar para loops infinitos
+  // Ajuste para loop infinito
   if (index >= totalSlides) {
-    currentSlide = 0;
+    currentSlide = 0;  // Volta ao primeiro slide
   } else if (index < 0) {
-    currentSlide = totalSlides - 1;
+    currentSlide = totalSlides - 1;  // Vai para o último slide
   } else {
     currentSlide = index;
   }
@@ -351,22 +384,19 @@ function moveSlide(direction) {
   resetAutoSlide();  // Reinicia o carrossel automático após interação manual
 }
 
-// Função para iniciar o carrossel automático
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     moveSlide(1);  // Move para o próximo slide automaticamente
-  }, 5000);  // Intervalo de 5 segundos (ajustável)
+  }, 5000);  // Intervalo de 5 segundos
 }
 
-// Função para parar o carrossel automático (opcional, caso queira pausar em interações)
 function stopAutoSlide() {
   clearInterval(autoSlideInterval);
 }
 
-// Reiniciar o carrossel automático após a interação
 function resetAutoSlide() {
-  stopAutoSlide();  // Para o carrossel atual
-  startAutoSlide(); // Reinicia o carrossel
+  stopAutoSlide();
+  startAutoSlide();
 }
 
 // Exibe o primeiro slide ao carregar a página
@@ -375,107 +405,74 @@ showSlide(currentSlide);
 // Inicia o carrossel automático
 startAutoSlide();
 
-      </script>         
+ </script>         
       
-             <!-- Modal de Confirmação-->
-    
-                <div id="confirmModal" class="modal">
-                   <div class="modalContent"> 
 
-                <h3>Deseja visualizar as informações do evento?</h3>
-                    <button class="btn btn-sim" onclick="showDetails()">Sim</button>
-                        <button class="btn btn-nao" onclick="closeConfirmBox()">Não</button>
-                            </div>
-                            </div>
-                
-                 <?php
-                 // Verificar se um ID foi enviado via GET
-                $id_evento = isset($_GET['id']) ? intval($_GET['id']) : 0;
+<!-- Modal -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
 
-                $sql = "SELECT * FROM eventos WHERE id = $id_evento";
-                $result = mysqli_query($conn, $sql);
 
-                $evento = mysqli_fetch_assoc($result); // Obter um único registro
-                ?>
 
-                <div id="infoModal" class="modal" style="display: none;">
+<!-- Modal (já existente, sem alterações) -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
+
+
+ <!-- Estrutura do Modal -->
+ <div id="infoModal" class="modal" style="display: none;">
                     <div class="modalContent">
-                        <span class="close-btn" onclick="closeDetails()">×</span>
+                        <span class="clode-btn" onclick="closeDetails()">×</span>
                         <h2>Detalhes do Evento</h2>
-                        <?php if ($evento): ?>
-                            <p><strong>Nome:</strong> <?php echo htmlspecialchars($evento['nome']); ?></p>
-                            <p><strong>Data:</strong> <?php echo htmlspecialchars(date('d/m/Y', strtotime($evento['data']))); ?></p>
-                            <p><strong>Horário:</strong> <?php echo htmlspecialchars($evento['hora']); ?></p>
-                            <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local']); ?></p>
-                            <p><strong>Lotação:</strong> <?php echo htmlspecialchars($evento['lotacao']); ?></p>
-                            <p><strong>Duração:</strong> <?php echo htmlspecialchars($evento['duracao']); ?></p>
-                            <p><strong>Descrição:</strong> <?php echo htmlspecialchars($evento['descricao']); ?></p>
-                        <?php else: ?>
-                            <p>Evento não encontrado.</p>
-                        <?php endif; ?>
+                        <p><strong>Nome:</strong> <span id="modalNome"></span></p>
+                        <p><strong>Data:</strong> <span id="modalData"></span></p>
+                        <p><strong>Horário:</strong> <span id="modalHorario"></span></p>
+                        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+                        <p><strong>Descrição:</strong> <span id="modalDescricao"></span></p>
                     </div>
                 </div>
 
-                <script>
-                //function showDetails(eventId) {
-                //Fazer uma requisição para carregar os detalhes do evento
-               //window.location.href = `?id=${eventId}`;
-                   //}
-
-                        //function closeDetails() {
-                           // document.getElementById("infoModal").style.display = "none";
-                       // }
-                        </script>
-
-    <!-- Modal de Confirmação
-              -->
               
-              <div id="confirmModal 2" class="modal">
-                <div class="modalContent">
-                    <h3>Deseja visualizar as informações do evento?</h3>
-                    <button class="btn btn-sim" onclick="showDetails2()">Sim</button>
-                    <button class="btn btn-nao" onclick="closeConfirmBox2()">Não</button>
-                </div>
-            </div> 
-            <!-- Modal para exibir informações do evento -->
-            <div id="infoModal 2" class="modal">
-                <div class="modalContent">
-                    <span class="close-btn" onclick="closeDetails2()">×</span>
-                    <h2>Detalhes do Evento</h2>
-                    <p><strong>Nome:</strong> Festa Junina</p>
-                    <p><strong>Data:</strong> 30 de Julho de 2024</p>
-                    <p><strong>Horário:</strong> 14:00 - 17:00</p>
-                    <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
-                    <p><strong>Descrição:</strong> Arraiá da FAETEC</p>
-                        
-                </div>
-            </div>
-
-
-                   <!-- Modal de Confirmação -->
-              <div id="confirmModal 3" class="modal">
-                <div class="modalContent">
-                    <h3>Deseja visualizar as informações do evento?</h3>
-                    <button class="btn btn-sim" onclick="showDetails3()">Sim</button>
-                    <button class="btn btn-nao" onclick="closeConfirmBox3()">Não</button>
-                </div>
-            </div>
-            
-            <!-- Modal para exibir informações do evento -->
-            <div id="infoModal 3" class="modal">
-                <div class="modalContent">
-                    <span class="close-btn" onclick="closeDetails3()">×</span>
-                    <h2>Detalhes do Evento</h2>
-                    <p><strong>Nome:</strong> Dia das Crianças</p>
-                    <p><strong>Data:</strong> 12 de Outubro de 2024</p>
-                    <p><strong>Horário:</strong> 12:00 - 18:00</p>
-                    <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
-                    <p><strong>Descrição:</strong> Venha se divertir com a criançada</p>
-                </div>
-            </div>
+            <!-- Modal (já existente, sem alterações) -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
 
 
 
-                </section>
+             
+
+
+
+</section>
 </body>
 </html>
