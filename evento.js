@@ -168,7 +168,153 @@ app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
    
 
 
+function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    // Preenche o modal com as informações do evento, sem a imagem
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
 
+    // Exibe o modal
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função para fechar o modal
+function closeModal() {
+    document.getElementById('eventModal').style.display = "none";
+}
+
+// Fechar o modal quando clicar fora dele
+window.onclick = function(event) {
+    if (event.target == document.getElementById('eventModal')) {
+        closeModal();
+    }
+}
+
+
+ // Função para exibir os detalhes do evento Halloween (já existente)
+ function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função específica para exibir os detalhes da Festa Junina
+function showDetailsFestaJunina(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    // Atualizando o modal com as informações da Festa Junina
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função para fechar o modal
+function closeModal() {
+    document.getElementById('eventModal').style.display = "none";
+}
+
+// Fechar o modal quando clicar fora dele
+window.onclick = function(event) {
+    if (event.target == document.getElementById('eventModal')) {
+        closeModal();
+    }
+}
+   
+
+
+ // Função para exibir os detalhes do evento Halloween (já existente)
+ function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função específica para exibir os detalhes do Dia das Mulheres
+function showDetailsDiaDasMulheres(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    // Atualizando o modal com as informações do Dia das Mulheres
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função para fechar o modal
+function closeModal() {
+    document.getElementById('eventModal').style.display = "none";
+}
+
+// Fechar o modal quando clicar fora dele
+window.onclick = function(event) {
+    if (event.target == document.getElementById('eventModal')) {
+        closeModal();
+    }
+}
+
+
+
+
+
+
+  // Função para exibir os detalhes do evento Halloween (já existente)
+  function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função específica para exibir os detalhes do Dia das Crianças
+function showDetailsDiaDasCriancas(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
+    // Atualizando o modal com as informações do Dia das Crianças
+    document.getElementById('modalNome').innerText = nome;
+    document.getElementById('modalData').innerText = 'Data: ' + data;
+    document.getElementById('modalDescricao').innerText = descricao;
+    document.getElementById('modalLocal').innerText = local;
+    document.getElementById('modalHora').innerText = hora;
+    document.getElementById('modalLotacao').innerText = lotacao;
+    document.getElementById('modalDuracao').innerText = duracao;
+    document.getElementById('eventModal').style.display = "block";
+}
+
+// Função para fechar o modal
+function closeModal() {
+    document.getElementById('eventModal').style.display = "none";
+}
+
+// Fechar o modal quando clicar fora dele
+window.onclick = function(event) {
+    if (event.target == document.getElementById('eventModal')) {
+        closeModal();
+    }
+}
+  
+
+  
   
 
   
