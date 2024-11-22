@@ -246,12 +246,13 @@ nav ul li a:hover::after {
 
 
 table {
-    width: 90%;
+    width: 1300px;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    margin: 50px auto;
+    margin-bottom: 30px;
+    margin: 66px ;
     color: white;
-    margin-top: 100px;
+    margin-top: 50px;
+    font-size: 13px;
 }
 
 .button {
