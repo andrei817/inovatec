@@ -12,6 +12,7 @@ $sql = "
         e.lotacao, 
         e.duracao, 
         e.descricao, 
+        e.imagem,  
         t.nome AS tema_nome, 
         o.nome AS objetivo_nome, 
         b.nome AS buffet_nome
@@ -76,13 +77,17 @@ $result = mysqli_query($conn, $sql);
    }
    </script>
 
-
+ 
 
 <div class="agenda-evento">
     <div class="conteudo">
-        <h2>Lista de Eventos</h2>
+        <h2>LISTA DE EVENTOS</h2>
         <a href="evento.php" class="button">Adicionar Novo Evento</a>
-</div>
+    
+      
+ <div class="scroll-box">
+    <!-- Conteúdo longo aqui -->
+
 
     <table>
         <tr>
@@ -97,7 +102,8 @@ $result = mysqli_query($conn, $sql);
             <th>Tema</th>
             <th>Objetivo</th>
             <th>Buffet</th>
-            <th>Ações</th>
+            <th>Imagem</th>
+            <th class="ações">Ações</th>
         </tr>
 
         <?php
@@ -115,6 +121,18 @@ $result = mysqli_query($conn, $sql);
                 echo "<td>" . $row['tema_nome'] . "</td>";  // Exibindo nome do tema
                 echo "<td>" . $row['objetivo_nome'] . "</td>";  // Exibindo nome do objetivo
                 echo "<td>" . $row['buffet_nome'] . "</td>";  // Exibindo nome do buffet
+                
+// Exibindo a imagem
+$imagemPath = 'uploads/eventos/' . htmlspecialchars($row['imagem']);
+
+echo "<td>";
+if (!empty($imagemPath)) {
+    echo "<img src='" . $imagemPath . "' alt='Imagem do Evento' style='width: 100px; height: auto;'>";
+} else {
+    echo "Sem imagem";
+}
+
+
                 echo "<td class='action'>
                         <a href='edit evento.php?edit=" . $row['id'] . "'>
                             <button class='btn-edit'>
@@ -139,6 +157,8 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </table>
+
+</div>
 </div>
 
 </body>
