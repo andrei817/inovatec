@@ -1,9 +1,16 @@
 <?php
 include('php/Config.php');
 
-// CREATE (Cadastrar evento)
+$cadastroSucesso = false;
+
+function normalizarNomeArquivo($nomeArquivo) {
+    $nomeSemAcentos = iconv('UTF-8', 'ASCII//TRANSLIT', $nomeArquivo);
+    $nomeNormalizado = preg_replace('/[^A-Za-z0-9._-]/', '_', $nomeSemAcentos);
+    return $nomeNormalizado;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Capturar os dados do formulário
+    // Captura e validação dos dados do formulário
     $nome = $_POST['nome'] ?? ''; 
     $tema_id = $_POST['tema_id'] ?? '';
     $objetivo_id = $_POST['objetivo_id'] ?? '';
@@ -14,73 +21,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lotacao = $_POST['lotacao'] ?? '';
     $duracao = $_POST['duracao'] ?? '';
     $descricao = $_POST['descricao'] ?? '';
+    $imagem = $_FILES['imagem'] ?? null;
 
-    // Validar se os campos obrigatórios estão preenchidos
     if ($nome && $data && $local && $tema_id && $objetivo_id && $buffet_id) {
-        // Usar prepared statement para evitar SQL Injection
-        $stmt = $conn->prepare("INSERT INTO eventos (nome, tema_id, objetivo_id, buffet_id, data, local, hora, lotacao, duracao, descricao) 
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        // Corrigido: Passando 10 parâmetros no bind_param()
-        $stmt->bind_param("ssssssssss", $nome, $tema_id, $objetivo_id, $buffet_id, $data, $local, $hora, $lotacao, $duracao, $descricao);
+        $nomeImagem = null;
 
-        // Executar e verificar se foi bem-sucedido
+        if ($imagem && $imagem['error'] == UPLOAD_ERR_OK) {
+            $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
+            $extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];
+            $tamanhoMaximo = 2 * 1024 * 1024;
+        
+            if (!in_array($extensao, $extensoesPermitidas)) {
+                die("Formato de arquivo inválido.");
+            }
+        
+            if ($imagem['size'] > $tamanhoMaximo) {
+                die("O tamanho da imagem excede o limite de 2MB.");
+            }
+        
+            $uploadDir = "uploads/eventos/";
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+        
+            $nomeImagem = uniqid("evento_", true) . "_" . normalizarNomeArquivo($imagem['name']);
+            $caminhoImagem = $uploadDir . $nomeImagem;
+        
+            if (!move_uploaded_file($imagem['tmp_name'], $caminhoImagem)) {
+                die("Erro ao mover a imagem.");
+            }
+        }
+
+        // Insere no banco apenas o nome da imagem
+        $stmt = $conn->prepare("INSERT INTO eventos (nome, tema_id, objetivo_id, buffet_id, data, local, hora, lotacao, duracao, descricao, imagem) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssssss", $nome, $tema_id, $objetivo_id, $buffet_id, $data, $local, $hora, $lotacao, $duracao, $descricao, $nomeImagem);
+
         if ($stmt->execute()) {
-            echo "Evento cadastrado com sucesso!";
+            $cadastroSucesso = true;
         } else {
             echo "Erro ao cadastrar evento: " . $stmt->error;
         }
+
+        $stmt->close();
     } else {
-        echo "Por favor, preencha os campos obrigatórios (nome, data e local).";
+        echo "Por favor, preencha todos os campos obrigatórios.";
     }
+    $conn->close();
 }
-
-// UPDATE (Atualizar evento)
-if (isset($_POST['atualizar'])) {
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $tema_id = $_POST['tema_id'];
-    $objetivo_id = $_POST['objetivo_id'];
-    $buffet_id = $_POST['buffet_id'];
-    $data = $_POST['data'];
-    $local = $_POST['local'];
-    $hora = $_POST['hora'];
-    $lotacao = $_POST['lotacao'];
-    $duracao = $_POST['duracao'];
-    $descricao = $_POST['descricao'];
-
-    // Usar prepared statement para segurança
-    $stmt = $conn->prepare("UPDATE eventos SET nome = ?, tema_id = ?, objetivo_id = ?, buffet_id = ?, data = ?, local = ?, hora = ?, lotacao = ?, duracao = ?, descricao = ? WHERE id = ?");
-    $stmt->bind_param("ssssssssssi", $nome, $tema_id, $objetivo_id, $buffet_id, $data, $local, $hora, $lotacao, $duracao, $descricao, $id);
-
-    if ($stmt->execute()) {
-        echo "Evento atualizado com sucesso!";
-    } else {
-        echo "Erro ao atualizar evento: " . $stmt->error;
-    }
-}
-
-// DELETE (Excluir evento)
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-
-    // Usar prepared statement para segurança
-    $stmt = $conn->prepare("DELETE FROM eventos WHERE id = ?");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        echo "Evento deletado com sucesso!";
-    } else {
-        echo "Erro ao deletar evento: " . $stmt->error;
-    }
-}
-
-// READ (Ler eventos cadastrados)
-$sql = "SELECT * FROM eventos ORDER BY data DESC";
-$result = $conn->query($sql);
-
-// Fechar a conexão apenas ao final
-$conn->close();
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -108,13 +99,13 @@ $conn->close();
 
 <!-- Conteúdo principal -->
 <div class="content">
-    <div class="agenda-evento">
+<div class="agenda-evento">
     <div class="conteudo">
         <!-- Formulário de Cadastro de Evento -->
         <div class="form-container">
             <h2>Cadastrar Evento</h2>
             <a href="lista de eventos.php" class="close-btn-evento">&times;</a>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="input-group">
                     <label for="nome">Nome do Evento:</label>
                     <input type="text" id="nome" name="nome" required>
@@ -210,10 +201,41 @@ $conn->close();
                     <label for="descricao">Descrição:</label>
                     <textarea id="descricao" name="descricao" rows="3" placeholder="Descrição do Evento" required></textarea>
                 </div>
-      
-                <button type="submit" class="login-btn-evento">Cadastrar</button>
-                <a href="lista de eventos.php"><button type="button" class="Cancel-btn-evento">Cancelar</button></a>
+
+    
+    <div class="input-group">
+        <label for="imagem">Imagem do Evento:</label>
+        <input type="file" id="imagem" name="imagem" accept="image/*" required>
+    </div>
+    <button type="submit" name="cadastrar" class="login-btn-evento">Cadastrar</button>
+    <a href="lista de eventos.php"><button type="button" class="Cancel-btn-evento">Cancelar</button></a>
+</form>
+
             </form>
+
+                        <!-- Modal de Sucesso -->
+            <div id="modalSucesso" class="modal-correto">
+                <div class="modal-content-correto">
+                    <span class="close-icon" onclick="fecharModal()">&times;</span>
+                    <h2>Evento Cadastrado com Sucesso!</h2>
+                    <img src="correto.png" class="correto-img">
+                
+                </div>
+            </div>
+
+            <script>
+                // Função para fechar o modal
+                function fecharModal() {
+                    document.getElementById("modalSucesso").style.display = "none";
+                }
+
+                // Exibe o modal se o cadastro foi bem-sucedido
+                <?php if ($cadastroSucesso): ?>
+                    document.getElementById("modalSucesso").style.display = "flex";
+                    setTimeout(fecharModal, 3000); // Fecha automaticamente após 3 segundos
+                <?php endif; ?>
+            </script>
+
         </div>
 
     </section>
