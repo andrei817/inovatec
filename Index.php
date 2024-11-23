@@ -245,122 +245,81 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
         <h2>PRÓXIMOS EVENTOS</h2>
                                  
-        <div class="eventos">
-            
-        <div class="carousel">
-
-    <div class="carousel-container">
-
-      <div class="carousel-slide">
-                   
-               <?php
-    // Exibir o evento mais recente - Halloween
-    $sql_halloween = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'HALLOWEEN' ORDER BY data DESC LIMIT 1";
-    $result_halloween = $conn->query($sql_halloween);
-
-    if ($result_halloween->num_rows > 0) {
-        $row_halloween = $result_halloween->fetch_assoc();
-        echo '<div class="evento">';
-        echo '<h1>' . date("d/m/Y", strtotime($row_halloween['data'])) . '<br>' . htmlspecialchars($row_halloween['nome']) . '</h1>';
-        echo '<img src="uploads/eventos/Halloween eventos.jpg' . htmlspecialchars($row_halloween['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_halloween['nome']) . '">';
-        echo '<button onclick="showDetails(\'' . addslashes($row_halloween['nome']) . '\', \'' . addslashes($row_halloween['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_halloween['data'])) . '\', \'' . addslashes($row_halloween['descricao']) . '\', \'' . addslashes($row_halloween['local']) . '\', \'' . $row_halloween['hora'] . '\', \'' . $row_halloween['lotacao'] . '\', \'' . $row_halloween['duracao'] . '\')">Saiba Mais →</button>';
-        echo '</div>';
-    }
-?>
-
-
-
-
-      </div>
-
-            <div class="carousel-slide">
-            <?php
-    // Exibir o evento mais recente - Festa Junina
-    $sql_festa_junina = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'FESTA JUNINA' ORDER BY data DESC LIMIT 1";
-    $result_festa_junina = $conn->query($sql_festa_junina);
-
-    if ($result_festa_junina->num_rows > 0) {
-        $row_festa_junina = $result_festa_junina->fetch_assoc();
-        echo '<div class="evento">';
-        echo '<h1>' . date("d/m/Y", strtotime($row_festa_junina['data'])) . '<br>' . htmlspecialchars($row_festa_junina['nome']) . '</h1>';
-        echo '<img src="uploads/eventos/Festa Junina.jpg' . htmlspecialchars($row_festa_junina['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_festa_junina['nome']) . '">';
-        echo '<button onclick="showDetailsFestaJunina(\'' . addslashes($row_festa_junina['nome']) . '\', \'' . addslashes($row_festa_junina['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_festa_junina['data'])) . '\', \'' . addslashes($row_festa_junina['descricao']) . '\', \'' . addslashes($row_festa_junina['local']) . '\', \'' . $row_festa_junina['hora'] . '\', \'' . $row_festa_junina['lotacao'] . '\', \'' . $row_festa_junina['duracao'] . '\')">Saiba Mais →</button>';
-        echo '</div>';
-    }
-?>
-  
-            </div>
-         
-
-            <div class="carousel-slide">
-                
-            
-            <div class="evento">
-                  
-                  <h1> 12/10/2024 <br>Dia das crianças</h1>
-                  <img src="dia das crianças.jpg" alt="Dia das crianças">
-                  <button onclick="showDetails()">Saiba Mais →</button>
-
-             </div>
-
-
-         </div>
-
-     <div class="carousel-slide">
         
-     <?php
-    // Exibir o evento mais recente - Dia das Mulheres
-    $sql_dia_das_mulheres = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao FROM eventos WHERE nome = 'DIA DAS MULHERES' ORDER BY data DESC LIMIT 1";
-    $result_dia_das_mulheres = $conn->query($sql_dia_das_mulheres);
+                   
+        <?php
+include('php/Config.php');
 
-    if ($result_dia_das_mulheres->num_rows > 0) {
-        $row_dia_das_mulheres = $result_dia_das_mulheres->fetch_assoc();
-        echo '<div class="evento">';
-        echo '<h1>' . date("d/m/Y", strtotime($row_dia_das_mulheres['data'])) . '<br>' . htmlspecialchars($row_dia_das_mulheres['nome']) . '</h1>';
-        echo '<img src="uploads/eventos/Mulheres.jpeg' . htmlspecialchars($row_dia_das_mulheres['imagem']) . '" class="evento-imagem" alt="' . htmlspecialchars($row_dia_das_mulheres['nome']) . '">';
-        echo '<button onclick="showDetailsDiaDasMulheres(\'' . addslashes($row_dia_das_mulheres['nome']) . '\', \'' . addslashes($row_dia_das_mulheres['imagem']) . '\', \'' . date("d/m/Y", strtotime($row_dia_das_mulheres['data'])) . '\', \'' . addslashes($row_dia_das_mulheres['descricao']) . '\', \'' . addslashes($row_dia_das_mulheres['local']) . '\', \'' . $row_dia_das_mulheres['hora'] . '\', \'' . $row_dia_das_mulheres['lotacao'] . '\', \'' . $row_dia_das_mulheres['duracao'] . '\')">Saiba Mais →</button>';
-        echo '</div>';
+// Função para exibir todos os eventos
+function exibirEventos() {
+    global $conn;
+
+    // Consulta para buscar todos os eventos, ordenados pela data
+    $sql_eventos = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao 
+                    FROM eventos 
+                    ORDER BY data DESC";  // Remove LIMIT 1
+
+    $result = $conn->query($sql_eventos);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $caminho_imagem = "uploads/eventos/" . htmlspecialchars($row['imagem']);
+
+            // Exibindo os dados do evento
+            echo '<div class="carousel-slide">';
+            echo '<div class="evento">';
+            echo '<h1>' . date("d/m/Y", strtotime($row['data'])) . '<br>' . htmlspecialchars($row['nome']) . '</h1>';
+
+            // Verificando se a imagem existe
+            if (!empty($row['imagem']) && file_exists($caminho_imagem)) {
+                echo '<img src="' . $caminho_imagem . '" class="evento-imagem" alt="' . htmlspecialchars($row['nome']) . '">';
+            } else {
+                echo '<p>Imagem não encontrada.</p>';
+            }
+
+            // Botão para exibir detalhes do evento
+            echo '<button onclick="showDetails(\'' . addslashes($row['nome']) . '\', \'' . addslashes($caminho_imagem) . '\', \'' . date("d/m/Y", strtotime($row['data'])) . '\', \'' . addslashes($row['descricao']) . '\', \'' . addslashes($row['local']) . '\', \'' . $row['hora'] . '\', \'' . $row['lotacao'] . '\', \'' . $row['duracao'] . '\')">Saiba Mais →</button>';
+            echo '</div>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum evento encontrado.</p>";
     }
+}
 ?>
 
+<div class="eventos">
+            
+        
+<!-- Carrossel Automático-->
+<div class="carousel">
+    <div class="carousel-container">
+        
+            
+        <?php exibirEventos(); ?>
+           
+        
+    </div>
 </div>
 
+     
 
-      <div class="carousel-slide">
-        <div class="evento"> 
-            <div class="carrssel-caption"> 
-                   <h1>20/11/2024 Consciência negra</h1>
-            </div>
-        <img src="Consciencia Negra.png" alt="Dia das crianças">
-        <!-- Botão de exemplo (passando o ID do evento) -->
-     <button onclick="showDetails()">Saiba Mais →</button>
+               <!-- Botões de navegação -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
 
-      </div>
-      </div>
-
-      <div class="carousel-slide">
-        <div class="evento"> 
-   
-        <h1> 20/04/2025 <br>Páscoa</h1>
-                  <img src="Páscoa.jpg" alt="Dia das crianças">
-                  <button onclick="showDetails3()">Saiba Mais →</button>
-        
-        </div>
-      </div>
 
             </div>
             </div>
             </div>
              </div>
 
-                  <!-- Botões de navegação -->
-    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+   
 
     <script> 
 
 let currentSlide = 0;
-const totalSlides = 2;  // Definindo o total de slides como 6
+const totalSlides = 2;  // Definindo o total de slides como 2
 const slides = document.querySelectorAll('.carousel-slide');
 let autoSlideInterval = null;
 
