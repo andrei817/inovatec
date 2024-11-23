@@ -18,30 +18,6 @@ menuItems.forEach(item => {
         document.getElementById("confirmModal").style.display = "none";
     }
 
-    // Função para mostrar o modal de informações
-    function showDetails(eventId) {
-        closeConfirmBox();
-        document.getElementById("infoModal").style.display = "flex";
-    }
-
-    // Função para fechar o modal de informações
-    function closeDetails() {
-        document.getElementById("infoModal").style.display = "none";
-    }
-
-    // Fechar o modal ao clicar fora do conteúdo
-    window.onclick = function(event) {
-        var confirmModal = document.getElementById("confirmModal");
-        var infoModal = document.getElementById("infoModal");
-        
-        if (event.target == confirmModal) {
-            confirmModal.style.display = "none";
-        }
-        if (event.target == infoModal) {
-            infoModal.style.display = "none";
-        }
-    }
-
 
        // Função para mostrar o modal de confirmação
         function showConfirmBox2() {
@@ -165,7 +141,10 @@ app.get("/protected", authMiddleware, (req, res) => {
 });
 
 app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
-   
+
+
+
+
 
 
 function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao) {
@@ -312,9 +291,6 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-  
-
-  
   
 
   
