@@ -32,6 +32,23 @@ $produtor_email = $_SESSION['email'];
 $produtor_nome = $_SESSION['nome'];
 ?>
 
+<?php
+
+
+// Verifica se o parâmetro 'logout' foi passado na URL
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+    // Destrua a sessão (fazendo logout)
+    session_unset(); // Limpa todas as variáveis de sessão
+    session_destroy(); // Destroi a sessão
+
+    // Redireciona para a página de login ou homepage
+    header("Location: index.php"); // Altere para a página de login ou onde desejar redirecionar
+    exit();
+}
+// Sinaliza que o modal deve ser exibido
+$showModal = true;
+?>
+
 
 
 <!DOCTYPE html>
@@ -65,6 +82,8 @@ $produtor_nome = $_SESSION['nome'];
     <ul class="separator"> 
     <a href="lista de eventos.php">Eventos</a>
     &nbsp;
+    <a href="colaboradores.php">Colaboradores</a>
+    &nbsp;
     <ul> <a href="lista de staff.php">Staff</a></ul>
     &nbsp;
     <ul> <a href="Cargo.php">Cargo</a></ul>
@@ -75,8 +94,12 @@ $produtor_nome = $_SESSION['nome'];
     &nbsp;
     <ul><a href="lista de objetivos.php">Objetivos</a> </ul>   
     &nbsp;
-    <a href="reporte de problemas.php">Reportar Problemas</a>
+    <a href="relatório de problemas.php">Reportar Problemas</a>
     &nbsp;
+
+
+ 
+
 
    <!-- Modal de confirmação -->
 <div id="logoutModal" class="modal">
@@ -199,11 +222,39 @@ $produtor_nome = $_SESSION['nome'];
                         </a>
                       </li>
                       <li class="profile-dropdown-list-item">
-                      <a href="logo out.php">
+                      <a onclick="showLogoutModal()">
                           <i class="fa-solid fa-arrow-right-from-bracket"></i>
                           Sair
                         </a>
                       </li>
+
+                      <!-- Modal de Logout -->
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <h2>Deseja se deslogar?</h2>
+        <button class="btn btn-yes" onclick="confirmLogout()">Sim</button>
+        <button class="btn btn-no" onclick="closeModal()">Não</button>
+    </div>
+</div>
+
+<script>
+    // Função para mostrar o modal de logout
+    function showLogoutModal() {
+        document.getElementById('logoutModal').style.display = 'block';
+    }
+
+    // Função para fechar o modal
+    function closeModal() {
+        document.getElementById('logoutModal').style.display = 'none';
+    }
+
+    // Função para confirmar o logout
+    function confirmLogout() {
+        closeModal(); // Fecha o modal
+        alert('Obrigado por usar o nosso sistema!!!'); // Mostra a mensagem de agradecimento
+        window.location.href = 'index.php'; // Redireciona para o script PHP (ambiente.php) com o parâmetro logout
+    }
+</script>
 
                       
                   
@@ -221,109 +272,188 @@ $produtor_nome = $_SESSION['nome'];
            <div class="container"> 
                
           <h2>PRÓXIMOS EVENTOS</h2>
-                                   
-          <div class="eventos">
 
           
-              
-              <div class="evento">
-  
-                   
-                  <h1>30/10/2024 <br>HALLOWEEN </h1>
-                  <img src="Halloween eventos.jpg" alt="haloween">
-                  <button onclick="showDetails()">Saiba Mais →</button>
-                
-              </div>
-                        <!-- Modal de Confirmação -->
-                        <div id="confirmModal" class="modal">
-                          <div class="modalContent">
-                              <h3>Deseja visualizar as informações do evento?</h3>
-                              <button class="btn btn-sim" onclick="showDetails()">Sim</button>
-                              <button class="btn btn-nao" onclick="closeConfirmBox()">Não</button>
-                          </div>
-                      </div>
+       <?php
+include('php/Config.php');
 
-                      <!-- Modal para exibir informações do evento -->
-                      <div id="infoModal" class="modal">
-                          <div class="modalContent">
-                              <span class="msg-btn" onclick="closeDetails()">×</span>
-                              <h2>Detalhes do Evento</h2>
-                              <p><strong>Nome:</strong> Halloween</p>
-                              <p><strong>Data:</strong> 31 de Outubro de 2024</p>
-                              <p><strong>Horário:</strong> 13:00 - 18:00</p>
-                              <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
-                              <p><strong>Descrição:</strong> Dia das bruxas</p>
-                          </div>
-                      </div>
+// Função para exibir todos os eventos
+function exibirEventos() {
+    global $conn;
 
+    // Consulta para buscar todos os eventos, ordenados pela data
+    $sql_eventos = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao 
+                    FROM eventos 
+                    ORDER BY data DESC";  // Remove LIMIT 1
 
-  
-              <div class="evento">
-                  <h1>30/07/2024 <br>FESTA JUNINA</h1>
-                  <img src="Festa junina.jpg" alt="Festa junina">
-                  <button onclick="showDetails2()">Saiba Mais →</button>
-  
-                  </div>
-  
-                       <!-- Modal de Confirmação -->
-             <div id="confirmModal 2" class="modal">
-              <div class="modalContent">
-                  <h3>Deseja visualizar as informações do evento?</h3>
-                  <button class="btn btn-sim" onclick="showDetails2()">Sim</button>
-                  <button class="btn btn-nao" onclick="closeConfirmBox2()">Não</button>
-              </div>
-          </div>
-          
-          <!-- Modal para exibir informações do evento -->
-          <div id="infoModal 2" class="modal">
-              <div class="modalContent">
-                  <span class="msg-btn" onclick="closeDetails2()">×</span>
-                  <h2>Detalhes do Evento</h2>
-                  <p><strong>Nome:</strong> Festa Junina</p>
-                  <p><strong>Data:</strong> 30 de Julho de 2024</p>
-                  <p><strong>Horário:</strong> 14:00 - 17:00</p>
-                  <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
-                  <p><strong>Descrição:</strong> Arraiá da FAETEC</p>
-              </div>
-          </div>
+    $result = $conn->query($sql_eventos);
 
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $caminho_imagem = "uploads/eventos/" . htmlspecialchars($row['imagem']);
 
-  
-              <div class="evento">
-                  
-                   <h1> 12/10/2024 <br>DIA DAS CRIANÇAS</h1>
-                   <img src="dia das crianças.jpg" alt="Dia das crianças">
-                   <button onclick="showDetails3()">Saiba Mais →</button>
+            // Exibindo os dados do evento
+            echo '<div class="carousel-slide">';
+            echo '<div class="evento">';
+            echo '<h1>' . date("d/m/Y", strtotime($row['data'])) . '<br>' . htmlspecialchars($row['nome']) . '</h1>';
 
-              </div>
+            // Verificando se a imagem existe
+            if (!empty($row['imagem']) && file_exists($caminho_imagem)) {
+                echo '<img src="' . $caminho_imagem . '" class="evento-imagem" alt="' . htmlspecialchars($row['nome']) . '">';
+            } else {
+                echo '<p>Imagem não encontrada.</p>';
+            }
 
-              <!-- Modal de Confirmação -->
-              <div id="confirmModal 3" class="modal">
-                <div class="modalContent">
-                    <h3>Deseja visualizar as informações do evento?</h3>
-                    <button class="btn btn-sim" onclick="showDetails3()">Sim</button>
-                    <button class="btn btn-nao" onclick="closeConfirmBox3()">Não</button>
-                </div>
-            </div>
+            // Botão para exibir detalhes do evento
+            echo '<button onclick="showDetails(\'' . addslashes($row['nome']) . '\', \'' . addslashes($caminho_imagem) . '\', \'' . date("d/m/Y", strtotime($row['data'])) . '\', \'' . addslashes($row['descricao']) . '\', \'' . addslashes($row['local']) . '\', \'' . $row['hora'] . '\', \'' . $row['lotacao'] . '\', \'' . $row['duracao'] . '\')">Saiba Mais →</button>';
+            echo '</div>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum evento encontrado.</p>";
+    }
+}
+?>
+
+<div class="eventos">
             
-            <!-- Modal para exibir informações do evento -->
-            <div id="infoModal 3" class="modal">
-                <div class="modalContent">
-                    <span class="msg-btn" onclick="closeDetails3()">×</span>
-                    <h2>Detalhes do Evento</h2>
-                    <p><strong>Nome:</strong> Dia das Crianças</p>
-                    <p><strong>Data:</strong> 12 de Outubro de 2024</p>
-                    <p><strong>Horário:</strong> 12:00 - 18:00</p>
-                    <p><strong>Local:</strong> FAETEC cvt Nilópolis, Paiol</p>
-                    <p><strong>Descrição:</strong> Venha se divertir com a criançada</p>
-                </div>
+        
+<!-- Carrossel Automático-->
+<div class="carousel">
+    <div class="carousel-container">
+        
+            
+        <?php exibirEventos(); ?>
+           
+        
+    </div>
+</div>
+
+     
+
+               <!-- Botões de navegação -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+
             </div>
-  
-  
-          </div>
-          
-     </div>
-      </div>
+            </div>
+            </div>
+             </div>
+
+   
+
+    <script> 
+
+let currentSlide = 0;
+const totalSlides = 3;  // Definindo o total de slides como 3
+const slides = document.querySelectorAll('.carousel-slide');
+let autoSlideInterval = null;
+
+function showSlide(index) {
+  // Ajuste para loop infinito
+  if (index >= totalSlides) {
+    currentSlide = 0;  // Volta ao primeiro slide
+  } else if (index < 0) {
+    currentSlide = totalSlides - 1;  // Vai para o último slide
+  } else {
+    currentSlide = index;
+  }
+
+  // Mover o carrossel para o slide correto
+  const offset = -currentSlide * 100;
+  document.querySelector('.carousel-container').style.transform = `translateX(${offset}%)`;
+}
+
+function moveSlide(direction) {
+  showSlide(currentSlide + direction);
+  resetAutoSlide();  // Reinicia o carrossel automático após interação manual
+}
+
+function startAutoSlide() {
+  autoSlideInterval = setInterval(() => {
+    moveSlide(1);  // Move para o próximo slide automaticamente
+  }, 5000);  // Intervalo de 5 segundos
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+function resetAutoSlide() {
+  stopAutoSlide();
+  startAutoSlide();
+}
+
+// Exibe o primeiro slide ao carregar a página
+showSlide(currentSlide);
+
+// Inicia o carrossel automático
+startAutoSlide();
+
+ </script>         
+      
+
+<!-- Modal -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
+
+
+
+<!-- Modal (já existente, sem alterações) -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
+
+
+ <!-- Estrutura do Modal -->
+ <div id="infoModal" class="modal" style="display: none;">
+                    <div class="modalContent">
+                        <span class="clode-btn" onclick="closeDetails()">×</span>
+                        <h2>Detalhes do Evento</h2>
+                        <p><strong>Nome:</strong> <span id="modalNome"></span></p>
+                        <p><strong>Data:</strong> <span id="modalData"></span></p>
+                        <p><strong>Horário:</strong> <span id="modalHorario"></span></p>
+                        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+                        <p><strong>Descrição:</strong> <span id="modalDescricao"></span></p>
+                    </div>
+                </div>
+
+              
+            <!-- Modal (já existente, sem alterações) -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalNome"></h2>
+        <p id="modalData"></p>
+        <p id="modalDescricao"></p>
+        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
+        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
+        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+    </div>
+</div>
+
+
 
     <script src="Menu3.js"></script>
 </body>
