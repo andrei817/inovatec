@@ -332,12 +332,6 @@ nav ul li a:hover::after {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.evento img {
-    width: 100%;
-    border-radius: 0px;
-    transition: transform 0.3s;
-    border: 5px solid white; /* Define uma borda sólida de cor branca */
-}
 
 .evento img:hover {
     transform: scale(1.05);
@@ -366,7 +360,7 @@ nav ul li a:hover::after {
 
 .carousel {
     position: relative;
-    max-width: 73%;
+    max-width: 49%;
     margin: auto;
     overflow: hidden;
     
@@ -380,24 +374,25 @@ nav ul li a:hover::after {
 
   .evento-caption {
     display: flex;
-    position: relative; /* Faz o caption fluir normalmente na página */
-    color: white; /* Define a cor do texto */
-    padding: 10px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 5px; /* Espaço entre o caption e a imagem */
-    border-radius: 5px; /* (opcional) Arredonda as bordas */
+    position: relative;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 13px;
   }
   
   .carousel-slide {
-    min-width: 37%;
+    min-width: 33%;
     box-sizing: border-box;
     position: relative;
    
   }
   
   .carousel-slide img {
-    width: 87%;
-    height: auto;
+    width: 100%;
+    height: 220px;
     display: flex;
     border: 5px solid white; /* Define uma borda sólida de cor branca */
     transition: transform 0.3s, box-shadow 0.3s;
@@ -427,13 +422,14 @@ nav ul li a:hover::after {
   }
   
   .next {
-    right: 97px;
+    right: 93px;
   }
   
   .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
   }
   
+
 
 
 
@@ -492,55 +488,7 @@ nav ul li a:hover::after {
 }
 
 
-  .carousel-container {
-    position: absolute;
-    width: 80%;
-    max-width: 1000px;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-}
-
-.carousel-item {
-    min-width: 300px;
-    margin: 10px;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    flex: 0 0 auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-.carousel-item:hover {
-    transform: scale(1.05);
-}
-
-  .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.left-btn {
-    left: 0;
-}
-
-.right-btn {
-    right: 0;
-}
-
+ 
 
 /* Estilo do botão de abrir a sidebar */
 .open-btn {
@@ -565,7 +513,7 @@ h2 {
 /* Estilo da sidebar */
 .sidebar {
     height: 100%;
-    width: 310px;
+    width: 0px;
     position: fixed;
     top: 0;
     left: 0;
