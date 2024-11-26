@@ -78,7 +78,7 @@ header {
     width: 150px; /* Define o tamanho da logo */
     height: auto; /* Mantém a proporção da imagem */
     margin: 7px;
-    margin-left: -175px
+    margin-left: -100px
   }
 
 .foto-container {
@@ -133,7 +133,7 @@ nav ul {
     display: flex;
     justify-content: right;
     gap: 30px;
-    margin-right: -130px;
+    margin-right: -275px;
     
 }
 
@@ -197,6 +197,7 @@ nav ul li a:hover::after {
     width: fit-content;
     list-style: none;
     top: 10px;
+    left: -50px;
   }
 
   .profile-dropdown-btn {
@@ -302,7 +303,7 @@ nav ul li a:hover::after {
     position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
     z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
     color: white; /* Cor do conteúdo */
-    padding: 50px;
+    padding: 172px;
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -376,7 +377,7 @@ nav ul li a:hover::after {
 
 .carousel {
     position: relative;
-    max-width: 49%;
+    max-width: 79%;
     margin: auto;
     overflow: hidden;
     
@@ -446,8 +447,81 @@ nav ul li a:hover::after {
   }
   
 
+  /* Estilo geral para o fundo do modal */
+.modal-detalhes {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Garante que o modal fique acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa toda a largura da tela */
+    height: 100%; /* Ocupa toda a altura da tela */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
+}
 
+/* Estilo do conteúdo do modal */
+.modal-content-detalhes {
+    background-color: #5214cb; /* Fundo branco */
+    margin: 10% auto; /* Centraliza vertical e horizontalmente */
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px; /* Bordas arredondadas */
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+    animation: fadeIn 0.3s; /* Efeito de animação */
+    position: relative;
+    top: 15%;
+    height: 35%;
+}
 
+/* Estilo do botão de fechar (X) */
+.close-btn-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: #ffffff; /* Vermelho ao passar o mouse */
+    text-decoration: none;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Estilização dos textos no modal */
+.modal-content-detalhes h2 {
+    font-size: 24px;
+    color: #fffcfc;
+    margin-bottom: 35px;
+    text-align: center;
+    top: 10px;
+}
+
+.modal-content-detalhes p {
+    font-size: 22px;
+    color: #ffffff;
+    margin: 8px 0;
+    text-align: center;
+    gap: 355px;
+    top: 10px;
+}
+
+/* Destaques das informações */
+.modal-content-detalhes strong {
+    color: #ffffff;
+}
 
   /* Estilo básico para os modais */
  .modal {
@@ -471,6 +545,9 @@ nav ul li a:hover::after {
     text-align: center;
     border: 1px solid white;
 }
+
+
+
 .msg-btn {
     float: right;
     cursor: pointer;
