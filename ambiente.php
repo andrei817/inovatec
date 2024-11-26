@@ -101,39 +101,7 @@ $showModal = true;
  
 
 
-   <!-- Modal de confirmação -->
-<div id="logoutModal" class="modal">
-    <div class="modal-content">
-        <h2>Tem certeza que deseja se deslogar?</h2>
-        <button class="btn-yes" onclick="confirmLogout()">Sim</button>
-        <button class="btn-no" onclick="closeModal()">Não</button>
-    </div>
-</div>
-
-<script>
-    // Função para abrir o modal
-    function openModal() {
-        document.getElementById("logoutModal").style.display = "block";
-    }
-
-    // Função para fechar o modal
-    function closeModal() {
-        document.getElementById("logoutModal").style.display = "none";
-    }
-
-    // Função para confirmar o logout
-    function confirmLogout() {
-        window.location.href = "index.php"; // Redireciona para a página de logout
-    }
-
-    // Fecha o modal se o usuário clicar fora da área de conteúdo
-    window.onclick = function(event) {
-        const modal = document.getElementById("logoutModal");
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
-</script>
+  
 
 
 
@@ -196,19 +164,30 @@ $showModal = true;
                   <li> <a href="ambiente.php"> Home</a></li>  
                   <li> <a href= "ajuda.php">Ajuda</a></li>
                   <li> <a href= "sobre.php">Sobre</a></li>
-                  <li>  <a onclick="toggle()"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-                  </svg> </a> 
+                 
              </ul>
             
             </div>
 
-            
                 </nav>
-
+                <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn">
+               
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
+    
+                    
+                </div>
+                <span
+                    > <p>Bem-vindo, <?php echo htmlspecialchars($produtor_nome); ?>!</p>
+                   
+                </span>
+                </div>
                
                     <ul class="profile-dropdown-list">
-                    <p>Bem-vindo, <?php echo htmlspecialchars($produtor_nome); ?>!</p>
+                   
                       <li class="profile-dropdown-list-item">
                         <a href="listar produtores.php">
                           <i class="fa-regular fa-user"></i>
@@ -228,31 +207,43 @@ $showModal = true;
                         </a>
                       </li>
 
-                      <!-- Modal de Logout -->
+                    <!-- Modal de Logout -->
 <div id="logoutModal" class="modal">
     <div class="modal-content">
         <h2>Deseja se deslogar?</h2>
         <button class="btn btn-yes" onclick="confirmLogout()">Sim</button>
-        <button class="btn btn-no" onclick="closeModal()">Não</button>
+        <button class="btn btn-no" onclick="closeModal('logoutModal')">Não</button>
+    </div>
+</div>
+
+<!-- Modal de Agradecimento -->
+<div id="thankYouModal" class="modal">
+    <div class="modal-content">
+        <h2>Obrigado por usar o nosso site!</h2>
+        <button class="btn btn-close" onclick="closeModal('thankYouModal')">Fechar</button>
     </div>
 </div>
 
 <script>
     // Função para mostrar o modal de logout
     function showLogoutModal() {
-        document.getElementById('logoutModal').style.display = 'block';
+        document.getElementById('logoutModal').style.display = 'flex';
     }
 
-    // Função para fechar o modal
-    function closeModal() {
-        document.getElementById('logoutModal').style.display = 'none';
+    // Função para fechar qualquer modal
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
     }
 
-    // Função para confirmar o logout
+    // Função para confirmar o logout e mostrar o modal de agradecimento
     function confirmLogout() {
-        closeModal(); // Fecha o modal
-        alert('Obrigado por usar o nosso sistema!!!'); // Mostra a mensagem de agradecimento
-        window.location.href = 'index.php'; // Redireciona para o script PHP (ambiente.php) com o parâmetro logout
+        closeModal('logoutModal'); // Fecha o modal de logout
+        document.getElementById('thankYouModal').style.display = 'flex'; // Mostra o modal de agradecimento
+        
+        // Redireciona após alguns segundos (opcional)
+        setTimeout(function() {
+            window.location.href = 'index.php'; // Redireciona para a página inicial
+        }, 2000); // Aguarda 3 segundos antes de redirecionar
     }
 </script>
 
