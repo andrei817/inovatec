@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
          <div class="container"> 
 
         <h2>PRÓXIMOS EVENTOS</h2>
-                                 
+               
         
                    
         <?php
@@ -368,9 +368,9 @@ startAutoSlide();
       
 
 <!-- Modal -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
@@ -384,9 +384,9 @@ startAutoSlide();
 
 
 <!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
@@ -399,9 +399,9 @@ startAutoSlide();
 
 
  <!-- Estrutura do Modal -->
- <div id="infoModal" class="modal" style="display: none;">
-                    <div class="modalContent">
-                        <span class="clode-btn" onclick="closeDetails()">×</span>
+ <div id="infoModal" class="modal-detalhes" style="display: none;">
+                    <div class="modal-content-detalhes">
+                        <span class="clode-btn-modal" onclick="closeDetails()">×</span>
                         <h2>Detalhes do Evento</h2>
                         <p><strong>Nome:</strong> <span id="modalNome"></span></p>
                         <p><strong>Data:</strong> <span id="modalData"></span></p>
@@ -413,9 +413,9 @@ startAutoSlide();
 
               
             <!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
@@ -427,8 +427,6 @@ startAutoSlide();
 </div>
 
 
-
-             
 
 
 
