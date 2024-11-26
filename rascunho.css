@@ -21,6 +21,7 @@ body {
     body {
         background-image: url(Gestão.jpg);
     }
+    
 }
 
 
@@ -29,6 +30,8 @@ body {
     body {
       font-size: 14px;
     }
+
+   
   
     .container {
       width: 100%;
@@ -185,7 +188,7 @@ nav ul li a:hover::after {
     position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
     z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
     color: white; /* Cor do conteúdo */
-    padding: 50px;
+    padding: 175px;
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -198,7 +201,8 @@ nav ul li a:hover::after {
 .container h2 {    
     font-size: 28px;
     margin: 20px 0;
-    top: -40px;
+    top: -60px;
+    left: -27px;
     padding: 10px;
     border: none;
     border-radius: 25px;
@@ -230,12 +234,6 @@ nav ul li a:hover::after {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.evento img {
-    width: 100%;
-    border-radius: 0px;
-    transition: transform 0.3s;
-    border: 5px solid white; /* Define uma borda sólida de cor branca */
-}
 
 .evento img:hover {
     transform: scale(1.05);
@@ -286,6 +284,7 @@ h1 {
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
+    
     border: 1px solid white; 
 }
 .close-btn {
@@ -323,10 +322,10 @@ h1 {
 
 .carousel {
     position: relative;
-    max-width: 73%;
+    max-width: 79%;
     margin: auto;
     overflow: hidden;
-    
+    right: -45px;
   }
   
   .carousel-container {
@@ -337,12 +336,13 @@ h1 {
 
   .evento-caption {
     display: flex;
-    position: relative; /* Faz o caption fluir normalmente na página */
-    color: white; /* Define a cor do texto */
-    padding: 10px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 5px; /* Espaço entre o caption e a imagem */
-    border-radius: 5px; /* (opcional) Arredonda as bordas */
+    position: relative;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 13px;
   }
   
   .carousel-slide {
@@ -354,7 +354,7 @@ h1 {
   
   .carousel-slide img {
     width: 100%;
-    height: auto;
+    height: 220px;
     display: flex;
     border: 5px solid white; /* Define uma borda sólida de cor branca */
     transition: transform 0.3s, box-shadow 0.3s;
@@ -390,9 +390,83 @@ h1 {
   .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
   }
+
+    /* Estilo geral para o fundo do modal */
+.modal-detalhes {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Garante que o modal fique acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa toda a largura da tela */
+    height: 100%; /* Ocupa toda a altura da tela */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content-detalhes {
+    background-color: #5214cb; /* Fundo branco */
+    margin: 10% auto; /* Centraliza vertical e horizontalmente */
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px; /* Bordas arredondadas */
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+    animation: fadeIn 0.3s; /* Efeito de animação */
+    position: relative;
+    top: 15%;
+    height: 35%;
+}
+
+/* Estilo do botão de fechar (X) */
+.close-btn-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: #ffffff; /* Vermelho ao passar o mouse */
+    text-decoration: none;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Estilização dos textos no modal */
+.modal-content-detalhes h2 {
+    font-size: 24px;
+    color: #fffcfc;
+    margin-bottom: 35px;
+    text-align: center;
+    top: 10px;
+}
+
+.modal-content-detalhes p {
+    font-size: 22px;
+    color: #ffffff;
+    margin: 8px 0;
+    text-align: center;
+    gap: 355px;
+    top: 10px;
+}
+
+/* Destaques das informações */
+.modal-content-detalhes strong {
+    color: #ffffff;
+}
   
-
-
 /* Botão de link inicial */
 #openModalBtn {
     background-color: #4CAF50;
@@ -579,6 +653,7 @@ label, input {
     display: block;
     width: 100%;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 a {
@@ -600,6 +675,7 @@ a {
     border: 2px solid #ccc;
     background-color: white;
     cursor: pointer;
+    left: 333px;
 }
 
 .circular-checkbox::after {
