@@ -176,12 +176,15 @@ $showModal = true;
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            
+            
         </svg>
-    
+     
                     
-                </div>
+                
                 <span
-                    > <p>Bem-vindo, <?php echo htmlspecialchars($produtor_nome); ?>!</p>
+                    > 
+                   <h1>Bem-vindo, <?php echo htmlspecialchars($produtor_nome); ?>! </h1> 
                    
                 </span>
                 </div>
@@ -337,7 +340,7 @@ function exibirEventos() {
     <script> 
 
 let currentSlide = 0;
-const totalSlides = 3;  // Definindo o total de slides como 3
+const totalSlides = 2;  // Definindo o total de slides como 3
 const slides = document.querySelectorAll('.carousel-slide');
 let autoSlideInterval = null;
 
@@ -386,9 +389,9 @@ startAutoSlide();
       
 
 <!-- Modal -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
@@ -402,9 +405,9 @@ startAutoSlide();
 
 
 <!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
@@ -417,9 +420,9 @@ startAutoSlide();
 
 
  <!-- Estrutura do Modal -->
- <div id="infoModal" class="modal" style="display: none;">
-                    <div class="modalContent">
-                        <span class="clode-btn" onclick="closeDetails()">×</span>
+ <div id="infoModal" class="modal-detalhes" style="display: none;">
+                    <div class="modal-content-detalhes">
+                        <span class="clode-btn-modal" onclick="closeDetails()">×</span>
                         <h2>Detalhes do Evento</h2>
                         <p><strong>Nome:</strong> <span id="modalNome"></span></p>
                         <p><strong>Data:</strong> <span id="modalData"></span></p>
@@ -431,9 +434,9 @@ startAutoSlide();
 
               
             <!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+<div id="eventModal" class="modal-detalhes">
+    <div class="modal-content-detalhes">
+        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
         <h2 id="modalNome"></h2>
         <p id="modalData"></p>
         <p id="modalDescricao"></p>
