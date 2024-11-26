@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($update_stmt->affected_rows > 0) {
                 $_SESSION['msg'] = "Perfil atualizado com sucesso!";
-                header('Location: editar_perfil.php');
+                header('Location: Login.php');
                 exit;
             } else {
                 $error = "Nenhuma alteração foi feita.";
