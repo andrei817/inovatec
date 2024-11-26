@@ -19,9 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erro: " . $sql . "<br>" . $conn->error;
     }
 
-    $cadastroSucesso = true;
+   $cadastroSucesso = true;
 
 }
+ 
 ?>
 
 
@@ -84,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    }
    </script>
 
-     <div class="agenda-evento">
+<div class="agenda-evento">
     <div class="conteudo">
 
     <section class="login-section">
@@ -103,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
             <div class="input-group"> 
             <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao" rows="5" cols="40" required placeholder="Descrição do Buffet" ></textarea>
+            <textarea id="descricao" name="descricao" rows="2" cols="40" class="inputUser" required placeholder="Descrição do Buffet" ></textarea>
             </div> 
         
 
@@ -112,13 +113,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </form>
 
-         <!-- Modal de Sucesso -->
+<!-- Modal de Sucesso -->
 <div id="modalSucesso" class="modal-correto">
-    <div class="modal-content-correto">
-         <span class="close-icon" onclick="fecharModal()">&times;</span>
-        <h2>Buffet Cadastrado com Sucesso!</h2>
+    <div class="modal-content-correto"> 
+        <span class="close-icon" onclick="fecharModal()">&times;</span>
+        <h1>Buffet Cadastrado com Sucesso!</h1>
         <img src="correto.png" class="correto-img">
-       
     </div>
 </div>
 
@@ -128,12 +128,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.getElementById("modalSucesso").style.display = "none";
     }
 
+    // Função para redirecionar para outra página
+    function redirecionarParaPagina() {
+        window.location.href = "lista de buffet.php";  // Substitua com o URL da página desejada
+    }
+
     // Exibe o modal se o cadastro foi bem-sucedido
     <?php if ($cadastroSucesso): ?>
         document.getElementById("modalSucesso").style.display = "flex";
-        setTimeout(fecharModal, 3000); // Fecha automaticamente após 3 segundos
+        setTimeout(function() {
+            fecharModal();           // Fecha o modal
+            redirecionarParaPagina();  // Redireciona para outra página após 3 segundos
+        }, 3000); // Fecha automaticamente após 3 segundos
     <?php endif; ?>
 </script>
+
+
 
 </section>
 
