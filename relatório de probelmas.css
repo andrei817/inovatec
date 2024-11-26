@@ -338,21 +338,20 @@ h2 {
     gap: 40px;
 }
 
-.btn-delete {
-    border-radius: 8px;
-    padding: 10px 15px;
-    cursor: pointer;
+.print-button {
+    background-color: rgb(8, 97, 180);
     color: white;
-    background-color: red;
-    
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.btn-edit {
-    border-radius: 8px;
-    padding: 10px 15px;
-    cursor: pointer;
-    color: white;
-    background-color: blue;
+.print-button svg {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+    fill: white; /* Cor do ícone */
 }
 
 
