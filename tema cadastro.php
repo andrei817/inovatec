@@ -50,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    <div class="agenda-evento">
+<div class="agenda-evento">
     <div class="conteudo">
-        
+      
     <section class="login-section-tema">
 
         <div class="login-box-tema">
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
      <div class="input-group">
     <label for="descricao">Descrição:</label>
-    <textarea id="descricao" name="descricao" rows="6" cols="40" placeholder="Descrição do Tema"required ></textarea>
+    <textarea id="descricao" name="descricao"  rows="2" cols="40" class="inputUser" placeholder="Descrição do Tema"required ></textarea>
      </div>
 
          <button type="submit" class="login-btn-tema"> Cadastrar</button>
@@ -94,10 +94,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.getElementById("modalSucesso").style.display = "none";
     }
 
+    // Função para redirecionar para outra página
+    function redirecionarParaPagina() {
+        window.location.href = "tema lista.php";  // Substitua com o URL da página desejada
+    }
+
     // Exibe o modal se o cadastro foi bem-sucedido
     <?php if ($cadastroSucesso): ?>
         document.getElementById("modalSucesso").style.display = "flex";
-        setTimeout(fecharModal, 3000); // Fecha automaticamente após 3 segundos
+        setTimeout(function() {
+            fecharModal();           // Fecha o modal
+            redirecionarParaPagina();  // Redireciona para outra página após 3 segundos
+        }, 3000); // Fecha automaticamente após 3 segundos
        
     <?php endif; ?>
 </script>
