@@ -90,12 +90,12 @@ $conn->close();
 
     <div class="input-group"> 
         <label for="objetivo">Descrição:</label>
-        <textarea id="descricao" name="descricao" rows="2" cols="40" placeholder="Descrição do Objetivo"required ></textarea>
+        <textarea id="descricao" name="descricao" rows="2" cols="40" class="inputUser" placeholder="Descrição do Objetivo"required ></textarea>
     </div>
 
       
         <button type="submit" class="login-btn-obj">Cadastrar</button>
-                <a href="?"><button type="button" class="Cancel-btn-obj">Cancelar</button></a>
+                <a href="lista de objetivos.php"><button type="button" class="Cancel-btn-obj">Cancelar</button></a>
     </form>
    </div>
 
@@ -115,10 +115,18 @@ $conn->close();
         document.getElementById("modalSucesso").style.display = "none";
     }
 
+     // Função para redirecionar para outra página
+     function redirecionarParaPagina() {
+        window.location.href = "lista de objetivos.php";  // Substitua com o URL da página desejada
+    }
+
     // Exibe o modal se o cadastro foi bem-sucedido
     <?php if ($cadastroSucesso): ?>
         document.getElementById("modalSucesso").style.display = "flex";
-         setTimeout(fecharModal, 3000); // Fecha automaticamente após 3 segundos
+        setTimeout(function() {
+            fecharModal();           // Fecha o modal
+            redirecionarParaPagina();  // Redireciona para outra página após 3 segundos
+        }, 3000); // Fecha automaticamente após 3 segundos
     <?php endif; ?>
 </script>
 
