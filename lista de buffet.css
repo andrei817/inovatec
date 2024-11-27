@@ -1,0 +1,153 @@
+
+
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 60px;
+    gap: -35px;
+    display: flex; flex-direction: column;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    color: white;
+    margin: 50px auto; 
+    margin-top: 75px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Cor azul */
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Cor azul escuro */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.button:active {
+    transform: scale(1); /* Restaura o tamanho ao clicar */
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #5214cb;
+    color: white;
+}
+
+td {
+    background-color: #8020cb;
+
+}
+
+.ações {
+    width: 18%;
+}
+
+.id-column {
+    display: none;
+  }
+h2 {
+    
+    border: none;
+    box-sizing: border-box;
+  
+    justify-content: center;
+    
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-delete {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    
+}
+
+.btn-edit {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}
+
+h1 {
+    margin: 10px;
+    text-align: center;
+ 
+}
+
+.a {
+ color: white;
+ text-decoration: none;
+}
+
+
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #5214cb;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #5214cb;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+
