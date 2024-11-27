@@ -146,15 +146,6 @@ nav ul li a:hover::after {
     transform-origin: bottom left;
 }
 
-.agenda {
-
-    text-align: center;
-    align-items: center;
-    padding: 129px 0;
-    background-color: #240046;
-    opacity: 0.9; 
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
 .cargo-evento {
     position: fixed; /* Fixa a camada de fundo */
@@ -174,18 +165,19 @@ nav ul li a:hover::after {
     display: flex; 
     justify-content: center;
     align-items: center;
-    top: 29px;
-    gap: 18px;
+    top: -9px;
+    gap: -35px;
     display: flex; flex-direction: column;
 }
 
 
 table {
-    width: 70%;
+    width: 60%;
     border-collapse: collapse;
     color: white;
-    margin: 50px auto; 
-    margin-top: -49px; 
+    margin: 50px auto;
+    margin-top: -64px; 
+    
 }
 
 .button {
@@ -235,6 +227,16 @@ td {
 .id-column {
     display: none;
   }
+
+  .ações {
+      width: 15%;
+  }
+
+  .a {
+      color: white;
+      text-decoration: none;
+  }
+
 h2 {
     
     border: none;
@@ -269,4 +271,31 @@ h2 {
 .btn-edit-cargo {
     background-color: blue;
 }
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #5214cb;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #5214cb;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
 
