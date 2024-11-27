@@ -2,6 +2,8 @@
 session_start();
 include("php/Config.php");
 
+$cadastroSucesso = false;
+
 // Verificar se o produtor está logado
 if (!isset($_SESSION['id'])) {
     header('Location: login.php');
@@ -20,74 +22,32 @@ $result = $stmt->get_result();
 $produtor = $result->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Atualizar perfil
     if (isset($_POST['update_profile'])) {
         $novo_nome = trim($_POST['nome']);
         $novo_email = trim($_POST['email']);
 
-        // Validar os dados
+        // Validação básica
         if (!empty($novo_nome) && !empty($novo_email) && filter_var($novo_email, FILTER_VALIDATE_EMAIL)) {
-            // Atualizar no banco de dados
             $update_sql = "UPDATE produtor SET nome = ?, email = ? WHERE id = ?";
             $update_stmt = $conn->prepare($update_sql);
             $update_stmt->bind_param("ssi", $novo_nome, $novo_email, $produtor_id);
             $update_stmt->execute();
 
             if ($update_stmt->affected_rows > 0) {
-                $_SESSION['msg'] = "Perfil atualizado com sucesso!";
-                header('Location: Login.php');
-                exit;
+                //$_SESSION['msg'] = "Perfil atualizado com sucesso!";
+                //header('Location: ambiente.php');
+                //exit;
             } else {
                 $error = "Nenhuma alteração foi feita.";
             }
         } else {
             $error = "Por favor, insira um nome válido e um email válido.";
         }
+         $cadastroSucesso = true;
     }
-
-    // Alterar senha
-    if (isset($_POST['change_password'])) {
-        $senha_atual = $_POST['senha_atual'];
-        $nova_senha = $_POST['nova_senha'];
-        $confirmar_senha = $_POST['confirmar_senha'];
-
-        // Validar campos
-        if (!empty($senha_atual) && !empty($nova_senha) && !empty($confirmar_senha)) {
-            if ($nova_senha === $confirmar_senha) {
-                // Consultar senha atual no banco
-                $senha_sql = "SELECT senha FROM produtor WHERE id = ?";
-                $senha_stmt = $conn->prepare($senha_sql);
-                $senha_stmt->bind_param("i", $produtor_id);
-                $senha_stmt->execute();
-                $senha_result = $senha_stmt->get_result();
-                $senha_db = $senha_result->fetch_assoc()['senha'];
-
-                if (md5($senha_atual) === $senha_db) {
-                    // Atualizar senha para usar password_hash
-                    $nova_senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
-                    $update_senha_sql = "UPDATE produtor SET senha = ? WHERE id = ?";
-                    $update_senha_stmt = $conn->prepare($update_senha_sql);
-                    $update_senha_stmt->bind_param("si", $nova_senha_hash, $produtor_id);
-                    $update_senha_stmt->execute();
-                
-                    if ($update_senha_stmt->affected_rows > 0) {
-                        $_SESSION['msg'] = "Senha alterada com sucesso!";
-                        //header('Location: editar_perfil.php');
-                        exit;
-                    } else {
-                        $error = "Erro ao alterar a senha. Tente novamente.";
-                    }
-                } else {
-                    $error = "Senha atual incorreta.";
-                }
-            } else {
-                $error = "As novas senhas não coincidem.";
-            }
-        } else {
-            $error = "Por favor, preencha todos os campos de senha.";
-        }
-    }
+   
 }
+
 ?>
 
 
@@ -172,37 +132,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <form method="POST" action="">
-        <h2>Atualizar Perfil</h2>
-        <a href="ambiente.php" class="fecha-btn">&times;</a>
-        <div class="input-group">
+    <h2>Atualizar Perfil</h2>
+    <a href="ambiente.php" class="fecha-btn">&times;</a>
+
+    <div class="input-group">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($produtor['nome']); ?>" required>
-        </div>
+    </div>
 
-       <div class="input-group">
+    <div class="input-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required>
-       </div>
+    </div>
 
-       <form method="POST" action="">
-       <div class="input-group">
-        <label for="senha_atual">Senha Atual:</label>
-        <input type="password" id="senha_atual" name="senha_atual" required>
-        </div>
+    <button type="submit" name="update_profile" class="login-btn-alt">Salvar Alterações</button>
+    <a href="ambiente.php" class="a"> 
+        <button type="button" class="Cancel-btn">Cancelar</button>
+    </a>
+</form>
 
-        <div class="input-group">
-        <label for="nova_senha">Nova Senha:</label>
-        <input type="password" id="nova_senha" name="nova_senha" required>
-        </div>
+<!-- Modal de Sucesso -->
+<div id="modalSucesso" class="modal-correto">
+    <div class="modal-content-correto"> 
+        <span class="close-icon" onclick="fecharModal()">&times;</span>
+        <h1>Perfil Atualizado com Sucesso!</h1>
+        <img src="correto.png" class="correto-img">
+    </div>
+</div>
 
-        <div class="input-group">
-        <label for="confirmar_senha">Confirmar Nova Senha:</label>
-        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
-        </div>
+<script>
+    // Função para fechar o modal
+    function fecharModal() {
+        document.getElementById("modalSucesso").style.display = "none";
+    }
 
-        <button type="submit" name="update_profile" class="login-btn-alt">Salvar Alterações</button>
-        <a href="ambiente.php" class="a"> <button type="button" class="Cancel-btn"> Cancelar</a></button>
-    </form>
+    // Função para redirecionar para outra página
+    function redirecionarParaPagina() {
+        window.location.href = "ambiente.php";  // Substitua com o URL da página desejada
+    }
+
+    // Exibe o modal se o cadastro foi bem-sucedido
+    <?php if ($cadastroSucesso): ?>
+        document.getElementById("modalSucesso").style.display = "flex";
+        setTimeout(function() {
+            fecharModal();           // Fecha o modal
+           redirecionarParaPagina();  // Redireciona para outra página após 3 segundos
+        }, 3000); // Fecha automaticamente após 3 segundos
+    <?php endif; ?>
+</script>
+
+    
 </div>
 
 </section>
