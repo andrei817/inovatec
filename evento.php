@@ -201,17 +201,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="descricao">Descrição:</label>
                     <textarea id="descricao" name="descricao" rows="3" class="inputUser" placeholder="Descrição do Evento" required></textarea>
                 </div>
-
+                
+<button type="submit" name="cadastrar" class="login-btn-evento">Cadastrar</button>
+    <a href="lista de eventos.php"><button type="button" class="Cancel-btn-evento">Cancelar</button></a>
     
     <div class="input-group">
         <label for="imagem">Imagem do Evento:</label>
         <input type="file" id="imagem" name="imagem" accept="image/*" required>
+         <div class="image-preview">
+        <img id="image-preview" src="#" alt="Pré-visualização da Imagem" style="display:none; max-width: 200px; max-height: 200px;">
     </div>
-    <button type="submit" name="cadastrar" class="login-btn-evento">Cadastrar</button>
-    <a href="lista de eventos.php"><button type="button" class="Cancel-btn-evento">Cancelar</button></a>
+    </div>
+                
+    
 </form>
 
-            </form>
+           
 
                         <!-- Modal de Sucesso -->
             <div id="modalSucesso" class="modal-correto">
