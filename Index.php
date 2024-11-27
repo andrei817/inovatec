@@ -188,9 +188,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
     // Função para fechar o modal de login
     function fecharModal() {
-        document.getElementById("loginModal").style.display = "none";
+        
         document.getElementById("senhaIncorretaModal").style.display = "none";
         document.getElementById("produtorNaoEncontradoModal").style.display = "none";
+        document.getElementById("loginModal").style.display = "block";
     }
 
 
