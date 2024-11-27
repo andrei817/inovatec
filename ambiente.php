@@ -140,7 +140,7 @@ $showModal = true;
 
 
         <div class="logo-foto"> 
-           <img src="SGE logo.png"width=80% height="100%">
+           <img src="Logo_SGE_inova.png"width=80% height="100%">
            
        <div class="header-content"> 
       <h1> S.G.E.</h1> 
