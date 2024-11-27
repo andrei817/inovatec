@@ -238,8 +238,8 @@ nav ul li a:hover::after {
     display: flex; 
     justify-content: center;
     align-items: center;
-    
     gap: -35px;
+    top: -40px;
     display: flex; flex-direction: column;
     
 }
@@ -248,12 +248,21 @@ nav ul li a:hover::after {
 table {
     width: 1300px;
     border-collapse: collapse;
-    margin-bottom: 30px;
-    margin: 66px ;
+    margin-bottom: 70px;
+    margin: 66px;
     color: white;
-    margin-top: 50px;
-    font-size: 13px;
+    margin-top: 10px;
+    font-size: 12px;
+    
 }
+
+.scroll-box {
+    height: 450px; /* Altura fixa */
+    overflow-y: scroll; /* Barra de rolagem vertical */
+    
+    padding: 10px;
+}
+
 
 .button {
     display: inline-block;
@@ -267,15 +276,6 @@ table {
     text-align: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
-
-.scroll-box {
-    height: 450px; /* Altura fixa */
-    overflow-y: scroll; /* Barra de rolagem vertical */
-    
-    padding: 10px;
-}
-
 
 .button:hover {
     background-color: #0056b3; /* Cor azul escuro */
@@ -309,6 +309,10 @@ td {
 
 .id-column {
     display: none;
+  }
+
+  .ações {
+      width: 14%;
   }
 
   a {
@@ -350,3 +354,48 @@ h2 {
     color: white;
     background-color: blue;
 }
+
+/* Estilo geral para a barra de paginação */
+.pagination {
+    text-align: center; /* Centraliza os links */
+    margin-top: -20px;
+}
+
+.pagination a {
+    margin: 0 5px; /* Espaçamento entre os links */
+    padding: 8px 15px; /* Tamanho dos botões */
+    text-decoration: none; /* Remove o sublinhado */
+    color: #5214cb; /* Cor do texto */
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #f8f9fa; /* Cor de fundo */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+.pagination a:hover {
+    background-color: #6200ff; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+.pagination a.active {
+    background-color: #6200ff; /* Cor de fundo da página ativa */
+    color: white; /* Cor do texto da página ativa */
+    font-weight: bold; /* Texto em negrito para a página ativa */
+}
+
+.pagination a.disabled {
+    color: #ccc; /* Cor de texto para links desabilitados */
+    cursor: not-allowed; /* Cursor "não permitido" para links desabilitados */
+    background-color: #f8f9fa; /* Cor de fundo para links desabilitados */
+    border-color: #ddd; /* Cor de borda para links desabilitados */
+}
+
+/* Estilo para o link "Anterior" e "Próxima" */
+.pagination a:first-child, .pagination a:last-child {
+    font-weight: bold; /* Deixar os botões "Anterior" e "Próxima" em negrito */
+}
+
+.pagination a:disabled {
+    pointer-events: none; /* Desabilita o clique em links desabilitados */
+}
+
