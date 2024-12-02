@@ -13,6 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         $sql = "SELECT * FROM produtor WHERE email = '$email'";
         $result = mysqli_query($conn, $sql);
 
+        
+
+        // Inclua na consulta SQL de inserção
+        $sql = "INSERT INTO produtor (email, senha) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $email, $hashed_password);
+
+
         // Verificar se o produtor existe
         if ($result && mysqli_num_rows($result) > 0) {
             $produtor = mysqli_fetch_assoc($result);
@@ -67,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGE - Agenda de Eventos</title>
-    <link rel="stylesheet" href="rascunho.css">
-    <script src="evento.js"> </script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"> </script>
 
 </head>
 
@@ -133,16 +141,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
                     <label for="senha">Senha:</label><br>
                     <input type="password" id="senha" name="senha" required>
                 </div> 
+                
                 <button type="submit" class="login-btn">Entrar</button>
                 <a href="index.php"><button type="button" class="Cancel-btn">Cancelar</button></a>
                 <div class="circular-checkbox-wrapper">
                     <input type="checkbox" id="circular-checkbox" style="display: none;">
                     <label for="rememberMe">
-                   <input type="checkbox" name="rememberMe" id="rememberMe"> Manter-me Conectado
+                   <input type="checkbox" name="rememberMe" id="rememberMe" class="circular-checkbox"> Manter-me Conectado
                   </label>
                 </div>
 
-                <p><a href="esqueci_senha.php">Esqueceu sua senha?</a></p>
+                <p><a href="validar_resposta.php">Esqueceu sua senha?</a></p>
             </form>
         </div>
     </section>
@@ -188,9 +197,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
     // Função para fechar o modal de login
     function fecharModal() {
-        
         document.getElementById("senhaIncorretaModal").style.display = "none";
-        document.getElementById("produtorNaoEncontradoModal").style.display = "none";
+        document.getElementById("produtorNaoEncontradoModal").style.display = "none";         
         document.getElementById("loginModal").style.display = "block";
     }
 
@@ -245,22 +253,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
          <div class="container"> 
 
         <h2>PRÓXIMOS EVENTOS</h2>
-               
+                                 
         
                    
         <?php
 include('php/Config.php');
 
-// Função para exibir todos os eventos
+// Função para exibir todos os eventos e contar o total de eventos
 function exibirEventos() {
     global $conn;
 
-    // Consulta para buscar todos os eventos, ordenados pela data
-    $sql_eventos = "SELECT nome, imagem, data, descricao, local, hora, lotacao, duracao 
-                    FROM eventos 
-                    ORDER BY data DESC";  // Remove LIMIT 1
+    // Consulta para buscar todos os eventos cadastrados
+    $sql_eventos = "SELECT e.nome, e.imagem, e.data, e.descricao, e.local, e.hora, e.lotacao, e.duracao,
+                    fe.descricao AS faixa_etaria_desc, ss.descricao AS status_social_desc, 
+                    se.nome AS status_evento_nome, es.descricao AS escolaridade_desc
+                    FROM eventos e
+                    LEFT JOIN faixa_etaria fe ON e.faixa_etaria_id = fe.id
+                    LEFT JOIN status_social ss ON e.status_social_id = ss.id
+                    LEFT JOIN status_do_evento se ON e.status_do_evento_id = se.id
+                    LEFT JOIN escolaridades es ON e.escolaridades_id = es.id
+                    ORDER BY e.data DESC"; // Remove o LIMIT para pegar todos os eventos
 
     $result = $conn->query($sql_eventos);
+    $totalEventos = $result->num_rows;  // Conta o número total de eventos
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -279,53 +294,44 @@ function exibirEventos() {
             }
 
             // Botão para exibir detalhes do evento
-            echo '<button onclick="showDetails(\'' . addslashes($row['nome']) . '\', \'' . addslashes($caminho_imagem) . '\', \'' . date("d/m/Y", strtotime($row['data'])) . '\', \'' . addslashes($row['descricao']) . '\', \'' . addslashes($row['local']) . '\', \'' . $row['hora'] . '\', \'' . $row['lotacao'] . '\', \'' . $row['duracao'] . '\')">Saiba Mais →</button>';
+            echo '<button onclick="showDetails(\'' . addslashes($row['nome']) . '\', \'' . addslashes($caminho_imagem) . '\', \'' . date("d/m/Y", strtotime($row['data'])) . '\', \'' . addslashes($row['descricao']) . '\', \'' . addslashes($row['local']) . '\', \'' . $row['hora'] . '\', \'' . $row['lotacao'] . '\', \'' . $row['duracao'] . '\', \'' . addslashes($row['faixa_etaria_desc']) . '\', \'' . addslashes($row['status_social_desc']) . '\', \'' . addslashes($row['status_evento_nome']) . '\', \'' . addslashes($row['escolaridade_desc']) . '\')">Saiba Mais →</button>';
+
             echo '</div>';
             echo '</div>';
         }
     } else {
         echo "<p>Nenhum evento encontrado.</p>";
     }
+
+    return $totalEventos; // Retorna o total de eventos para o JavaScript
 }
 ?>
 
 <div class="eventos">
-            
-        
-<!-- Carrossel Automático-->
-<div class="carousel">
-    <div class="carousel-container">
-        
-            
-        <?php exibirEventos(); ?>
-           
-        
+    <!-- Carrossel Automático-->
+    <div class="carousel">
+        <div class="carousel-container">
+            <?php 
+                $totalEventos = exibirEventos(); // Obtém o total de eventos
+            ?>
+        </div>
     </div>
-</div>
 
-     
-
-               <!-- Botões de navegação -->
+    <!-- Botões de navegação -->
     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
     <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+</div>
+</div>
 
-
-            </div>
-            </div>
-            </div>
-             </div>
-
-   
-
-    <script> 
-
+<script> 
 let currentSlide = 0;
-const totalSlides = 2;  // Definindo o total de slides como 2
+const totalSlides = 2;  
 const slides = document.querySelectorAll('.carousel-slide');
 let autoSlideInterval = null;
 
 function showSlide(index) {
-  // Ajuste para loop infinito
+  // Ajuste para loop infinito, respeitando o número total de eventos
   if (index >= totalSlides) {
     currentSlide = 0;  // Volta ao primeiro slide
   } else if (index < 0) {
@@ -364,9 +370,9 @@ showSlide(currentSlide);
 
 // Inicia o carrossel automático
 startAutoSlide();
+</script>
 
- </script>         
-      
+
 
 <!-- Modal -->
 <div id="eventModal" class="modal-detalhes">
@@ -379,57 +385,12 @@ startAutoSlide();
         <p><strong>Hora:</strong> <span id="modalHora"></span></p>
         <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
         <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
+        <p><strong></strong> <span id="modalFaixaEtaria"></span></p>
+        <p><strong></strong> <span id="modalStatusSocial"></span></p>
+        <p><strong></strong> <span id="modalStatusEvento"></span></p>
+        <p><strong></strong> <span id="modalEscolaridade"></span></p>
     </div>
 </div>
-
-
-
-<!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal-detalhes">
-    <div class="modal-content-detalhes">
-        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
-        <h2 id="modalNome"></h2>
-        <p id="modalData"></p>
-        <p id="modalDescricao"></p>
-        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
-        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
-        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
-        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
-    </div>
-</div>
-
-
- <!-- Estrutura do Modal -->
- <div id="infoModal" class="modal-detalhes" style="display: none;">
-                    <div class="modal-content-detalhes">
-                        <span class="clode-btn-modal" onclick="closeDetails()">×</span>
-                        <h2>Detalhes do Evento</h2>
-                        <p><strong>Nome:</strong> <span id="modalNome"></span></p>
-                        <p><strong>Data:</strong> <span id="modalData"></span></p>
-                        <p><strong>Horário:</strong> <span id="modalHorario"></span></p>
-                        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
-                        <p><strong>Descrição:</strong> <span id="modalDescricao"></span></p>
-                    </div>
-                </div>
-
-              
-            <!-- Modal (já existente, sem alterações) -->
-<div id="eventModal" class="modal-detalhes">
-    <div class="modal-content-detalhes">
-        <span class="close-btn-modal" onclick="closeModal()">&times;</span>
-        <h2 id="modalNome"></h2>
-        <p id="modalData"></p>
-        <p id="modalDescricao"></p>
-        <p><strong>Local:</strong> <span id="modalLocal"></span></p>
-        <p><strong>Hora:</strong> <span id="modalHora"></span></p>
-        <p><strong>Lotação:</strong> <span id="modalLotacao"></span></p>
-        <p><strong>Duração:</strong> <span id="modalDuracao"></span></p>
-    </div>
-</div>
-
-
-
-
 
 </section>
 </body>
