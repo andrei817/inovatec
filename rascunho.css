@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -188,7 +189,7 @@ nav ul li a:hover::after {
     position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
     z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
     color: white; /* Cor do conteúdo */
-    padding: 175px;
+    padding: 50px;
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -201,8 +202,7 @@ nav ul li a:hover::after {
 .container h2 {    
     font-size: 28px;
     margin: 20px 0;
-    top: -60px;
-    left: -27px;
+    top: -40px;
     padding: 10px;
     border: none;
     border-radius: 25px;
@@ -284,7 +284,6 @@ h1 {
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
-    
     border: 1px solid white; 
 }
 .close-btn {
@@ -322,10 +321,10 @@ h1 {
 
 .carousel {
     position: relative;
-    max-width: 79%;
+    max-width: 73%;
     margin: auto;
     overflow: hidden;
-    right: -45px;
+    
   }
   
   .carousel-container {
@@ -390,83 +389,9 @@ h1 {
   .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
   }
-
-    /* Estilo geral para o fundo do modal */
-.modal-detalhes {
-    display: none; /* Esconde o modal por padrão */
-    position: fixed;
-    z-index: 1000; /* Garante que o modal fique acima dos outros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ocupa toda a largura da tela */
-    height: 100%; /* Ocupa toda a altura da tela */
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
-    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
-}
-
-/* Estilo do conteúdo do modal */
-.modal-content-detalhes {
-    background-color: #5214cb; /* Fundo branco */
-    margin: 10% auto; /* Centraliza vertical e horizontalmente */
-    padding: 20px;
-    border: 1px solid #ffffff;
-    border-radius: 10px; /* Bordas arredondadas */
-    width: 80%; /* Largura do modal */
-    max-width: 600px; /* Largura máxima */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
-    animation: fadeIn 0.3s; /* Efeito de animação */
-    position: relative;
-    top: 15%;
-    height: 35%;
-}
-
-/* Estilo do botão de fechar (X) */
-.close-btn-modal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-btn-modal:hover,
-.close-btn-modal:focus {
-    color: #ffffff; /* Vermelho ao passar o mouse */
-    text-decoration: none;
-}
-
-/* Animação de fade-in */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-/* Estilização dos textos no modal */
-.modal-content-detalhes h2 {
-    font-size: 24px;
-    color: #fffcfc;
-    margin-bottom: 35px;
-    text-align: center;
-    top: 10px;
-}
-
-.modal-content-detalhes p {
-    font-size: 22px;
-    color: #ffffff;
-    margin: 8px 0;
-    text-align: center;
-    gap: 355px;
-    top: 10px;
-}
-
-/* Destaques das informações */
-.modal-content-detalhes strong {
-    color: #ffffff;
-}
   
+
+
 /* Botão de link inicial */
 #openModalBtn {
     background-color: #4CAF50;
@@ -507,14 +432,7 @@ h1 {
     border-radius: 5px;
     border: none;
 }
-#simBtn {
-    background-color: #4CAF50;
-    color: white;
-}
-#naoBtn {
-    background-color: #f44336;
-    color: white;
-}
+
 /* Estilos para o modal de login */
 #loginModal {
     display: none;
@@ -613,7 +531,7 @@ z-index: 2;
     width: 700px;
     height: 400px;
     text-align: center;
-    background-color: rgb(23, 0, 155);
+    
 }
 
 .btn-close-login {
@@ -670,12 +588,12 @@ a {
 .circular-checkbox {
     position: relative;
     width: 24px;
-    height: 24px;
+    height: 18px;
     border-radius: 50%;
     border: 2px solid #ccc;
     background-color: white;
     cursor: pointer;
-    left: 333px;
+    left: -123px;
 }
 
 .circular-checkbox::after {
@@ -715,7 +633,7 @@ a {
 .input-group input {
     width: 40%;
     padding: 5px;
-    border: 1px solid rgb(143, 10, 10) #f80000;
+  
     border-radius: 20px; 
     font-size: 16px;
 }
@@ -723,8 +641,9 @@ a {
 
 .login-btn {
     position: relative; 
-    right: -200px; 
+    right: -180px; 
     width: 20%;
+    top: 45px;
     padding: 10px; 
     background-color: #0db400;
     color: #fff;
@@ -755,6 +674,7 @@ a {
     position: relative; 
     right: -200px; 
     width: 20%;
+    top: 45px;
     padding: 10px; 
     background-color: rgba(206, 35, 35, 0.89);
     color: #fff;
@@ -849,3 +769,80 @@ a {
     border: none;
     cursor: pointer;
 }
+
+  /* Estilo geral para o fundo do modal */
+  .modal-detalhes {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Garante que o modal fique acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa toda a largura da tela */
+    height: 120%; /* Ocupa toda a altura da tela */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content-detalhes {
+    background-color: #5214cb; /* Fundo branco */
+    margin: 10% auto; /* Centraliza vertical e horizontalmente */
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px; /* Bordas arredondadas */
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+    animation: fadeIn 0.3s; /* Efeito de animação */
+    position: relative;
+    top: 10%;
+    height: 45%;
+}
+
+/* Estilo do botão de fechar (X) */
+.close-btn-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: #ffffff; /* Vermelho ao passar o mouse */
+    text-decoration: none;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Estilização dos textos no modal */
+.modal-content-detalhes h2 {
+    font-size: 24px;
+    color: #fffcfc;
+    margin-bottom: 35px;
+    text-align: center;
+    top: 10px;
+}
+
+.modal-content-detalhes p {
+    font-size: 22px;
+    color: #ffffff;
+    margin: 8px 0;
+    text-align: center;
+    gap: 355px;
+    top: 10px;
+}
+
+/* Destaques das informações */
+.modal-content-detalhes strong {
+    color: #ffffff;
+}
+  
