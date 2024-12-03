@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="ico/SGE.ico" type="image/x-icon">
     <title>Redefinir Senha</title>
     <link rel="stylesheet" href="esquecir_senha.css">
 </head>
