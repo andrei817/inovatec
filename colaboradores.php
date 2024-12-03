@@ -41,6 +41,7 @@ $staffs = buscarRelatorioStaff();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="ico/SGE.ico" type="image/x-icon">
     <title>Relatório de Staff por Evento</title>
     <link rel="stylesheet" href="colaboradores.css">
     <link rel="stylesheet" href="print-relatório.css">
