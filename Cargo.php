@@ -28,6 +28,7 @@ $result = $stmt->get_result();
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+<link rel="shortcut icon" href="ico/SGE.ico" type="image/x-icon">
     <link rel="stylesheet" href="cargo.css">
     <title>Lista de Cargos de Staff</title>
 </head>
