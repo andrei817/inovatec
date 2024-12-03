@@ -14,7 +14,7 @@ if (!isset($_SESSION['id'])) {
 $produtor_id = $_SESSION['id'];
 
 // Consultar informações do produtor logado
-$sql = "SELECT nome, email FROM produtor WHERE id = ?";
+$sql = "SELECT nome, email, telefone, cpf FROM produtor WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $produtor_id);
 $stmt->execute();
@@ -25,30 +25,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['update_profile'])) {
         $novo_nome = trim($_POST['nome']);
         $novo_email = trim($_POST['email']);
+        $novo_telefone = trim($_POST['telefone']);
+        $novo_cpf = trim($_POST['cpf']);
 
         // Validação básica
         if (!empty($novo_nome) && !empty($novo_email) && filter_var($novo_email, FILTER_VALIDATE_EMAIL)) {
-            $update_sql = "UPDATE produtor SET nome = ?, email = ? WHERE id = ?";
-            $update_stmt = $conn->prepare($update_sql);
-            $update_stmt->bind_param("ssi", $novo_nome, $novo_email, $produtor_id);
-            $update_stmt->execute();
+            // Validar CPF (exemplo simples)
+            if (preg_match('/^\d{11}$/', $novo_cpf)) {
+                // Validar telefone (exemplo simples)
+                if (preg_match('/^\d{10,11}$/', $novo_telefone)) {
+                    // Atualizar os dados do produtor
+                    $update_sql = "UPDATE produtor SET nome = ?, email = ?, telefone = ?, cpf = ? WHERE id = ?";
+                    $update_stmt = $conn->prepare($update_sql);
+                    $update_stmt->bind_param("ssssi", $novo_nome, $novo_email, $novo_telefone, $novo_cpf, $produtor_id);
+                    $update_stmt->execute();
 
-            if ($update_stmt->affected_rows > 0) {
-                //$_SESSION['msg'] = "Perfil atualizado com sucesso!";
-                //header('Location: ambiente.php');
-                //exit;
+                    if ($update_stmt->affected_rows > 0) {
+                        //$_SESSION['msg'] = "Perfil atualizado com sucesso!";
+                        //header('Location: ambiente.php');
+                        //exit;
+                    } else {
+                        $error = "Nenhuma alteração foi feita.";
+                    }
+                } else {
+                    $error = "Telefone inválido. Certifique-se de que ele tenha 10 ou 11 dígitos.";
+                }
             } else {
-                $error = "Nenhuma alteração foi feita.";
+                $error = "CPF inválido. Certifique-se de que ele tenha 11 dígitos.";
             }
         } else {
             $error = "Por favor, insira um nome válido e um email válido.";
         }
-         $cadastroSucesso = true;
+        
+        $cadastroSucesso = true;
     }
-   
 }
 
 ?>
+
 
 
 
@@ -57,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="ico/SGE.ico" type="image/x-icon">
     <link rel="stylesheet" href="perfil do produtor.css">
     <title>Editar Perfil</title>
 </head>
@@ -66,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="header"></div> <!-- Div onde o menu será injetado -->
 
 <script>
-  fetch('/menu principal.html')
+  fetch('/menu principal.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('header').innerHTML = data;
@@ -78,11 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <!-- Conteúdo da página -->
 </div>
 
-
 <script> 
     // Função para abrir a sidebar
     function abrirSidebar() {
-     document.getElementById("mySidebar").style.width = "310px";
+     document.getElementById("mySidebar").style.width = "250px";
    }
    
    // Função para fechar a sidebar
@@ -105,6 +119,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      document.getElementById("mySidebar").style.width = "0";
    }
    </script>
+
+
+<script>
+  // Função para mostrar/ocultar a lista suspensa do perfil
+  function toggle() {
+      var profileDropdownList = document.querySelector('.profile-dropdown-list');
+      profileDropdownList.classList.toggle('active');
+  }
+
+  // Função para mostrar o modal de logout
+  function showLogoutModal() {
+      document.getElementById('logoutModal').style.display = 'flex';
+  }
+
+  // Função para fechar qualquer modal
+  function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+  }
+
+  // Função para confirmar o logout e mostrar o modal de agradecimento
+  function confirmLogout() {
+      closeModal('logoutModal'); // Fecha o modal de logout
+      document.getElementById('thankYouModal').style.display = 'flex'; // Mostra o modal de agradecimento
+      
+      // Redireciona após alguns segundos (opcional)
+      setTimeout(function() {
+          window.location.href = 'index.php'; // Redireciona para a página inicial
+      }, 2000); // Aguarda 2 segundos antes de redirecionar
+  }
+</script>
+
 
 
 <div class="agenda-evento">
@@ -145,9 +190,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required>
     </div>
 
+    <div class="input-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($produtor['telefone']); ?>" required>
+    </div>
+
+    <div class="input-group">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($produtor['cpf']); ?>" required>
+    </div>
+
     <button type="submit" name="update_profile" class="login-btn-alt">Salvar Alterações</button>
     <a href="ambiente.php" class="a"> 
-        <button type="button" class="Cancel-btn">Cancelar</button>
+        <button type="button" class="Cancel-btn-alt">Cancelar</button>
     </a>
 </form>
 
