@@ -380,105 +380,140 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['senh
         </div>
 
         <script>
-            let currentSlide = 0;
-            const carouselContainer = document.querySelector('.carousel-container');
-            const slides = carouselContainer.querySelectorAll('.carousel-slide');
-            const totalSlides = parseInt(carouselContainer.dataset.total, 10) || slides.length;
-            let autoSlideInterval;
+    let currentSlide = 0;
+    const carouselContainer = document.querySelector('.carousel-container');
+    const slides = carouselContainer.querySelectorAll('.carousel-slide');
+    const totalSlides = parseInt(carouselContainer.dataset.total, 10) || slides.length;
+    let autoSlideInterval = null;
+    let isModalOpen = false; // ← Flag para controlar se o modal está aberto
 
-            // Função para exibir o slide
-            function showSlide(index) {
-                const totalGroups = Math.ceil(slides.length / 3);
+    // Mostrar grupo de slides atual
+    function showSlide(index) {
+        const totalGroups = Math.ceil(slides.length / 3);
 
-                if (index >= totalGroups) {
-                    currentSlide = 0;
-                } else if (index < 0) {
-                    currentSlide = totalGroups - 1;
-                } else {
-                    currentSlide = index;
-                }
+        if (index >= totalGroups) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalGroups - 1;
+        } else {
+            currentSlide = index;
+        }
 
-                const offset = -currentSlide * 100;
-                carouselContainer.style.transform = `translateX(${offset}%)`;
+        const offset = -currentSlide * 100;
+        carouselContainer.style.transform = `translateX(${offset}%)`;
 
-                if (totalSlides === 1) {
-                carouselContainer.style.transform = 'translateX(0)';
-                }
+        slides.forEach(slide => {
+            slide.classList.remove('one-in-group', 'two-in-group');
+        });
 
-
-                if (totalSlides === 2) {
-                carouselContainer.style.transform = 'translateX(0)';
-                }
-
-                // Remove classes de centralização
-                slides.forEach(slide => {
-                    slide.classList.remove('one-in-group', 'two-in-group');
-                });
-
-                if (totalSlides === 2) {
-                slides[0].classList.add('two-in-group');
-                slides[1].classList.add('two-in-group');
-                }
-
-                // Verifica se é o último grupo
-                if (currentSlide === totalGroups - 1) {
-                    const slidesInLastGroup = slides.length % 3 || 3;
-
-                    for (let i = slides.length - slidesInLastGroup; i < slides.length; i++) {
-                        if (slidesInLastGroup === 1) {
-                            slides[i].classList.add('one-in-group');
-                        } else if (slidesInLastGroup === 2) {
-                            slides[i].classList.add('two-in-group');
-                        }
-                    }
-                }
-
-                adjustCarouselClasses();
+        if (totalSlides === 1 || totalSlides === 2) {
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].classList.add(totalSlides === 1 ? 'one-in-group' : 'two-in-group');
             }
+        }
 
-
-            // Função para mover o slide na direção especificada
-            function moveSlide(direction) {
-                showSlide(currentSlide + direction);
-                resetAutoSlide(); // Reinicia o carrossel automático após interação manual
-            }
-
-            // Inicia o carrossel automático
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(() => {
-                    moveSlide(1); // Avança automaticamente para o próximo grupo
-                }, 5000); // Intervalo de 5 segundos
-            }
-
-            // Para o carrossel automático
-            function stopAutoSlide() {
-                clearInterval(autoSlideInterval);
-            }
-
-            // Reinicia o carrossel automático
-            function resetAutoSlide() {
-                stopAutoSlide();
-                startAutoSlide();
-            }
-
-            // Função para ajustar a classe do contêiner com base no número de slides visíveis
-            function adjustCarouselClasses() {
-                carouselContainer.classList.remove('one-slide', 'two-slides', 'three-slides');
-
-                if (totalSlides === 1) {
-                    carouselContainer.classList.add('one-slide');
-                } else if (totalSlides === 2) {
-                    carouselContainer.classList.add('two-slides');
-                } else {
-                    carouselContainer.classList.add('three-slides');
+        if (currentSlide === totalGroups - 1) {
+            const slidesInLastGroup = slides.length % 3 || 3;
+            for (let i = slides.length - slidesInLastGroup; i < slides.length; i++) {
+                if (slidesInLastGroup === 1) {
+                    slides[i].classList.add('one-in-group');
+                } else if (slidesInLastGroup === 2) {
+                    slides[i].classList.add('two-in-group');
                 }
             }
+        }
 
-            // Exibe o primeiro grupo de slides ao carregar a página
-            showSlide(currentSlide);
-            startAutoSlide();
-            adjustCarouselClasses(); // Ajusta o alinhamento ao carregar
-        </script>
+        adjustCarouselClasses();
+    }
+
+    function moveSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    function startAutoSlide() {
+        stopAutoSlide(); // Evita múltiplos intervalos
+        autoSlideInterval = setInterval(() => {
+            if (!isModalOpen) { // ← Só gira se o modal estiver fechado
+                moveSlide(1);
+            }
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+    }
+
+    function adjustCarouselClasses() {
+        carouselContainer.classList.remove('one-slide', 'two-slides', 'three-slides');
+        if (totalSlides === 1) {
+            carouselContainer.classList.add('one-slide');
+        } else if (totalSlides === 2) {
+            carouselContainer.classList.add('two-slides');
+        } else {
+            carouselContainer.classList.add('three-slides');
+        }
+    }
+
+    // Modal: abrir
+    function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao, faixaEtaria, statusSocial, statusEvento, escolaridade) {
+        isModalOpen = true; // ← Ativa flag
+        document.getElementById('modalNome').innerText = nome;
+        document.getElementById('modalData').innerText = data;
+        document.getElementById('modalDescricao').innerText = descricao;
+        document.getElementById('modalLocal').innerText = local;
+        document.getElementById('modalHora').innerText = hora;
+        document.getElementById('modalLotacao').innerText = lotacao;
+        document.getElementById('modalDuracao').innerText = duracao;
+        document.getElementById('modalFaixaEtaria').innerText = faixaEtaria;
+        document.getElementById('modalStatusSocial').innerText = statusSocial;
+        document.getElementById('modalEscolaridade').innerText = escolaridade;
+
+        const statusEventElement = document.getElementById('modalStatusEvento');
+        statusEventElement.innerText = statusEvento;
+
+        let statusClass = '';
+        switch (statusEvento) {
+            case 'Concluído':
+                statusClass = 'status-concluido';
+                break;
+            case 'Cancelado':
+                statusClass = 'status-cancelado';
+                break;
+            case 'Em Andamento':
+                statusClass = 'status-ativo';
+                break;
+            case 'Adiado':
+                statusClass = 'status-pendente';
+                break;
+            default:
+                statusClass = '';
+        }
+
+        statusEventElement.className = statusClass;
+        document.getElementById('eventModal').style.display = 'block';
+    }
+
+    // Modal: fechar
+    function closeModal() {
+        isModalOpen = false; // ← Desativa flag
+        document.getElementById('eventModal').style.display = 'none';
+    }
+
+    // Fecha modal ao clicar fora
+    window.onclick = function (event) {
+        const modal = document.getElementById('eventModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    // Inicialização
+    showSlide(currentSlide);
+    startAutoSlide();
+    adjustCarouselClasses();
+</script>
+
         <!-- Modal -->
 <div id="eventModal" class="modal-detalhes">
     <div class="modal-content-detalhes">
@@ -509,64 +544,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['senh
         <p class="info-item"><strong>Escolaridade:</strong> <span id="modalEscolaridade"></span></p>
     </div>
 </div>
-
-
-        <script>
-            function showDetails(nome, imagem, data, descricao, local, hora, lotacao, duracao, faixaEtaria, statusSocial, statusEvento, escolaridade) {
-                // Parar o carrossel automático
-                 stopAutoSlide(); // <-- Adiciona esta linha aqui
-
-                document.getElementById('modalNome').innerText = nome;
-                document.getElementById('modalData').innerText = ` ${data}`;
-                document.getElementById('modalDescricao').innerText = descricao;
-                document.getElementById('modalLocal').innerText = local;
-                document.getElementById('modalHora').innerText = hora;
-                document.getElementById('modalLotacao').innerText = lotacao;
-                document.getElementById('modalDuracao').innerText = duracao;
-                document.getElementById('modalFaixaEtaria').innerText = faixaEtaria;
-                document.getElementById('modalStatusSocial').innerText = statusSocial;
-                document.getElementById('modalEscolaridade').innerText = escolaridade;
-
-                const statusEventElement = document.getElementById('modalStatusEvento');
-                statusEventElement.innerText = statusEvento;
-
-                let statusClass = '';
-                switch (statusEvento) {
-                    case 'Concluído':
-                        statusClass = 'status-concluido';
-                        break;
-                    case 'Cancelado':
-                        statusClass = 'status-cancelado';
-                        break;
-                    case 'Em Andamento':
-                        statusClass = 'status-ativo';
-                        break;
-                    case 'Adiado':
-                        statusClass = 'status-pendente';
-                        break;
-                    default:
-                        statusClass = '';
-                }
-
-                statusEventElement.className = statusClass;
-                document.getElementById('eventModal').style.display = 'block';
-            }
-
-            function closeModal() {
-                document.getElementById('eventModal').style.display = 'none';
-
-            }
-
-
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('eventModal')) {
-                    closeModal();
-                }
-            }
-        </script>
-
-
-
 
     </section>
 </body>
