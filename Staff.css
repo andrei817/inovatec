@@ -1,0 +1,395 @@
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+:root {
+  --primary: #eeeeee;
+  --secondary: #290670;
+  --green: #82cd47;
+  --secondary-light: rgba(110, 28, 216, 0.726);
+  --secondary-light-2: rgb(127, 183, 126, 0.1);
+  --white: #fff;
+  --black: #393e46;
+
+  --shadow: 0px 2px 8px 0px var(--secondary-light);
+}
+
+
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+}
+
+/* Estilo geral da seção de login */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+}
+
+/* Caixa de login */
+.login-box {
+    background-color: rgb(74, 36, 180);
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    position: absolute;
+    top: 5%; /* Ajustado para que fique mais centralizado */
+    width: 90%; /* Largura ajustada para ser mais responsiva */
+    max-width: 600px; /* Define um limite máximo de largura */
+}
+
+/* Botão de fechar */
+.close-btn-staff {
+    position: absolute;
+    top: 10px; /* Distância do topo ajustada para estar mais próximo da caixa */
+    right: 20px; /* Distância da direita ajustada para evitar que o botão fique fora da tela */
+    font-size: 30px; /* Tamanho da fonte do X */
+    color: rgb(243, 243, 243);
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+/* Efeito de hover no botão de fechar */
+.close-btn-staff:hover {
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    color: white; /* Garante que a cor do ícone permaneça visível */
+    text-decoration: none; 
+}
+
+/* =================== Media Queries =================== */
+
+/* Para telas grandes (maiores que 1200px) */
+@media (min-width: 1200px) {
+    .login-box {
+        width: 65%; /* Deixa a caixa de login menor em telas grandes */
+    }
+}
+
+/* Para telas médias (entre 768px e 1200px) */
+@media (max-width: 1200px) and (min-width: 768px) {
+    .login-box {
+        width: 75%; /* Ajuste para telas médias */
+    }
+}
+
+/* Para telas pequenas (entre 480px e 768px) */
+@media (max-width: 768px) and (min-width: 480px) {
+    .login-box {
+        width: 70%; /* Ajuste para telas pequenas */
+    }
+
+    .close-btn-staff {
+        font-size: 28px; /* Reduz o tamanho do X em telas menores */
+    }
+}
+
+/* Para telas muito pequenas (como celulares menores que 480px) */
+@media (max-width: 480px) {
+    .login-box {
+        width: 85%; /* Deixa a caixa de login mais ampla em telas muito pequenas */
+    }
+
+    .close-btn-staff {
+        font-size: 26px; /* Reduz ainda mais o tamanho do X */
+        right: 10px; /* Ajusta a posição do X para que fique visível */
+    }
+}
+
+
+
+
+
+
+
+.input-group {
+    margin-bottom: 5px;
+    text-align: left;
+    
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 2px;
+   
+}
+
+.input-group input {
+    width: 30%;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 20px; 
+    font-size: 16px;
+   
+    
+}
+
+.login-btn-staff {
+    position: relative; 
+    right: -170px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn-staff:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn-staff:hover {
+    background-color: #3ee932;
+}
+
+.Cancel-btn-staff {
+    position: relative; 
+    right: -180px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-staff:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-staff:hover {
+    background-color: #d43131;
+}
+
+
+
+select, input[type="date"], button {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+/* Estilo do botão de abrir a sidebar */
+.open-btn {
+    padding: 12px 24px;
+    width: 5%;
+    background-color: #5214cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+
+
+.modal-correto {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Conteúdo do modal */
+.modal-content-correto {
+    background-color: #5214cb;
+    padding: 13px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para tornar a posição do "X" relativa ao conteúdo */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Botão de fechar */
+.icon-close {
+    position: absolute;
+    top: 3px; /* Distância do topo */
+    right: 3px; /* Distância da direita */
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamanho do "X" */
+    background-color: transparent; /* Sem fundo */
+    box-shadow: none; /* Remover sombra */
+}
+
+.correto-img {
+  width: 40%;
+  align-items: center;
+  
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+/* Modal - Duplicado */
+.modal-erro {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content-erro {
+    background-color: #5214cb;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para tornar a posição do "X" relativa ao conteúdo */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.close-erro {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+
+.erro-img {
+    width: 40%;
+    height: 35%;
+    margin-top: 15px;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+

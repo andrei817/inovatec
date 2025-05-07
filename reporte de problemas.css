@@ -1,0 +1,322 @@
+
+/* Seção da agenda */
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+}
+
+.form {
+    height: 510px;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #5214cb;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    width: 100%;
+    margin-top: -70px;
+}
+
+    .close_login-btn {
+    position: relative; /* Posiciona o botão de fechar */
+    top: -95px; /* Distância do topo */
+    right: -390px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+.input-group label {
+display: block;
+margin-bottom: 3px;
+border-radius: 10px;
+color: rgb(255, 255, 255);
+position: sticky;
+margin-top: 2px;
+
+}
+
+.input-group input {
+width: 40%;
+padding: 5px;
+border-radius: 20px; 
+font-size: 16px;
+}
+
+/* Estilo para a área de texto (textarea) */
+.inputUser {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 40%; /* Faz com que ocupe a largura total do contêiner */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+
+/* Placeholder estilizado */
+.inputUser::placeholder {
+    color: #aaa;
+    font-style: Montserrat;
+}
+
+/* Efeito hover */
+.inputUser:hover {
+    border-color: #888; /* Mudança de cor ao passar o mouse */
+}
+
+.login-reportar {
+ position: relative; 
+right: -190px; 
+width: 20%;
+top: 45px;
+padding: 10px; 
+background-color: #0db400;
+color: #fff;
+border: none;
+border-radius: 30px;
+font-size: 16px;
+cursor: pointer;
+border-bottom: 4px solid black;
+box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+            0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+}
+
+.login-reportar:active{
+
+box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+            0px 4px 10px rgba(0, 0, 0, 0.2);
+transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-reportar:hover {
+    background-color: #34e028;
+        }
+
+.Cancel-btn {
+position: relative; 
+right: -200px; 
+width: 20%;
+padding: 10px; 
+background-color: rgba(206, 35, 35, 0.89);
+color: #fff;
+border: none;
+border-radius: 30px;
+font-size: 16px;
+cursor: pointer;
+border-bottom: 4px solid black;
+box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+        0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn:active{
+
+box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+        0px 4px 10px rgba(0, 0, 0, 0.2);
+transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn:hover {
+background-color: #f53e3e;
+}
+
+/* Estilo do botão de abrir a sidebar */
+.open-btn {
+    padding: 12px 24px;
+    background-color: #5214cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+.modal-correto {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Conteúdo do modal */
+.modal-content-correto {
+    background-color: #5214cb;
+    padding: 13px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para tornar a posição do "X" relativa ao conteúdo */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Botão de fechar (X) */
+.close-btn-icon {
+    position: absolute;
+    top: 3px; /* Distância do topo */
+    right: 3px; /* Distância da direita */
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamanho do "X" */
+    background-color: transparent; /* Sem fundo */
+    box-shadow: none; /* Remover sombra */
+}
+
+.msg {
+    padding: 5px;
+    text-align: center;
+    font-size: 23px;
+}
+
+
+.correto-img {
+  width: 40%;
+  align-items: center;
+  
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Modal - Duplicado */
+.modal-erro {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content-erro {
+    background-color: #5214cb;
+    padding: 13px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para tornar a posição do "X" relativa ao conteúdo */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.close-icon-erro {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.msg2 {
+    font-size: 25px;
+}
+
+
+.erro-img {
+    width: 40%;
+    height: 35%;
+    margin-top: 15px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
