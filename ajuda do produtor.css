@@ -1,0 +1,214 @@
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+  }
+  
+  .agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+  }
+
+  .help-container {
+    max-height: 474px;
+    position: relative;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #5214Cb;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    margin-top: -90px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+  }
+  
+  .ajuda-title {
+    position: sticky;
+    top: -20px;
+    left: 0;
+    background-color: #5214cb; /* Cor de fundo (mesma cor do container para continuidade visual) */
+    padding: 10px 0;      /* Adiciona espaçamento vertical */
+    margin: 0;            /* Remove margens extras */
+    z-index: 200;          /* Garante que fique acima do conteúdo rolável */
+    color: white;         /* Mantém o texto visível */
+    text-align: center;   /* Centraliza o texto (opcional) */
+    height: 109px;
+  }
+  /* Estilo dos botões de seção */
+  .help-title {
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(245, 245, 245);
+    color: black;
+    text-align: left;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    top: 0;         
+    cursor: pointer;
+    outline: none;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    transition: background-color 0.3s ease;
+  }
+  
+  .help-title:hover {
+    background-color: #5214cb; /* Efeito hover no botão */
+  }
+  
+  /* Estilo do conteúdo de ajuda (inicialmente escondido) */
+  .help-content {
+    display: none;
+    width: 1051px;
+    padding: 10px;
+    background-color: #5214cb;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    
+  }
+
+  /* Aumenta a fonte do título */
+.help-title {
+  font-size: 15px;  /* Tamanho ajustável conforme necessário */
+ 
+}
+
+/* Aumenta a fonte do conteúdo de ajuda */
+.help-content {
+  font-size: 18px;  /* Ajuste conforme necessário */
+  line-height: 1.5; /* Espaçamento entre linhas para melhor leitura */
+  color: white;     /* Se o fundo for escuro, a cor branca melhora a legibilidade */
+}
+
+  /* Scrollbar estilizada */
+  .help-container::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+  }
+  
+  .help-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor da trilha da barra */
+    border-radius: 10px;
+  }
+  
+  .help-container::-webkit-scrollbar-thumb {
+    background: #3c12c7; /* Cor do "thumb" (a parte que você arrasta) */
+    border-radius: 10px;
+  }
+  
+  .help-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(51, 6, 136); /* Cor do "thumb" quando hover */
+  }
+  
+    
+    .help-content ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    
+    .help-content p, .help-content li {
+      color: rgb(255, 255, 255);
+      margin-bottom: 10px;
+     
+    }
+  
+    .help-content.scrollable {
+      max-height: 200px; /* Define a altura máxima quando expandido */
+      overflow-y: auto; /* Adiciona a barra de rolagem se necessário */
+  }
+
+  .close-btn-ajuda {
+    position: relative; /* Posiciona o botão de fechar */
+    top: -40px; /* Distância do topo */
+    right: -533px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+  }
+  
+  .close-btn-ajuda :hover{
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+  }
+
+
+    /* Estilo do botão de abrir a sidebar */
+    .open-btn {
+      padding: 12px 24px;
+      background-color: #5214cb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+      text-align: center;
+  }
+  
+  /* Estilo da sidebar */
+  .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #5214cb;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      color: white;
+      z-index: 1000;
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+      
+  }
+  
+  /* Conteúdo dentro da sidebar */
+  .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #ddd;
+      display: block;
+      transition: 0.3s;
+     
+  }
+  
+  .sidebar a:hover {
+      color: #5214cb;
+      background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Botão de fechar (X) */
+  .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 36px;
+      color: #ffff;
+      cursor: pointer;
+  }

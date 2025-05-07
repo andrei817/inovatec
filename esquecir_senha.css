@@ -1,0 +1,572 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+   
+
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Estilo do cabeçalho */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 377px;
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position:sticky;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 13px 0;
+    display: flex;
+    justify-content: right;
+    gap: 37px;
+    margin-right: 170px;
+    
+}
+
+.bi bi-gear-fill {
+    background-color: white;
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+/* Seção da agenda */
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 78px;
+    gap: -35px;
+    display: flex; flex-direction: column;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.redefinir-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+   
+}
+
+.legend {
+    font-size: 20px;  
+}
+
+.esquecir-box {
+    align-items: center;
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    margin: 50px ;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    margin-top: 110px;
+    height: 500px;
+    text-align: center;
+    background-color: rgb(23, 0, 155);
+}
+   
+.btn-closs{
+    position: relative; /* Posiciona o botão de fechar */
+    top: -40px; /* Distância do topo */
+    right: -333px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+.btn-closs :hover{
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 30px;
+   
+}
+
+.input-group input {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 20px; 
+    font-size: 16px;
+}
+
+.redefinir-btn{
+    position: relative; 
+    right: -187px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.redefinir-btn:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.redefinir-btn:hover {
+    background-color: #3bdf2f;
+}
+
+.Cancel-btn-redefinir {
+    position: relative; 
+    right: -200px; 
+    width: 20%;
+    padding: 9px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-redefinir:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-redefinir:hover {
+    background-color: #d43131;
+}
+
+
+
+
+/* Estilo do Modal */
+.modal-redefinir {
+    display: none; /* Escondido por padrão */
+    position: fixed; 
+    z-index: 1; /* Fica acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Ativa o scroll se necessário */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro */
+  }
+  
+  /* Conteúdo do modal */
+  .modal-content-redefinir {
+    background-color: #5214cb;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    width: 80%;
+    max-width: 500px;
+    
+  }
+  
+  /* Botão de Fechar */
+  .close-btn {
+    color: rgb(224, 224, 224);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+
+  .modal-correto {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Conteúdo do modal */
+.modal-content-correto {
+    background-color: #5214cb;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Botão de fechar */
+.close-icon-correto {
+    position: absolute;
+    top: 3px; /* Distância do topo */
+    right: 3px; /* Distância da direita */
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamanho do "X" */
+    background-color: transparent; /* Sem fundo */
+    box-shadow: none; /* Remover sombra */
+}
+
+.correto-img {
+  width: 40%;
+  align-items: center;
+  
+}
+
+/* Estilo geral do modal */
+.modal-pergunta {
+    display: block; /* Exibe o modal inicialmente */
+    position: fixed;
+    z-index: 1000; /* Fica acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content-pergunta {
+    background-color: #5214cb; /* Fundo branco */
+    margin: 15% auto; /* Centraliza verticalmente */
+    padding: 30px;
+    margin-top: 250px;
+    border-radius: 10px;
+    width: 90%; /* Largura ajustável */
+    max-width: 600px; /* Largura máxima */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra */
+    text-align: center;
+}
+
+/* Estilo para a pergunta */
+.modal-content-pergunta p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255); /* Cor do texto */
+}
+
+/* Estilo do campo de resposta */
+.input-group input[type="text"]  {
+    width: 46%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilo do botão */
+.btn-pergunta {
+    position: relative; 
+    right: -160px;
+    width: 20%;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.btn-pergunta:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.btn-pergunta:hover {
+    background-color: #3bdf2f;
+}
+
+
+
+/* Efeito de hover no botão */
+.btn-pergunta:hover {
+    background-color: #3bdf2f;
+}
+
+.Cancel-btn-pergunta {
+    position: relative; 
+    right: -170px; 
+    width: 20%;
+    padding: 9px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-pergunta:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-pergunta:hover {
+    background-color: #d43131;
+}
+
+
+/* Estilo de fechamento do modal */
+.modal-pergunta .close-pergunta {
+    color: #aaa;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Modal de erro */
+.modal-erro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    
+}
+
+.modal-content-erro {
+    background-color: #5214cb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 450px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-btn {
+    cursor: pointer;
+    color: #ffff;
+    font-size: 24px;
+    float: right;
+}
+
+h3 {
+    margin: 30px;
+}
+
+
+
+
+
+  

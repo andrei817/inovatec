@@ -1,0 +1,599 @@
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 1em;
+    }
+  }
+  
+  /* Para dispositivos com largura até 768px (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* Para dispositivos maiores que 1024px (desktops) */
+  @media only screen and (min-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+
+/* Estilo do cabeçalho */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 68px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 140px
+    
+    
+    
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: ocm;
+    white-space: nowrap;
+   
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 90px;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    margin-right: 31px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.profile-dropdown {
+    position: relative;
+    width: fit-content;
+    list-style: none;
+    top: 10px;
+    left: 35px;
+  }
+
+  .profile-dropdown-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.05rem 0.2rem;   /* Padding ainda menor */
+    font-size: 0.6rem;         /* Tamanho de fonte menor */
+    font-weight: 400;          /* Peso da fonte ajustado */
+    width: 70%;               /* Largura ajustada ao conteúdo */
+    border-radius: 20px;       /* Menor raio de borda */
+    border: 1px solid var(--secondary); /* Borda fina */
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in, border 0.
+  }  
+  
+  
+  .profile-dropdown-btn:hover {
+    background-color: var(--secondary-light-2);
+    box-shadow: var(--shadow);
+  }
+  .profile-img {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: url(./assets/profile-pic.jpg);
+    background-size: cover;
+  }
+
+  .profile-dropdown-btn span {
+    margin: 0 0.5rem;
+    margin-right: 0;
+  }
+
+  .profile-dropdown-btn span {
+    margin: 0 0.5rem;
+    margin-right: 10px;;
+  }
+  .profile-dropdown-list {
+    position: absolute;
+    top: 68px;
+    width: 240px;
+    right: 0;
+    background-color: #5214cb;
+    border-radius: 10px;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: max-height 0.5s;
+    list-style: none; /* Remove as bolinhas */
+  }
+  .profile-dropdown-list hr {
+    border: 0.5px solid var(--green);
+  }
+  .profile-dropdown-list.active {
+    max-height: 400px;
+  }
+  .profile-dropdown-list-item {
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    transition: background-color 0.2s ease-in, padding-left 0.2s;
+  }
+  .profile-dropdown-list-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+  }
+  .profile-dropdown-list-item a i {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-color: var(--secondary);
+    color: var(--white);
+    line-height: 2.3rem;
+    text-align: center;
+    margin-right: 1rem;
+    border-radius: 50%;
+    transition: margin-right 0.3s;
+  }
+  .profile-dropdown-list-item:hover {
+    padding-left: 1.5rem;
+    background-color: var(--secondary-light);
+  }
+
+
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo-evento {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    top: 35px;
+    display: flex; flex-direction: column;
+    
+}
+
+.nome-evento h1 {
+  font-size: 26px;
+  margin: 20px 0;
+  top: -20px;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  margin-left: 10px;
+  position: relative;
+  background-color: #5214Cb; 
+  display: inline; 
+  border-radius: 15px; 
+}
+
+
+table {
+    width: 100%;
+    width: 1335px;
+    border-collapse: collapse;
+    margin: 20px auto; /* Centraliza a tabela */
+    margin-bottom: 70px;
+    margin-left: 15px;
+    margin-top: -45px;
+    
+    
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Cor azul */
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Cor azul escuro */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.button:active {
+    transform: scale(1); /* Restaura o tamanho ao clicar */
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 12px;
+}
+
+
+th {
+    background-color: #5214cb;
+    color: white;
+}
+
+td {
+    background-color: #8020cb;
+
+}
+
+
+/* Para telas grandes */
+@media (min-width: 851px) {
+    table {
+        width: 95%; /* Limita a largura da tabela para não ficar esticada em telas muito grandes */
+        margin: 20px auto; /* Centraliza a tabela */
+        margin-top: -40px;
+       
+    }
+}
+
+/* Adicionando um estilo para a imagem responsiva */
+.event-image {
+  max-width: 100%;
+  min-width: 100px;
+}
+
+.id-column {
+    display: none;
+  }
+
+  .ações {
+      width: 10%;
+      gap: 56px;
+     
+  }
+
+  .a {
+    color: white;
+    text-decoration: none;
+}
+
+h2 {
+    border: none;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+.evento-actions {
+    display: flex;
+    gap: 60px;
+    
+}
+
+.btn-delete {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    
+}
+
+.btn-edit {
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}
+
+/* Estilo geral para a barra de paginação */
+.pagination {
+    text-align: center; /* Centraliza os links */
+    margin-top: 10px;
+}
+
+.pagination a {
+    margin: 0 5px; /* Espaçamento entre os links */
+    padding: 8px 15px; /* Tamanho dos botões */
+    text-decoration: none; /* Remove o sublinhado */
+    color: #5214cb; /* Cor do texto */
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #f8f9fa; /* Cor de fundo */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+.pagination a:hover {
+    background-color: #6200ff; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+.pagination a.active {
+    background-color: #6200ff; /* Cor de fundo da página ativa */
+    color: white; /* Cor do texto da página ativa */
+    font-weight: bold; /* Texto em negrito para a página ativa */
+}
+
+.pagination a.disabled {
+    color: #ccc; /* Cor de texto para links desabilitados */
+    cursor: not-allowed; /* Cursor "não permitido" para links desabilitados */
+    background-color: #f8f9fa; /* Cor de fundo para links desabilitados */
+    border-color: #ddd; /* Cor de borda para links desabilitados */
+}
+
+/* Estilo para o link "Anterior" e "Próxima" */
+.pagination a:first-child, .pagination a:last-child {
+    font-weight: bold; /* Deixar os botões "Anterior" e "Próxima" em negrito */
+}
+
+.pagination a:disabled {
+    pointer-events: none; /* Desabilita o clique em links desabilitados */
+}
+
+
+/* Estilo do Modal */
+.modal-apagar {
+  display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.modal-content-apagar {
+    background-color: #5214cb;
+    padding: 20px;
+    margin-top: 300px;
+    margin-left: 518px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-confirm,
+.btn-cancel {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+}
+
+.btn-confirm {
+  background-color: rgb(13, 175, 13);
+  color: white;
+  
+}
+
+.btn-cancel {
+  background-color: #b91414;
+  color: white;
+  
+}
+
+/* Ajustando a imagem para o formato 3x4 */
+img.event-image {
+  width: 120px; /* Largura 3x (ajuste conforme necessário) */
+  height: 100px; /* Altura 4x (ajuste conforme necessário) */
+  object-fit: cover; /* Mantém a proporção da imagem dentro da área */
+
+}

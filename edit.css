@@ -1,0 +1,513 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 1em;
+    }
+  }
+  
+  /* Para dispositivos com largura até 768px (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* Para dispositivos maiores que 1024px (desktops) */
+  @media only screen and (min-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+
+/* Estilo do cabeçalho */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 68px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 140px
+    
+    
+    
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: ocm;
+    white-space: nowrap;
+   
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position: sticky;
+    margin-left: 90px;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    margin-right: 31px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* Seção da agenda */
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 50px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 89px;
+    text-align: center;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    padding: 20px; /* Para evitar bordas muito próximas em telas pequenas */
+}
+
+.login-box {
+    align-items: center;
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    margin: 20px; /* Reduzido para melhor ajuste em telas menores */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Usa uma porcentagem para largura responsiva */
+    max-width: 500px; /* Define um limite máximo para largura */
+    height: auto; /* Permite altura dinâmica conforme o conteúdo */
+    text-align: center;
+}
+
+
+/* Responsividade para telas maiores */
+@media (max-width: 768px) {
+    .login-box {
+        width: 80%; /* Ajusta a largura para telas maiores */
+        max-width: 600px; /* Aumenta o limite máximo */
+    }
+
+    .close-btn-edit {
+        right: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-box {
+        width: 90%; /* Ajusta a largura para telas maiores */
+        max-width: 700px; /* Aumenta o limite máximo */
+    }
+}
+
+/* Responsividade para telas muito grandes */
+@media (min-width: 1200px) {
+    .login-box {
+        width: 100%; /* Reduz a largura para telas maiores */
+        max-width: 800px; /* Aumenta o limite máximo para telas grandes */
+        height: auto;
+    }
+
+   
+}
+
+/* Responsividade para telas muito grandes */
+@media (min-width: 1024px) {
+    .login-box {
+        width: 100%; /* Reduz a largura para telas maiores */
+        max-width: 800px; /* Aumenta o limite máximo para telas grandes */
+        height: auto;
+    }
+
+   
+}
+   
+.close-btn-edit {
+    position: relative; /* Posiciona o botão de fechar */
+    top: -65px; /* Distância do topo */
+    right: -360px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+    transition: background-color 0.3s;
+}
+
+/* Estilo de inputs e selects para consistência */
+.input-group-prod {
+    display: inline-flex; /* Flex para alinhamento horizontal */
+    flex-direction: column; /* Empilha label e input/select verticalmente */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-bottom: 10px;
+    width: 48%; /* Garante que dois grupos cabem lado a lado */
+    
+    
+}
+
+/* Estilização dos labels */
+.input-group-prod label {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin-bottom: 5px; /* Espaço entre o label e o input */
+    width: 48%; /* Garante que o label ocupa toda a largura do input */
+}
+
+/* Estilos gerais de inputs e selects */
+.input-group-prod input {
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 50px;
+    color: rgb(0, 0, 0); /* Cor do texto */
+    width: 80%; /* Ocupa toda a largura do contêiner */
+   height: 35px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resp {
+    margin-left: -25px;
+}
+
+
+
+
+.login-btn-edit {
+    position: relative; 
+    right: -30px; 
+    width: 20%;
+    top: 75px;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn-edit:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn-edit:hover {
+    background-color: #39d42e;
+}
+
+.Cancel-btn-edit {
+    position: relative; 
+    right: -45px; 
+    width: 20%;
+    top: 75px;
+    padding: 10px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-edit:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-edit:hover {
+    background-color: #f53e3e;
+}
+
+
+
+.signup-text {
+    position: relative;
+    color: rgb(255, 255, 255);
+    margin-top: -50px;
+    font-size: 14px;
+    
+    
+}
+
+.signup-text a {
+    color:rgb(255, 255, 255) ;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    text-decoration: none;
+}
+
+.forgot-password {
+   margin-top: -23px;
+  
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Inicialmente oculto */
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.popup button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.popup-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilo do botão de abrir a sidebar */
+.open-btn {
+    padding: 12px 24px;
+    background-color: #5214cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}

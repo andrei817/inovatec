@@ -1,0 +1,195 @@
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 89px;
+    gap: -35px;
+    display: flex; flex-direction: column;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Container para centralizar a caixa de login */
+.login-section-cargo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 53vh; /* Altura relativa para centralização */
+}
+
+/* Estilo da caixa de login */
+.login-box-cargo {
+    background-color: rgb(74, 36, 180);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 50%; /* Inicialmente ocupa 50% da largura da tela */
+    height: auto; /* Altura dinâmica para não distorcer */
+    max-width: 600px; /* Limita a largura máxima */
+    min-width: 320px; /* Garante que a largura não seja muito pequena */
+    padding: 15px;
+}
+
+/* Para telas grandes (como televisores) */
+@media (min-width: 1200px) {
+    .login-box-cargo {
+        width: 40%; /* Reduz a largura em telas muito grandes */
+        max-width: 600px; /* Garante que a largura não ultrapasse 600px */
+    }
+}
+
+/* Para telas médias (como desktops e laptops) */
+@media (max-width: 1200px) {
+    .login-box-cargo {
+        width: 100%; /* Ajusta para 50% em telas médias */
+        max-width: 600px;
+        
+    }
+}
+
+/* Para telas menores (como tablets e celulares) */
+@media (max-width: 768px) {
+    .login-box-cargo {
+        width: 70%; /* Aumenta a largura para 70% em telas menores */
+        max-width: 500px; /* Limita a largura máxima */
+    }
+}
+
+/* Para telas muito pequenas (como celulares) */
+@media (max-width: 480px) {
+    .login-box-cargo {
+        width: 80%; /* Aumenta ainda mais a largura para telas muito pequenas */
+        max-width: 400px; /* Limita ainda mais em telas pequenas */
+    }
+}
+    
+
+
+ h3 {
+     margin: 10px;
+     font-size: 25px;
+     margin-top: -20px;
+ }
+ .btn-close-cargo {
+    position: relative; /* Posiciona o botão de fechar */
+    top: -10px; /* Distância do topo */
+    right: -257px; /* Distância da direita */
+    font-size: 35px; /* Tamanho da fonte */
+    color: rgb(243, 243, 243); /* Cor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+
+.input-group {
+    margin-bottom: 5px;
+    text-align: left;
+    
+}
+
+.input-group label {
+    display: block;
+    padding-top: 22px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 2px;
+   
+}
+
+.input-group input {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 20px; 
+    font-size: 16px;
+   
+    
+}
+
+.login-btn-cargo {
+    position: relative; 
+    right: -140px; 
+    width: 20%;
+    top: 5px;
+    padding: 9px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn-cargo:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn-cargo:hover {
+    background-color: #3ceb30;
+}
+
+.Cancel-btn-cargo {
+    position: relative; 
+    right: -150px; 
+    width: 20%;
+    top: 5px;
+    padding: 9px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-cargo:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-cargo:hover {
+    background-color: #d43131;
+}

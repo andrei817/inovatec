@@ -1,0 +1,240 @@
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+}
+
+/* Estilo geral da seção de login */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+}
+
+/* Caixa de login */
+.login-box {
+    background-color: rgb(74, 36, 180);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%); 
+    width: 90%; /* Ajusta a largura para ser mais responsiva */
+    max-width: 700px; /* Define um limite máximo para a largura */
+}
+
+/* Botão de fechar */
+.close-btn-staff {
+    position: absolute;
+    top: 10px; /* Distância ajustada do topo */
+    right: 20px; /* Distância ajustada da direita */
+    font-size: 30px; /* Ajusta o tamanho da fonte do botão de fechar */
+    color: rgb(243, 243, 243);
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none; 
+}
+
+/* Efeito de hover no botão de fechar */
+.close-btn-staff:hover {
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    color: white; /* Garante que a cor do ícone continue visível */
+    text-decoration: none; 
+}
+
+/* =================== Media Queries =================== */
+
+/* Para telas grandes (maiores que 1200px) */
+@media (min-width: 1200px) {
+    .login-box {
+        width: 50%; /* Deixa a caixa de login menor em telas grandes */
+    }
+
+    .close-btn-staff {
+        font-size: 32px; /* Ajusta o tamanho do X */
+    }
+}
+
+@media (min-width: 1024px) and (min-width: 600px) {
+    .login-box {
+        width: 90%; /* Deixa a caixa de login menor em telas grandes */
+        max-width: 700px;
+    }
+
+    .close-btn-staff {
+        font-size: 32px; /* Ajusta o tamanho do X */
+    }
+}
+
+/* Para telas médias (entre 768px e 1200px) */
+@media (max-width: 1200px) and (min-width: 768px) {
+    .login-box {
+        width: 50%; /* Ajuste para telas médias */
+    }
+
+    .close-btn-staff {
+        font-size: 32px; /* Ajuste para um tamanho médio do X */
+    }
+}
+
+/* Para telas pequenas (entre 480px e 768px) */
+@media (max-width: 768px) and (min-width: 480px) {
+    .login-box {
+        width: 70%; /* Ajuste para telas pequenas */
+    }
+
+    .close-btn-staff {
+        font-size: 28px; /* Reduz o tamanho do X em telas menores */
+        right: -10px; /* Ajusta a posição do X */
+    }
+}
+
+/* Para telas muito pequenas (como celulares menores que 480px) */
+@media (max-width: 480px) {
+    .login-box {
+        width: 80%; /* Aumenta a largura da caixa de login em telas muito pequenas */
+    }
+
+    .close-btn-staff {
+        font-size: 26px; /* Reduz ainda mais o tamanho do X */
+        right: 0px; /* Ajusta a posição do X para que não fique fora da tela */
+    }
+}
+
+
+.close-btn :hover{
+transition: background-color 0.3s;
+background-color: rgb(74, 36, 180);
+text-decoration: none; /* Remove sublinhado */
+cursor: pointer; /* Muda o cursor ao passar o mouse */
+}
+
+label {
+    font-weight: bold;
+}
+
+h3 {
+padding: 10px;
+text-align: center;
+}
+
+
+.input-group {
+    margin-bottom: 5px;
+    text-align: left;
+    
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 2px;
+   
+}
+
+.input-group input {
+    width: 30%;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 20px; 
+    font-size: 16px;
+   
+    
+}
+
+select {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-btn-staff {
+    position: relative; 
+    right: -170px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn-staff:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn-staff:hover {
+    background-color: #3ee932;
+}
+
+.Cancel-btn-staff {
+    position: relative; 
+    right: -180px; 
+    width: 20%;
+    padding: 10px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-staff:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-staff:hover {
+    background-color: #d43131;
+}
+
+.a {
+    color: white;
+}

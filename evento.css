@@ -1,0 +1,640 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: url(Gestão.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
+    body {
+        background-image: url(Gestão.jpg);
+    }
+}
+
+
+/* Para dispositivos com largura até 600px (celulares) */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 1em;
+    }
+  }
+  
+  /* Para dispositivos com largura até 768px (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* Para dispositivos maiores que 1024px (desktops) */
+  @media only screen and (min-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+
+/* Estilo do cabeçalho */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 68px;
+    background-color: #5214CB #3c1292;
+    color: #F3F4F6;
+    text-align: left;
+    padding: 10 px 20px;
+    justify-content: space-between;
+    align-items: left;
+    position: sticky;
+    top: 5;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    
+      
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente dentro da div */
+    align-items: center; /* Centraliza verticalmente dentro da div */
+    width: 150px; /* Define o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 7px;
+    margin-left: 140px
+    
+    
+    
+  }
+
+
+ header h1 {
+    display: flex;
+    margin: 5px;
+    padding: 0 auto;
+    font-size: 20px;
+    text-align: left;
+    position: sticky;
+    margin-left: 1 cm;
+    
+}
+
+header p {
+    display: flex;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: ocm;
+    white-space: nowrap;
+   
+}
+
+
+.logo-foto {
+    display: flex;
+    width: 100px; /* Define o tamanho da logo */
+    height: auto; 
+    align-items: right;
+    opacity: 0.9;
+    margin-left: 18px;
+    padding: 0 auto;
+    text-align: left;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 90px;
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    margin-right: 31px;
+    
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: yellow;
+    
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* Seção da agenda */
+
+.agenda-evento {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-evento .conteudo {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: -35px;
+    display: flex; flex-direction: column;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; 
+  
+}
+.login-box {
+    align-items: center;
+    background-image: radial-gradient(circle, #5214Cb, #3c1292);
+    margin: auto;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    height: 660px;
+    text-align: center;
+    margin-top: -120px;
+    position: relative;
+}
+
+h1 {
+    margin-top: -20px;
+}
+
+.close-btn-evento {
+    position: absolute; /* Agora é absoluto em relação ao contêiner pai */
+    top: 10px;           /* Distância do topo */
+    right: 20px;         /* Distância da direita */
+    font-size: 35px;
+    color: rgb(243, 243, 243);
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.close-btn-evento :hover{
+    transition: background-color 0.3s;
+    background-color: rgb(74, 36, 180);
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+}
+
+
+/* Estilo de inputs e selects para consistência */
+.input-group {
+    display: inline-flex; /* Flex para alinhamento horizontal */
+    flex-direction: column; /* Empilha label e input/select verticalmente */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-bottom: 20px;
+    margin-top: 5px;
+    width: 48%; /* Garante que dois grupos cabem lado a lado */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    
+}
+
+/* Estilização dos labels */
+.input-group label {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin-bottom: 5px; /* Espaço entre o label e o input */
+    width: 100%; /* Garante que o label ocupa toda a largura do input */
+}
+
+/* Estilos gerais de inputs e selects */
+.input-group input,
+.input-group select {
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0); /* Cor do texto */
+    width: 40%; /* Ocupa toda a largura do contêiner */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo da área de texto (textarea) */
+.inputUser {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%; /* Faz com que ocupe a largura total do contêiner */
+    box-sizing: border-box;
+}
+
+/* Placeholder estilizado */
+.inputUser::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Efeito hover */
+.inputUser:hover {
+    border-color: #888; /* Mudança de cor ao passar o mouse */
+}
+
+/* Estilo para a área de texto (textarea) */
+.inputUser {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 40%; /* Faz com que ocupe a largura total do contêiner */
+    height: 60px;
+    box-sizing: border-box;
+}
+
+/* Placeholder estilizado */
+.inputUser::placeholder {
+    color: #aaa;
+    font-style: Montserrat;
+}
+
+/* Efeito hover */
+.inputUser:hover {
+    border-color: #888; /* Mudança de cor ao passar o mouse */
+}
+
+.image-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.image-row label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-top: -450px;
+    justify-content: center;
+    margin-left: 56px;
+   
+}
+
+/* Esconde o input de arquivo */
+#imagem {
+    display: none;
+}
+
+/* Estilo personalizado para o botão de escolha de arquivo */
+.custom-file-button {
+    display: inline-block;
+    background-color: rgb(40, 71, 185);
+    color: white;
+    padding: 10px 20px;
+    font-size: 19px;
+    margin-right: -45px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.custom-file-button:hover {
+    background-color: #2b18b9;
+}
+
+.custom-file-button:active {
+    background-color: #4857a1;
+}
+
+/* Estilo da pré-visualização da imagem */
+.image-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: -110px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* Mensagem quando não houver imagem */
+.image-preview span {
+    display: block;
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+}
+
+.login-btn-evento {
+    position: relative; 
+    right: -420px; 
+    width: 10%;
+    top: -50px;
+    padding: 10px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.login-btn-evento:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.login-btn-evento:hover {
+    background-color: #33ce28;
+}
+
+.Cancel-btn-evento {
+    position: relative; 
+    right: -430px; 
+    width: 10%;
+    top: -50px;
+    padding: 10px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.Cancel-btn-evento:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.Cancel-btn-evento:hover {
+    background-color: #f53e3e;
+}
+
+
+
+
+
+/* Estilo do botão de abrir a sidebar */
+.open-btn {
+    padding: 12px 24px;
+    background-color: #5214cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.form-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #5214cb;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -95px;
+    
+}
+
+
+/* Estilos gerais do modal */
+.modal-resultado {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fica fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo semitransparente */
+    z-index: 9999; /* Fica acima de outros elementos */
+    justify-content: center; /* Alinha o conteúdo no centro */
+    align-items: center; /* Alinha o conteúdo no centro verticalmente */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content-resultado {
+    background-color: #5214cb;
+    padding: 23px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para tornar a posição do "X" relativa ao conteúdo */
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.msg {
+    padding: 10px;
+    text-align: center;
+    font-size: 23px;
+}
+
+/* Estilo do botão de fechar */
+.close-icon {
+    position: absolute;
+    top: 3px; /* Distância do topo */
+    right: 3px; /* Distância da direita */
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamanho do "X" */
+    background-color: transparent; /* Sem fundo */
+    box-shadow: none; /* Remover sombra */
+}
+
+
+/* Estilos para o conteúdo de sucesso */
+#conteudoSucesso {
+    color: rgb(255, 255, 255); /* Cor verde para sucesso */
+}
+
+#conteudoSucesso h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#conteudoSucesso .correto-img {
+    width: 40%;
+    margin-top: 15px;
+}
+
+/* Estilos para o conteúdo de erro */
+#conteudoErro {
+    color: #ffffff; /* Cor vermelha para erro */
+}
+
+#conteudoErro h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#conteudoErro p {
+    font-size: 18px;
+}
+
+#conteudoErro .erro-img {
+    width: 40%;
+    margin-top: 15px;
+}

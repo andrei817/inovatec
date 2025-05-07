@@ -1,0 +1,483 @@
+@media print {
+    /* Esconde os botões de ação durante a impressão */
+    .action, .print-button {
+        display: none;
+    }
+}
+
+
+@media print {
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+    .printable-table {
+      border: 1px solid #000;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .printable-table th, .printable-table td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+    .printable-table th {
+      background-color: #f2f2f2;
+    }
+  }
+  
+
+/* Estilo da sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5214cb;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo dentro da sidebar */
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ddd;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #5214cb;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.agenda-relatorio {
+    position: fixed; /* Fixa a camada de fundo */
+    top: 70;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Preenche toda a tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade no fundo */
+    z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
+}
+
+.agenda-relatorio .conteudo-relatorio {
+    position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
+    z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
+    color: white; /* Cor do conteúdo */
+    padding: 89px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    top: 35px;
+    display: flex; flex-direction: column;
+    
+}
+
+
+.table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: white;
+    margin: 50px auto;
+    margin-top: -15px;
+    
+}
+
+/* Tornando a tabela responsiva em telas pequenas */
+@media (max-width: 768px) {
+    .table {
+        width: 100%; /* Torna a tabela 100% da largura da tela */
+        overflow-x: auto; /* Permite rolagem horizontal */
+        display: block; /* Faz a tabela virar um bloco */
+        margin: 20px auto; /* Ajusta a margem */
+    }
+
+    /* Estilo para a rolagem horizontal */
+    .table-wrapper {
+        overflow-x: auto;
+    }
+}
+
+.nome-colaboradores h1 {
+    font-size: 26px;
+    margin: 20px 0;
+    top: -20px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    position: relative;
+    background-color: #5214Cb; 
+    display: inline; 
+    border-radius: 15px; 
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Cor azul */
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Cor azul escuro */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.button:active {
+    transform: scale(1); /* Restaura o tamanho ao clicar */
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+
+th {
+    background-color: #5214cb;
+    color: white;
+}
+
+td {
+    background-color: #8020cb;
+
+}
+
+.id-column {
+    display: none;
+  }
+
+  .ações {
+      width: 10%;
+  }
+
+  a {
+      color: white;
+      text-decoration: none;
+      
+  }
+
+h2 {
+    
+    border: none;
+    box-sizing: border-box;
+  
+    justify-content: center;
+    
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+.actions {
+    display: flex;
+    gap: 40px;
+}
+
+.print-button {
+    background-color: rgb(8, 97, 180);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.print-button svg {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+    fill: white; /* Cor do ícone */
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #5214cb;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #5214cb;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+
+/* Estilos do modal */
+.modal-staff {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); /* Cor de fundo */
+    background-color: rgba(0, 0, 0, 0.4); /* Transparência */
+    padding-top: 55px;
+    overflow: hidden;
+  }
+  
+  .modal-content-staff {
+    background-color: #5214cb;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+  }
+
+  
+.input-group {
+    margin-bottom: 5px;
+    text-align: left;
+    
+}
+
+.input-group label {
+    display: block;
+    padding-top: 22px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    position: sticky;
+    margin-top: 2px;
+   
+}
+
+.input-group input {
+    width: 30%;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255) #f8f8f8;
+    border-radius: 20px; 
+    font-size: 16px;
+   
+    
+}
+
+select {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+  
+  .close {
+    color: #ffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+ 
+.btn-login {
+    position: relative; 
+    right: -355px;
+    width: 20%;
+    top: 10px;
+    padding: 9px; 
+    background-color: #0db400;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.btn-login:active{
+
+    box-shadow: 0px 2px 0px ,  #0db400 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.btn-login:hover {
+    background-color: #3ceb30;
+}
+
+.btn-Close {
+    position: relative; 
+    right: -365px;
+    width: 20%;
+    top: 10px;
+    padding: 9px; 
+    background-color: rgba(206, 35, 35, 0.89);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 4px solid black;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 0px , #cf1111  /* Sombra superior para profundidade */
+                0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
+    transition: all 0.3s ease-in-out;  /* Suaviza a animação */
+
+
+}
+.btn-Close:active{
+
+    box-shadow: 0px 2px 0px ,  #bd1010 /* Sombra ao pressionar, simulando o botão "afundar" */
+                0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);        /* Move o botão para baixo */
+}
+
+.btn-Close:hover {
+    background-color: #d43131;
+}
+
+
+.modal-de-sucesso {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Conteúdo do modal */
+.modal-content-sucesso {
+    background-color: #5214cb;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão de fechar */
+.close-icon-correto {
+    margin-top: -20px;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    right: -227px;
+    top: -10px;
+    font-size: 20px;
+}
+
+.correto-img {
+  width: 40%;
+  align-items: center;
+  
+}
+
+/* Estilo para o modal de erro */
+.modal-de-erro {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    z-index: 1000; /* Para garantir que o modal fique acima de outros elementos */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-erro {
+    background-color: #5214cb;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content-erro h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.modal-content-erro .erro-img {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.close-icon-erro {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+
+
+  
+
