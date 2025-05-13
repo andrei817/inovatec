@@ -56,19 +56,14 @@ header {
     display: flex;
     width: 100%;
     height: 70px;
-    background-color: #5214CB #3c1292;
-    color: #F3F4F6;
+    background-color: #5214CB;
     text-align: left;
-    padding: 10 px 20px;
     justify-content: space-between;
     align-items: left;
     position: sticky;
     top: 5;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-image: radial-gradient(circle, #5214Cb, #3c1292);
-    
-      
+
 }
 
 .logo {
@@ -204,22 +199,19 @@ nav ul li a:hover::after {
 .login-box {
     align-items: center;
     background-image: radial-gradient(circle, #5214Cb, #3c1292);
-    margin: 50px ;
+    margin: 50px;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 700px;
     height: 468px;
     text-align: center;
     
 }
 
-
-   
 .fecha-btn {
     position: relative; /* Posiciona o botão de fechar */
-    top: -159px; /* Distância do topo */
-    right: -680px; /* Distância da direita */
+    top: -150px; /* Distância do topo */
+    right: -360px;
     font-size: 35px; /* Tamanho da fonte */
     color: rgb(243, 243, 243); /* Cor do botão */
     cursor: pointer; /* Muda o cursor ao passar o mouse */
@@ -227,13 +219,14 @@ nav ul li a:hover::after {
     text-decoration: none; 
 }
 
-.fecha-btn :hover{
-    transition: background-color 0.3s;
-    background-color: rgb(74, 36, 180);
-    text-decoration: none; /* Remove sublinhado */
-    cursor: pointer; /* Muda o cursor ao passar o mouse */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -33px;
+    justify-content: space-between; /* Ou center, se preferir centralizar */
+    align-items: flex-start;
+    gap: 20px;
 }
-
 
 .input-group-prod {
     display: inline-block; /* Usando flexbox para centralizar os itens */
@@ -298,7 +291,7 @@ nav ul li a:hover::after {
 
 .Cancel-btn-alt {
     position: relative; 
-    right: -200px; 
+    right: -210px; 
     width: 20%;
     top: 10px;
     padding: 10px; 
