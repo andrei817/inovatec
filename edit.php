@@ -1,14 +1,16 @@
 <?php
-include ('php/Config.php'); // Inclui a conexão com o banco de dados
+include('php/Config.php');
 
-// Verifica se o ID foi passado na URL para buscar o produtor
+$erromensagem = false;
+$exibirmodal = false; // Flag para exibir o modal
+$mostrarModal = false;
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Consulta o banco para pegar os dados do produtor
     $sql = "SELECT * FROM produtor WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id); // Usamos "i" para inteiro (ID)
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
     $produtor = $result->fetch_assoc();
@@ -19,44 +21,53 @@ if (isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Coleta os dados do formulário
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $cpf = $_POST['cpf'];
-    $pergunta_seg = $_POST['pergunta_seg'];  // Pergunta de segurança
-    $resposta_seg = $_POST['resposta_seg'];  // Resposta de segurança
+    $telefone = preg_replace("/\D/", "", $_POST['telefone']);
+    $cpf = preg_replace("/\D/", "", $_POST['cpf']);
+    $pergunta_seg = $_POST['pergunta_seg'];
+    $resposta_seg = $_POST['resposta_seg'];
 
-    // Verifica se a senha foi alterada
-    if (!empty($_POST['senha'])) {
-        $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);  // Criptografar a senha com BCRYPT
-    } else {
-        $senha = $produtor['senha'];  // Mantém a senha atual se não houver alteração
+    $senha = $produtor['senha'];
+
+    if (!preg_match("/^\d{11}$/", $cpf) || !preg_match("/^\d{11}$/", $telefone)) {
+        $erromensagem = true;
+        $exibirmodal = true; // Exibe o modal
     }
 
-    // Atualiza a tabela produtor, incluindo a pergunta e resposta de segurança
-    $sql = "UPDATE produtor SET nome = ?, email = ?, telefone = ?, senha = ?, cpf = ?, pergunta_seg = ?, resposta_seg = ? WHERE id = ?";
-
-    // Prepara e executa a query
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $nome, $email, $telefone, $senha, $cpf, $pergunta_seg, $resposta_seg, $id);
-
-    if ($stmt->execute()) {
-        // Se a atualização foi bem-sucedida, redireciona para a lista de produtores
-        header("Location: listar produtores.php");
-        exit;
-    } else {
-        echo "Erro ao atualizar o produtor: " . $stmt->error;
+    if (!$erromensagem) {
+        // Verifica se já existe outro produtor com o mesmo email ou CPF
+        $sqlVerifica = "SELECT id FROM produtor WHERE (email = ? OR cpf = ?) AND id != ?";
+        $stmtVerifica = $conn->prepare($sqlVerifica);
+        $stmtVerifica->bind_param("ssi", $email, $cpf, $id);
+        $stmtVerifica->execute();
+        $resultadoVerifica = $stmtVerifica->get_result();
+    
+        if ($resultadoVerifica->num_rows > 0) {
+            $erromensagem = true;
+            $mostrarModal = true;
+            $mensagemErro = "Já existe outro produtor com este e-mail ou CPF.";
+        } else {
+            // Atualiza normalmente
+            $sql = "UPDATE produtor SET nome = ?, email = ?, telefone = ?, cpf = ?, pergunta_seg = ?, resposta_seg = ? WHERE id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssi", $nome, $email, $telefone, $cpf, $pergunta_seg, $resposta_seg, $id);
+    
+            if ($stmt->execute()) {
+                header("Location: listar produtores.php");
+                exit;
+            } else {
+                echo "Erro ao atualizar o produtor: " . $stmt->error;
+            }
+            $stmt->close();
+        }
+    
+        $stmtVerifica->close();
     }
+}    
 
-    // Fecha a conexão preparada
-    $stmt->close();
-}
-
-// Fecha a conexão com o banco
 mysqli_close($conn);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -65,7 +76,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="ico/SGE.ico" type="image/x-icon">
     <link rel="stylesheet" href="edit.css">
-    <title>Editar Produtor</title>
+    <title>SGE - Editar Produtor</title>
 </head>
 <body>
 
@@ -158,7 +169,7 @@ mysqli_close($conn);
 
         <section class="login-section"> 
             <div class="login-box"> 
-                <h1>Editar Produtor</h1>
+                <h1 class="title">Editar Produtor</h1>
                 <a href="listar produtores.php" class="close-btn-edit">&times;</a>
                 <form method="POST">
                    <div class="input-group-prod">
@@ -177,11 +188,6 @@ mysqli_close($conn);
                    </div>
 
                    <div class="input-group-prod">
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" value="<?php echo htmlspecialchars(isset($produtor['senha']) ? '' : ''); ?>"><br>
-                    </div>
-
-                   <div class="input-group-prod">
                         <label for="cpf">CPF:</label>
                         <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($produtor['cpf']); ?>"><br>
                    </div>
@@ -192,23 +198,64 @@ mysqli_close($conn);
                    </div>
 
                    <div class="input-group-prod">
-                       <div class="resp">
-                        <label for="resposta_seg">Resposta de Segurança:</label>
-                        <input type="text" id="resposta_seg" name="resposta_seg" value="<?php echo htmlspecialchars($produtor['resposta_seg']); ?>" required><br>
-                       </div>
-                   </div>
+                  <label for="resposta_seg">Resposta de Segurança:</label>
+                  <input type="text" id="resposta_seg" name="resposta_seg" value="<?php echo htmlspecialchars($produtor['resposta_seg']); ?>" required>
+              </div>
 
                    <button type="submit" class="login-btn-edit">Salvar</button>
                    <a href="listar produtores.php"><button type="button" class="Cancel-btn-edit">Cancelar</button></a>
                 </form>
             </div>
-        </section>
     </div>
 </section>
 
+<?php if ($exibirmodal): ?>
+    <div id="modalErroValidacao" class="modal-validacao">
+        <div class="modal-content-validacao">
+            <span class="close-validacao" onclick="fecharModalErro()">&times;</span>
+            <p>Erro: CPF ou Telefone inválido. Ambos devem conter exatamente 11 dígitos.</p>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+<script>
+function fecharModalErro() {
+    document.getElementById('modalErroValidacao').style.display = 'none';
+}
+</script>
+
+
+<div id="modalErroDuplicado" class="modal-erro">
+  <div class="modal-content-erro">
+    <span class="close-erro" onclick="fecharModal()">&times;</span>
+    <h2>Erro de Atualização</h2>
+    <p><?php echo isset($mensagemErro) ? htmlspecialchars($mensagemErro) : ''; ?></p>
+  </div>
+</div>
+
+<?php if ($mostrarModal): ?>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("modalErroDuplicado").style.display = "block";
+  });
+
+  function fecharModal() {
+    document.getElementById("modalErroDuplicado").style.display = "none";
+  }
+</script>
+<?php endif; ?>
+
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<script> $('#cpf').mask('000.000.000-00', {reverse: true}); </script>
-<script> $('#telefone').mask('(00) 00000-0000'); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#cpf').mask('000.000.000-00', { reverse: true });
+    $('#telefone').mask('(00) 00000-0000');
+});
+</script>
+
 </body>
 </html>
