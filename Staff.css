@@ -9,21 +9,6 @@
     z-index: 1; /* Garante que a camada de fundo fique atrás dos outros elementos */
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
-:root {
-  --primary: #eeeeee;
-  --secondary: #290670;
-  --green: #82cd47;
-  --secondary-light: rgba(110, 28, 216, 0.726);
-  --secondary-light-2: rgb(127, 183, 126, 0.1);
-  --white: #fff;
-  --black: #393e46;
-
-  --shadow: 0px 2px 8px 0px var(--secondary-light);
-}
-
-
-
 .agenda-evento .conteudo {
     position: relative; /* Garante que o conteúdo fique acima da camada de opacidade */
     z-index: 1000; /* Coloca o conteúdo acima da camada de opacidade */
@@ -69,14 +54,6 @@
     text-decoration: none; 
 }
 
-/* Efeito de hover no botão de fechar */
-.close-btn-staff:hover {
-    transition: background-color 0.3s;
-    background-color: rgb(74, 36, 180);
-    color: white; /* Garante que a cor do ícone permaneça visível */
-    text-decoration: none; 
-}
-
 /* =================== Media Queries =================== */
 
 /* Para telas grandes (maiores que 1200px) */
@@ -115,12 +92,6 @@
         right: 10px; /* Ajusta a posição do X para que fique visível */
     }
 }
-
-
-
-
-
-
 
 .input-group {
     margin-bottom: 5px;
@@ -210,8 +181,8 @@
 
 
 
-select, input[type="date"], button {
-    width: 40%;
+select {
+    width: 42%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -278,8 +249,6 @@ select, input[type="date"], button {
     color: #ffff;
     cursor: pointer;
 }
-
-
 
 .modal-correto {
     display: none; /* Inicialmente oculto */
@@ -391,5 +360,3 @@ select, input[type="date"], button {
         transform: scale(1);
     }
 }
-
-
