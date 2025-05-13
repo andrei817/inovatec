@@ -24,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Captura e limpa os dados do formulário
     $novo_nome = trim($_POST['nome']);
     $novo_email = trim($_POST['email']);
-    $novo_telefone = trim($_POST['telefone']);
-    $novo_cpf = trim($_POST['cpf']);
+    $novo_telefone = trim(preg_replace('/\D/', '', $_POST['telefone']));
+    $novo_cpf = preg_replace('/\D/', '', $_POST['cpf']);
     $nova_pergunta_seg = trim($_POST['pergunta_seg']);
     $nova_resposta_seg = trim($_POST['resposta_seg']);
     $senha_atual = trim($_POST['senha']);
@@ -45,13 +45,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!preg_match('/^\d{3}\.\d{3}\.\d{3}-\d{2}$/', $novo_cpf) && !preg_match('/^\d{11}$/', $novo_cpf)) {
         $cadastroErro = true;
-        $erros[] = "CPF inválido. O formato correto é XXX.XXX.XXX-XX ou XXXXXXXXXXX.";
+        $erros[] = "Formato de CPF inválido. Use o formato 123.456.789-09.";
     }
-
-    if (!preg_match('/^\(\d{2}\)\s?\d{4,5}-\d{4}$/', $novo_telefone)) {
+    
+    if (!preg_match('/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/', $_POST['telefone'])) {
         $cadastroErro = true;
-        $erros[] = "Telefone inválido. O formato correto é (XX) XXXX-XXXX ou (XX) XXXXX-XXXX.";
+        $erros[] = "Telefone inválido. Use o formato: (21) 98765-4321 ou 21987654321";
     }
+    
+
+    // Verificar se já existe outro produtor com o mesmo email ou CPF
+        $stmtDuplicado = $conn->prepare("SELECT id FROM produtor WHERE (email = ? OR cpf = ?) AND id != ?");
+        $stmtDuplicado->bind_param("ssi", $novo_email, $novo_cpf, $produtor_id);
+        $stmtDuplicado->execute();
+        $resultDuplicado = $stmtDuplicado->get_result();
+
+        if ($resultDuplicado->num_rows > 0) {
+            $cadastroErro = true;
+            $erros[] = "E-mail ou CPF já está sendo usado por outro produtor.";
+        }
+        $stmtDuplicado->close();
 
     // Se o campo de senha atual foi preenchido, valida troca de senha
     if (!empty($senha_atual)) {
@@ -59,17 +72,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cadastroErro = true;
             $erros[] = "Senha atual incorreta.";
         }
-
+    
         if (empty($nova_senha)) {
             $cadastroErro = true;
             $erros[] = "A nova senha não pode estar vazia.";
         }
-
+    
         if ($nova_senha !== $confirmar_senha) {
             $cadastroErro = true;
-            $erros[] = "As senhas não coincidem. tente novamente.";
+            $erros[] = "As senhas não coincidem. Tente novamente.";
+        } elseif (password_verify($nova_senha, $produtor['senha'])) {
+            $cadastroErro = true;
+            $erros[] = "Essa senha já existe. Escolha uma diferente.";
+        }
+    
+        // Verifica se nova senha já está em uso por outro produtor
+        $stmtSenha = $conn->prepare("SELECT id, senha FROM produtor WHERE id != ?");
+        $stmtSenha->bind_param("i", $produtor_id);
+        $stmtSenha->execute();
+        $resultSenha = $stmtSenha->get_result();
+    
+        while ($row = $resultSenha->fetch_assoc()) {
+            if (password_verify($nova_senha, $row['senha'])) {
+                $cadastroErro = true;
+                $erros[] = "Essa senha já está sendo usada por outro produtor. Por favor, escolha outra.";
+                break;
+            }
         }
     }
+    
 
     // Se não houver erro, realiza atualização
     if (!$cadastroErro) {
@@ -223,50 +254,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h2>Atualizar Perfil</h2>
     <a href="ambiente.php" class="fecha-btn">&times;</a>
 
-    <!-- Campos existentes (nome, email, telefone, cpf) -->
-    <div class="input-group-prod">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($produtor['nome']); ?>" required>
-    </div>
+    <div class="form-row">
+    
+        <div class="input-group-prod">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($produtor['nome']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required>
-    </div>
+        <div class="input-group-prod">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($produtor['email']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($produtor['telefone']); ?>" required>
-    </div>
+        <div class="input-group-prod">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($produtor['telefone']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($produtor['cpf']); ?>" required>
-    </div>
+        <div class="input-group-prod">
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($produtor['cpf']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="pergunta_seg">Pergunta de Segurança:</label>
-        <input type="text" id="pergunta_seg" name="pergunta_seg" value="<?php echo htmlspecialchars($produtor['pergunta_seg']); ?>" required>
-    </div>
+        <div class="input-group-prod">
+            <label for="pergunta_seg">Pergunta de Segurança:</label>
+            <input type="text" id="pergunta_seg" name="pergunta_seg" value="<?php echo htmlspecialchars($produtor['pergunta_seg']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="resposta_seg">Resposta de Segurança:</label>
-        <input type="text" id="resposta_seg" name="resposta_seg" value="<?php echo htmlspecialchars($produtor['resposta_seg']); ?>" required>
-    </div>
+        <div class="input-group-prod">
+            <label for="resposta_seg">Resposta de Segurança:</label>
+            <input type="text" id="resposta_seg" name="resposta_seg" value="<?php echo htmlspecialchars($produtor['resposta_seg']); ?>" required>
+        </div>
 
-    <div class="input-group-prod">
-        <label for="senha">Senha Atual:</label>
-        <input type="password" id="senha" name="senha">
-    </div>
+        <div class="input-group-prod">
+            <label for="senha">Senha Atual:</label>
+            <input type="password" id="senha" name="senha">
+        </div>
 
-    <div class="input-group-prod">
-        <label for="nova_senha">Nova Senha:</label>
-        <input type="password" id="nova_senha" name="nova_senha">
-    </div>
+        <div class="input-group-prod">
+            <label for="nova_senha">Nova Senha:</label>
+            <input type="password" id="nova_senha" name="nova_senha">
+        </div>
 
-    <div class="input-group-prod">
-        <label for="confirmar_senha">Confirmar Nova Senha:</label>
-        <input type="password" id="confirmar_senha" name="confirmar_senha">
+        <div class="input-group-prod">
+            <label for="confirmar_senha">Confirmar Nova Senha:</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha">
+        </div>
+
     </div>
 
 
