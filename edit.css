@@ -1,181 +1,3 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: white;
-    background-image: url(Gestão.jpg);
-    background-repeat: no-repeat ;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-
-}
-
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) {
-    body {
-        background-image: url(Gestão.jpg);
-    }
-}
-
-
-/* Para dispositivos com largura até 600px (celulares) */
-@media only screen and (min-width: 375px) and (max-width: 667px) {
-    body {
-      font-size: 14px;
-    }
-  
-    .container {
-      width: 100%;
-      padding: 1em;
-    }
-  }
-  
-  /* Para dispositivos com largura até 768px (tablets) */
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .container {
-      width: 100%;
-    }
-  }
-  
-  /* Para dispositivos maiores que 1024px (desktops) */
-  @media only screen and (min-width: 1024px) {
-    .container {
-      width: 100%;
-    }
-  }
-
-
-/* Estilo do cabeçalho */
-
-header {
-    display: flex;
-    width: 100%;
-    height: 68px;
-    background-color: #5214CB #3c1292;
-    color: #F3F4F6;
-    text-align: left;
-    padding: 10 px 20px;
-    justify-content: space-between;
-    align-items: left;
-    position: sticky;
-    top: 5;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-image: radial-gradient(circle, #5214Cb, #3c1292);
-    
-      
-}
-
-.logo {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente dentro da div */
-    align-items: center; /* Centraliza verticalmente dentro da div */
-    width: 150px; /* Define o tamanho da logo */
-    height: auto; /* Mantém a proporção da imagem */
-    margin: 7px;
-    margin-left: 140px
-    
-    
-    
-  }
-
-
- header h1 {
-    display: flex;
-    margin: 5px;
-    padding: 0 auto;
-    font-size: 20px;
-    text-align: left;
-    position: sticky;
-    margin-left: 1 cm;
-    
-}
-
-header p {
-    display: flex;
-    font-size: 20px;
-    margin-top: 5px;
-    margin-left: ocm;
-    white-space: nowrap;
-   
-}
-
-
-.logo-foto {
-    display: flex;
-    width: 100px; /* Define o tamanho da logo */
-    height: auto; 
-    align-items: right;
-    opacity: 0.9;
-    margin-left: 18px;
-    padding: 0 auto;
-    text-align: left;
-    margin-top: 10px;
-    position: sticky;
-    margin-left: 90px;
-}
-
-
-
-
-nav ul {
-    list-style: none;
-    padding: 12px;
-    margin: 8px 0;
-    display: flex;
-    justify-content: right;
-    gap: 10px;
-    margin-right: 31px;
-    
-}
-
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    transition: color 0.3s;
-    position: relative;
-}
-
-nav ul li a:hover {
-    color: yellow;
-    
-}
-
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: rgb(255, 255, 255);
-    left: 0;
-    bottom: 0;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-}
-
-nav ul li a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.active::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-
-/* Seção da agenda */
-
 .agenda-evento {
     position: fixed; /* Fixa a camada de fundo */
     top: 70;
@@ -198,13 +20,6 @@ nav ul li a:hover::after {
     text-align: center;
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .login-section {
     display: flex;
     justify-content: center;
@@ -224,6 +39,12 @@ nav ul li a:hover::after {
     max-width: 500px; /* Define um limite máximo para largura */
     height: auto; /* Permite altura dinâmica conforme o conteúdo */
     text-align: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 23px;
+    color: white; /* Cor de preenchimento da letra */
 }
 
 
@@ -270,8 +91,8 @@ nav ul li a:hover::after {
    
 .close-btn-edit {
     position: relative; /* Posiciona o botão de fechar */
-    top: -65px; /* Distância do topo */
-    right: -360px; /* Distância da direita */
+    top: -99px; /* Distância do topo */
+    right: -410px; /* Distância da direita */
     font-size: 35px; /* Tamanho da fonte */
     color: rgb(243, 243, 243); /* Cor do botão */
     cursor: pointer; /* Muda o cursor ao passar o mouse */
@@ -301,27 +122,19 @@ nav ul li a:hover::after {
 
 /* Estilos gerais de inputs e selects */
 .input-group-prod input {
-    padding: 12px 15px;
+    padding: 8px 15px;
     font-size: 16px;
     border-radius: 50px;
     color: rgb(0, 0, 0); /* Cor do texto */
     width: 80%; /* Ocupa toda a largura do contêiner */
-   height: 35px;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-.resp {
-    margin-left: -25px;
-}
-
-
-
-
 .login-btn-edit {
     position: relative; 
-    right: -30px; 
+    right: -200px; 
     width: 20%;
-    top: 75px;
+    top: 20px;
     padding: 10px; 
     background-color: #0db400;
     color: #fff;
@@ -334,8 +147,6 @@ nav ul li a:hover::after {
     box-shadow: 0px 5px 0px , #0db400  /* Sombra superior para profundidade */
                 0px 7px 15px rgba(0, 0, 0, 0.2);  /* Sombra geral para efeito 3D */
     transition: all 0.3s ease-in-out;  /* Suaviza a animação */
-
-
 }
 .login-btn-edit:active{
 
@@ -345,14 +156,14 @@ nav ul li a:hover::after {
 }
 
 .login-btn-edit:hover {
-    background-color: #39d42e;
+    background-color: #34e028;
 }
 
 .Cancel-btn-edit {
     position: relative; 
-    right: -45px; 
+    right: -220px; 
     width: 20%;
-    top: 75px;
+    top: 20px;
     padding: 10px; 
     background-color: rgba(206, 35, 35, 0.89);
     color: #fff;
@@ -376,75 +187,80 @@ nav ul li a:hover::after {
 }
 
 .Cancel-btn-edit:hover {
-    background-color: #f53e3e;
+    background-color: #d43131;
 }
 
-
-
-.signup-text {
-    position: relative;
-    color: rgb(255, 255, 255);
-    margin-top: -50px;
-    font-size: 14px;
-    
-    
-}
-
-.signup-text a {
-    color:rgb(255, 255, 255) ;
-    text-decoration: none;
-}
-
-.signup-text a:hover {
-    transition: background-color 0.3s;
-    background-color: rgb(74, 36, 180);
-    text-decoration: none;
-}
-
-.forgot-password {
-   margin-top: -23px;
-  
-}
-
-.popup-overlay {
+.modal-validacao {
+    display: block;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden; /* Inicialmente oculto */
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup {
-    background-color: #fff;
+.modal-content-validacao {
+    background-color: #5214cb;
+    margin: 20% auto;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
     text-align: center;
-    max-width: 300px;
-    width: 100%;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.popup button {
-    background-color: #28a745;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-validacao {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-.popup-overlay.show {
-    visibility: visible;
-    opacity: 1;
-}
+.modal-erro {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 10000;
+    inset: 0; /* shorthand para top, right, bottom, left = 0 */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com opacidade */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content-erro {
+    background-color: #5214cb;
+    margin: 20% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .close-erro {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #ffff;
+    top: -10px;
+  }
+
 
 /* Estilo do botão de abrir a sidebar */
 .open-btn {
