@@ -1,4 +1,4 @@
-🎉 SGE — InovaTec
+## 🎉 SGE — InovaTec
 
 Sistema de Gestão de Eventos
 
@@ -80,12 +80,26 @@ Gerencia e administra os eventos
 
 Consulta e visualiza as informações dos eventos
 
-📂 Estrutura do projeto
-
-O projeto está organizado em diferentes arquivos e recursos responsáveis pelo funcionamento da aplicação, incluindo páginas, estilos, scripts e integração com o banco de dados.
-
 💡 Sobre o projeto
 
 O SGE — InovaTec foi desenvolvido como um projeto prático para aplicar conhecimentos de desenvolvimento web, programação, banco de dados e criação de interfaces interativas.
 
+📂 Estrutura do projeto
+
+O projeto está organizado em diferentes arquivos e recursos responsáveis pelo funcionamento da aplicação, incluindo páginas, estilos, scripts e integração com o banco de dados.
+
+## ⚙️ Como executar o projeto localmente
+
+Para rodar este projeto na sua máquina, você precisará do **XAMPP** instalado para simular o servidor local (Apache) e gerenciar o banco de dados (MySQL).
+
+1 - **Clone este repositório:**
+```python
+git clone [https://github.com/SEU_USUARIO/SGE---InovaTec.git](https://github.com/SEU_USUARIO/SGE---InovaTec.git)
+```
+2 - Mova o projeto para o servidor local:
+Copie a pasta do projeto que você acabou de clonar e cole dentro do diretório htdocs do seu XAMPP.
+​Caminho padrão no Windows: 
+``` python
+C:\xampp\htdocs
+```
 Desenvolvido por Andrei Luiz 🚀
