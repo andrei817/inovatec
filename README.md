@@ -45,6 +45,7 @@ Entre as informações apresentadas estão:
 ℹ️ Outras informações relevantes sobre o evento
 
 🌐 Servidor Local
+
 Xampp - programa utilizado para rodar o código e o banco de dados na web.
 
 🛠️ Tecnologias utilizadas
