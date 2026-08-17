@@ -6,7 +6,7 @@ O SGE — InovaTec é um sistema desenvolvido para facilitar a organização e d
 
 A plataforma é dividida em dois perfis principais: Produtor e Cliente, cada um com diferentes funcionalidades dentro do sistema.
 
-🚀 Funcionalidades
+## 🚀 Funcionalidades
 
 👨‍💼 Produtor
 
@@ -44,11 +44,11 @@ Entre as informações apresentadas estão:
 
 ℹ️ Outras informações relevantes sobre o evento
 
-🌐 Servidor Local
+## 🌐 Servidor Local
 
 Xampp - programa utilizado para rodar o código e o banco de dados na web.
 
-🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias utilizadas
 
 PHP — desenvolvimento da aplicação e funcionalidades do sistema
 
@@ -60,7 +60,7 @@ JavaScript — interatividade da aplicação
 
 SQL — armazenamento e gerenciamento dos dados
 
-🎯 Objetivo do projeto
+## 🎯 Objetivo do projeto
 
 O projeto foi desenvolvido com o objetivo de criar uma solução digital para a organização e gerenciamento de eventos, substituindo processos que poderiam depender de papel e facilitando o acesso às informações.
 
@@ -80,11 +80,11 @@ Gerencia e administra os eventos
 
 Consulta e visualiza as informações dos eventos
 
-💡 Sobre o projeto
+## 💡 Sobre o projeto
 
 O SGE — InovaTec foi desenvolvido como um projeto prático para aplicar conhecimentos de desenvolvimento web, programação, banco de dados e criação de interfaces interativas.
 
-📂 Estrutura do projeto
+## 📂 Estrutura do projeto
 
 O projeto está organizado em diferentes arquivos e recursos responsáveis pelo funcionamento da aplicação, incluindo páginas, estilos, scripts e integração com o banco de dados.
 
@@ -102,4 +102,18 @@ Copie a pasta do projeto que você acabou de clonar e cole dentro do diretório 
 ``` python
 C:\xampp\htdocs
 ```
+​3 - Inicie os serviços no XAMPP:
+Abra o Painel de Controle do XAMPP e clique em Start nos módulos Apache e MySQL.
+
+​4 - Configure o Banco de Dados:
+​Abra o seu navegador e acesse o phpMyAdmin:
+``` python
+http://localhost/phpmyadmin
+```
+​5 - Acesse o sistema:
+Abra o navegador e digite o endereço abaixo (substituindo pelo nome exato da pasta do seu projeto dentro do htdocs):
+``` python
+http://localhost/NOME_DA_PASTA_DO_PROJETO
+```
+
 Desenvolvido por Andrei Luiz 🚀
